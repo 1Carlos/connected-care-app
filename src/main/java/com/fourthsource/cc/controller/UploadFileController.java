@@ -11,11 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class UploadFileController {
 	
 	private final static Logger logger = LoggerFactory.getLogger(UploadFileController.class);
-	private static final String VIEW = "uploadFile";
+	private static final String VIEW = "import_data";
 	
-	@RequestMapping(value="/uploadFile", method=RequestMethod.GET)
+	@RequestMapping(value="/import_data", method=RequestMethod.GET)
 	public ModelAndView upload() {
-		logger.debug("Loading upload page");
+		logger.debug("Loading \"import_data\" page");
 		return new ModelAndView(VIEW); 
 	}
 	
