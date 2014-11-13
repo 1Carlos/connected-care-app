@@ -1,0 +1,75 @@
+<beans 	xmlns="http://www.springframework.org/schema/beans"
+    	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    	xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:mvc="http://www.springframework.org/schema/mvc" 
+		xmlns:p="http://www.springframework.org/schema/p"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+							http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+							http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+							http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+							http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:property-placeholder location="classpath:appProperties.properties" />
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="${fileUpload.property.maxFileSize}"  />
+	</bean>
+	
+	<bean id="fileUploadProperties" class="com.fourthsource.cc.domain.properties.FileUploadProperties">
+	    <property name="path" value="${fileUpload.property.path}" />
+	    <property name="successMessage">
+	        <bean id="successMessage" class="com.fourthsource.cc.domain.Message">
+				<property name="code" value="${fileUpload.property.code.success}" />
+	    		<property name="message" value="${fileUpload.property.message.success}" />
+			</bean>
+	    </property>
+	    <property name="fileSizeExceeded">
+	        <bean id="fileSizeExceeded" class="com.fourthsource.cc.domain.Message">
+				<property name="code" value="${fileUpload.property.code.fileSizeExceeded}" />
+	    		<property name="message" value="${fileUpload.property.message.fileSizeExceeded}" />
+			</bean>
+	    </property>
+	    <property name="fileEmpty">
+	        <bean id="fileEmpty" class="com.fourthsource.cc.domain.Message">
+				<property name="code" value="${fileUpload.property.code.fileEmpty}" />
+	    		<property name="message" value="${fileUpload.property.message.fileEmpty}" />
+			</bean>
+	    </property>
+	    <property name="generalException">
+	        <bean id="generalException" class="com.fourthsource.cc.domain.Message">
+				<property name="code" value="${fileUpload.property.code.generalException}" />
+	    		<property name="message" value="${fileUpload.property.message.generalException}" />
+			</bean>
+	    </property>
+	</bean>
+    
+    <!-- Data Source Parameters -->
+
+	<bean 	id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close" p:driverClassName="com.mysql.jdbc.Driver"
+			p:url="${db.dataSource.URL}" p:username="${db.dataSource.user}" p:password="${db.dataSource.password}" />
+  
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation">
+            <value>classpath:hibernate.cfg.xml</value>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${db.hibernate.dialect}</prop>
+                <prop key="hibernate.show_sql">${db.hibernate.showSQL}</prop>
+            </props>
+        </property>
+    </bean>
+     
+    <bean id="patientDAO" class="com.fourthsource.cc.dao.PatientDAOImpl"></bean>
+    <bean id="patientManager" class="com.fourthsource.cc.service.PatientManagerImpl"></bean>
+  
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    
+    <bean id="transactionManager"
+        class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    
+</beans>
