@@ -25,7 +25,7 @@ import com.fourthsource.cc.domain.responses.ResponseFileUpload;
 @Controller
 @ControllerAdvice
 @RequestMapping(value="/services")
-public class UploadFileService  {
+public class UploadFileService {
 
 	private final static Logger logger = LoggerFactory.getLogger(UploadFileService.class);
 	

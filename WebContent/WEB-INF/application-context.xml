@@ -46,7 +46,7 @@
     
     <!-- Data Source Parameters -->
 
-	<bean 	id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close" p:driverClassName="com.mysql.jdbc.Driver"
+	<bean 	id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close" p:driverClassName="${db.dataSource.driver}"
 			p:url="${db.dataSource.URL}" p:username="${db.dataSource.user}" p:password="${db.dataSource.password}" />
   
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
