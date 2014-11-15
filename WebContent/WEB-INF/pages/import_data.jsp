@@ -1,6 +1,8 @@
-<!DOCTYPE html>
-<!-- saved from url=(0050)http://getbootstrap.com/examples/navbar-fixed-top/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +10,6 @@
     <meta name="author" content="">
     <link rel="icon" href="resources/favicon.ico">
 	<link href="resources/styles/grid.css" rel="stylesheet">
-
     <title>Connected Care Solution by 4th Source Inc</title>
 
     <!-- Bootstrap core CSS -->
@@ -17,20 +18,12 @@
     <!-- Custom styles for this template -->
     <link href="resources/styles/navbar-fixed-top.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="resources/scripts/jquery.min.js"></script>
     <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-	
+    <script src="resources/scripts/upload-file.js"></script>
   </head>
 
   <body>
-
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -80,50 +73,31 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
     <div class="container">
-
       <!-- Main component for a primary marketing message or call to action -->
       <div class="page-header">
         <h1>Import Data</h1>
         <p class="lead">Please choose a file that you need import to the system.</p>
         <div class="jumbotron">
+			<form id="fileUploadForm">
+				<input id="fileUpload" type="file" name="file" class="filestyle">
+			</form>
+		    </br>
+			</br>
+			</br>
 			<center>
-				<input type="file" class="filestyle" data-buttonName="btn-primary">
-			    </br>
-				</br>
-				</br>
-				<p><a class="btn btn-primary btn-lg" href="import_data2.html" role="button">Upload File</a></p>
+				<p>
+					<a id="fileUploadButton" class="btn btn-primary btn-lg" href="javascript:void(0);" role="button">Upload File</a>
+				</p>
 			</center>
-			<!-- <div class="col-md-4">Chart #2
-				<div id="chartContainer2" style="height: 300px; width: 100%;"></div>
-			</div>
-			<div class="col-md-4">Chart #3
-				<div id="chartContainer3" style="height: 300px; width: 100%;"></div>
-			</div> -->
-        </div>
-        <!-- <div class="row">
-			<div class="col-xs-6">Chart #4
-				<div id="chartContainer4" style="height: 300px; width: 100%;"></div>
-			</div>
-			<div class="col-xs-6">Chart #5
-				<div id="chartContainer5" style="height: 300px; width: 100%;"></div>
-			</div>
-        </div> -->
-
-	  </div>
-
-    </div> <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="resources/scripts/jquery.min.js"></script>
-    <script src="resources/scripts/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="resources/scripts/ie10-viewport-bug-workaround.js"></script>
-	<script type="text/javascript" src="resources/scripts/bootstrap-filestyle.min.js"></script>  
-
-</body>
+	  	</div>
+      </div>
+	  <!-- Bootstrap core JavaScript -->
+	  <!-- Placed at the end of the document so the pages load faster -->
+	  <script src="resources/scripts/bootstrap.min.js"></script>
+	  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	  <script src="resources/scripts/ie10-viewport-bug-workaround.js"></script>
+	  <script type="text/javascript" src="resources/scripts/bootstrap-filestyle.min.js"></script>
+	</div>
+  </body>
 </html>

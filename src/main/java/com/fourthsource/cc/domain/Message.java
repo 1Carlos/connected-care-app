@@ -9,6 +9,16 @@ public class Message implements Serializable {
     private String message;
     private MessageType messageType;
 
+    public Message() {
+    	
+    }
+    
+    public Message(Message message) {
+    	this.code = message.code;
+    	this.message = message.message;
+    	this.messageType = message.messageType;
+    }
+    
 	public int getCode() {
 		return code;
 	}

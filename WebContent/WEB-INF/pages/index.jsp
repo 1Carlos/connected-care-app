@@ -216,7 +216,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="help.html"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
-            <li><a href="http://www.4thsource.com"><img alt="4thSource Logo" src="resources/images/resources/images/logo_4thsource.jpg"></a></li>
+            <li><a href="http://www.4thsource.com"><img alt="4thSource Logo" src="resources/images/logo_4thsource.jpg"></a></li>
           </ul>
         </div>
       </div>

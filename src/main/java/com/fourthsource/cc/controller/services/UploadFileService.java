@@ -39,28 +39,27 @@ public class UploadFileService {
 		String path = fileUploadProperties.getPath();
 		
         if (!file.isEmpty()) {
+        	String fileName = file.getOriginalFilename();
+        	
             try {
                 byte[] bytes = file.getBytes();
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(path + file.getOriginalFilename())));
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(path + fileName)));
                 stream.write(bytes);
                 stream.close();
                 
-                Message message = fileUploadProperties.getSuccessMessage();
+                Message message = new Message(fileUploadProperties.getSuccessMessage());
                 message.setMessageType(MessageType.OK);
-                message.setMessage(String.format(message.getMessage(), file.getOriginalFilename()));
-                
+                message.setMessage(String.format(message.getMessage(), fileName));
                 response.setResponse(message);
             } catch (Exception e) {
-            	Message message = fileUploadProperties.getGeneralException();
+            	Message message = new Message(fileUploadProperties.getGeneralException());
             	message.setMessageType(MessageType.ERROR);
-                message.setMessage(String.format(message.getMessage(), file.getOriginalFilename()));
-                
+                message.setMessage(String.format(message.getMessage(), fileName));
             	response.setResponse(message);
             }
         } else {
-        	Message message = fileUploadProperties.getFileEmpty();
+        	Message message = new Message(fileUploadProperties.getFileEmpty());
         	message.setMessageType(MessageType.WARNING);
-        	
         	response.setResponse(message);
         }
         
@@ -71,7 +70,7 @@ public class UploadFileService {
 	public @ResponseBody ResponseFileUpload handleMaxUploadSizeExceededException(MaxUploadSizeExceededException e) {
 		logger.debug("Handling MaxUploadSizeExceededException");
 		ResponseFileUpload response = new ResponseFileUpload();
-		Message message = fileUploadProperties.getFileSizeExceeded();
+		Message message = new Message(fileUploadProperties.getFileSizeExceeded());
 		message.setMessageType(MessageType.ERROR);
 		response.setResponse(message);
 		return response;
