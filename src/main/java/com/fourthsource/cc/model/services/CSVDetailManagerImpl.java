@@ -1,6 +1,6 @@
 package com.fourthsource.cc.model.services;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class CSVDetailManagerImpl implements CSVDetailManager {
 
 	@Override
 	@Transactional
-	public List<CSVDetailEntity> getAllByCSVHeadId(Integer id) {
+	public Set<CSVDetailEntity> getAllByCSVHeadId(Integer id) {
 		return csvDetailDAO.getAllByCSVHeadId(id);
 	}
 	

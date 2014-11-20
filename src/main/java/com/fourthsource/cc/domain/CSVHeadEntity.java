@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonManagedReference;
+
 @Entity
 @Table(name = "csvheader")
 public class CSVHeadEntity implements Serializable {
@@ -36,6 +38,7 @@ public class CSVHeadEntity implements Serializable {
     @Column(name="UPDATE_DATE")
     private Date updateDate;
     
+    @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "csvHeadEntity")
     private Set<CSVDetailEntity> csvDetailEntity = new HashSet<CSVDetailEntity>(0);
 	

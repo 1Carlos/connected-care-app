@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+
 @Entity
 @Table(name = "csvdetail")
 public class CSVDetailEntity implements Serializable {
@@ -23,6 +25,7 @@ public class CSVDetailEntity implements Serializable {
 	@GeneratedValue
 	private Integer csvDetailId;
 	
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CSV_ID", nullable = false)
 	private CSVHeadEntity csvHeadEntity;
