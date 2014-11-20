@@ -21,7 +21,7 @@ $(document).ready(function() {
 	        	$(":file").filestyle('clear');
 	        },
 	        error: function(){
-	            alert("Error in AJAX");
+	            alert("Error trying reach the service");
 	            $(":file").filestyle('clear');
 	        }
 	    });

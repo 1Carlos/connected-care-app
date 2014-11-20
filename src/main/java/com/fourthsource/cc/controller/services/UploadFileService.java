@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fourthsource.cc.controller.components.ReadFileThread;
 import com.fourthsource.cc.domain.Message;
 import com.fourthsource.cc.domain.MessageType;
 import com.fourthsource.cc.domain.properties.FileUploadProperties;
 import com.fourthsource.cc.domain.responses.ResponseFileUpload;
+import com.fourthsource.cc.model.services.CSVHeadManager;
 
 @Controller
 @ControllerAdvice
@@ -32,9 +34,15 @@ public class UploadFileService {
 	@Autowired
 	private FileUploadProperties fileUploadProperties;
 	
+	@Autowired
+	private CSVHeadManager csvHeadManager;
+	
+	@Autowired
+	private ReadFileThread readFileThread;
+	
 	@RequestMapping(value="/uploadFileService", method=RequestMethod.POST)
     public @ResponseBody ResponseFileUpload handleFileUploaded(@RequestParam("file") MultipartFile file) {
-		logger.debug("handleFileUploaded()");
+		logger.debug("Method handleFileUploaded()");
 		ResponseFileUpload response = new ResponseFileUpload();
 		String path = fileUploadProperties.getPath();
 		
@@ -47,19 +55,29 @@ public class UploadFileService {
                 stream.write(bytes);
                 stream.close();
                 
+                Integer id = csvHeadManager.saveCSVFileName(fileName);
+                
+                readFileThread.setIdFile(id);
+                readFileThread.start();
+                
                 Message message = new Message(fileUploadProperties.getSuccessMessage());
                 message.setMessageType(MessageType.OK);
                 message.setMessage(String.format(message.getMessage(), fileName));
+                
                 response.setResponse(message);
+                response.setIdFile(id);
             } catch (Exception e) {
             	Message message = new Message(fileUploadProperties.getGeneralException());
             	message.setMessageType(MessageType.ERROR);
                 message.setMessage(String.format(message.getMessage(), fileName));
+                
             	response.setResponse(message);
+            	logger.error(e.getMessage(), e);
             }
         } else {
         	Message message = new Message(fileUploadProperties.getFileEmpty());
         	message.setMessageType(MessageType.WARNING);
+        	
         	response.setResponse(message);
         }
         

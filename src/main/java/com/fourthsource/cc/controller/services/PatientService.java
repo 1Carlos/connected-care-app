@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fourthsource.cc.domain.responses.ResponseListPatients;
-import com.fourthsource.cc.service.PatientManager;
+import com.fourthsource.cc.model.services.PatientManager;
 
 @Controller
 @RequestMapping(value="/services")
@@ -22,7 +22,7 @@ public class PatientService  {
 	
 	@RequestMapping(value="/getPatientService", method=RequestMethod.GET)
     public @ResponseBody ResponseListPatients getAllPatients() {
-		logger.debug("getAllPatients()");
+		logger.debug("Method getAllPatients()");
 		ResponseListPatients response = new ResponseListPatients();
 		response.setList(patientManager.getAllPatients());
 		return response;

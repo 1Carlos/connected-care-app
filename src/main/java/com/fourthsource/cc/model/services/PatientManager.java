@@ -1,10 +1,10 @@
-package com.fourthsource.cc.dao;
+package com.fourthsource.cc.model.services;
 
 import java.util.List;
 
 import com.fourthsource.cc.domain.PatientEntity;
 
-public interface PatientDAO {
+public interface PatientManager {
 	
     public List<PatientEntity> getAllPatients();
     

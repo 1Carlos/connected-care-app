@@ -1,4 +1,4 @@
-package com.fourthsource.cc.dao;
+package com.fourthsource.cc.model.dao;
 
 import java.util.List;
 

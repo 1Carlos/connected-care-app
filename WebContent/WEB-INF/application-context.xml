@@ -4,13 +4,26 @@
 		xmlns:mvc="http://www.springframework.org/schema/mvc" 
 		xmlns:p="http://www.springframework.org/schema/p"
 		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:aop="http://www.springframework.org/schema/aop"
 		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 							http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 							http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 							http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 							http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
-    <context:property-placeholder location="classpath:appProperties.properties" />
-
+    <bean id="appProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+  		<property name="location" value="classpath:appProperties.properties"/>
+	</bean>
+	
+    <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	    <property name="ignoreResourceNotFound" value="true" />
+    	<property name="ignoreUnresolvablePlaceholders" value="false" />
+    	<property name="properties" ref="appProperties"/>
+  	</bean>
+    
+    <bean id="readFileThread" class="com.fourthsource.cc.controller.components.ReadFileThread" scope="request">
+		<aop:scoped-proxy/>
+	</bean>
+    
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="${fileUpload.property.maxFileSize}"  />
 	</bean>
@@ -61,13 +74,16 @@
         </property>
     </bean>
      
-    <bean id="patientDAO" class="com.fourthsource.cc.dao.PatientDAOImpl"></bean>
-    <bean id="patientManager" class="com.fourthsource.cc.service.PatientManagerImpl"></bean>
-  
+    <bean id="patientDAO" class="com.fourthsource.cc.model.dao.PatientDAOImpl"></bean>
+    <bean id="patientManager" class="com.fourthsource.cc.model.services.PatientManagerImpl"></bean>
+    <bean id="csvHeadDAO" class="com.fourthsource.cc.model.dao.CSVHeadDAOImpl"></bean>
+    <bean id="csvHeadManager" class="com.fourthsource.cc.model.services.CSVHeadManagerImpl"></bean>
+    <bean id="csvDetailDAO" class="com.fourthsource.cc.model.dao.CSVDetailDAOImpl"></bean>
+    <bean id="csvDetailManager" class="com.fourthsource.cc.model.services.CSVDetailManagerImpl"></bean>
+    
     <tx:annotation-driven transaction-manager="transactionManager"/>
     
-    <bean id="transactionManager"
-        class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 </beans>

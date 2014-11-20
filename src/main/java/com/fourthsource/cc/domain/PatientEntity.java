@@ -1,7 +1,7 @@
 package com.fourthsource.cc.domain;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,16 +9,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-	@Entity
-	@Table(name = "patient")
-	public class PatientEntity implements Serializable {
-	
-		private static final long serialVersionUID = 1L;
-	
-		@Id
-	    @Column(name="PATIENT_ID")
-	    @GeneratedValue
-	    private Integer id;
+@Entity
+@Table(name = "patient")
+public class PatientEntity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+    @Column(name="PATIENT_ID")
+    @GeneratedValue
+    private Integer id;
      
     @Column(name="PATIENT_FIRST_NAME")
     private String firstName;
