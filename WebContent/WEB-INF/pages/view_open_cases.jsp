@@ -143,9 +143,7 @@
                       <tr data-index="0" class="">
                         <td style="">
                           <a href="case_detail_123.html">
-                            <button type="button" class="btn btn-default btn-sm">
-                              <span class="glyphicon glyphicon-pencil"></span> 123
-                            </button>                          
+                            123
                           </a>
                         </td>
                         <td style="">Jones</td>
@@ -160,9 +158,7 @@
                       </tr>
                         <td style="">
                           <a href="case_detail_124.html">
-                            <button type="button" class="btn btn-default btn-sm">
-                              <span class="glyphicon glyphicon-pencil"></span> 124
-                            </button>
+                            124
                           </a>
                         </td>
                         <td style="">Fayette</td>
