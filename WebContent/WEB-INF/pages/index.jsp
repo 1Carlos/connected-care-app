@@ -19,40 +19,8 @@
 
     <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
 
-    <!-- Code for a couple of charts - jmartinez -->
     <script type="text/javascript">
-	  window.onload = function () {
-	    var chart1 = new CanvasJS.Chart("chartContainer1",
-	    {
-	      title:{
-	        text: "Readmissions by Month by ICD-10"    
-	      },
-	      axisY: {
-	        title: "Patients(Quantity)"
-	      },
-	      legend: {
-	        verticalAlign: "bottom",
-	        horizontalAlign: "center"
-	      },
-	      theme: "theme2",
-	      data: [{        
-	        type: "column",  
-	        showInLegend: true, 
-	        legendMarkerColor: "grey",
-	        legendText: "ICD-10 Codes",
-	        dataPoints: [      
-	          {y: 205, label: "J15 Bacterial pneumonia"},
-	          {y: 150,  label: "A19 Miliary tuberculosis" },
-	          {y: 190,  label: "J310 Chronic rhinitis"},
-	          {y: 220,  label: "J455 Severe persistent asthma"},
-	          {y: 140,  label: "J45 Bronchiectasis"},
-	          {y: 50, label: "M230 Cystic meniscus"}
-	        ]
-	      }]
-	    });
-	
-	    chart1.render();
-	    
+		window.onload = function () {
 		var chart2 = new CanvasJS.Chart("chartContainer2",
 	    {
 	      title:{
@@ -66,20 +34,24 @@
 	        horizontalAlign: "center"
 	      },
 	      theme: "theme2",
-	      data: [{        
+	      backgroundColor:"#dcdaeb",
+	      data: [
+	
+	      {        
 	        type: "column",  
 	        showInLegend: true, 
 	        legendMarkerColor: "grey",
 	        legendText: "Months",
 	        dataPoints: [      
-		      {y: 750, label: "January"},
-		      {y: 905,  label: "Febrary" },
-		      {y: 1000,  label: "March"},
-		      {y: 755,  label: "April"},
-		      {y: 650,  label: "June"},
-		      {y: 800, label: "July"}
+	        {y: 70, label: "Sep"},
+	        {y: 90,  label: "Oct" },
+	        {y: 100,  label: "Nov"},
+	        {y: 50, label: "Dec"},
+	        {y: 25,  label: "Jan" },
+	        {y: 20,  label: "Feb"}
 	        ]
-	      }]
+	      }   
+	      ]
 	    });
 	
 	    chart2.render();
@@ -97,14 +69,34 @@
 	        horizontalAlign: "center"
 	      },
 	      theme: "theme2",
-	      data: [{        
+	      backgroundColor:"#dcdaeb",
+	      data: [
+	      {        
 	        type: "column",  
 	        showInLegend: true, 
-	        legendMarkerColor: "grey",
-	        legendText: "Type",
+	        legendMarkerColor: "blue",
+	        legendText: "Appt Adherence",
 	        dataPoints: [      
-	          {y: 2500, label: "Appt Adherence"},
-	          {y: 3000,  label: "Rx Adherence" }
+	        {y: 30, label: "Sep"},
+	        {y: 50, label: "Oct"},
+	        {y: 50, label: "Nov"},
+	        {y: 20, label: "Dec"},
+	        {y: 15, label: "Jan"},
+	        {y: 15, label: "Feb"}
+	        ]
+	      },   
+	      {        
+	        type: "column",  
+	        showInLegend: true, 
+	        legendMarkerColor: "red",
+	        legendText: "Rx Adherence",
+	        dataPoints: [      
+	        {y: 80,  label: "Sep" },
+	        {y: 80,  label: "Oct" },
+	        {y:100,  label: "Nov" },
+	        {y: 60,  label: "Dec" },
+	        {y: 20,  label: "Jan" },
+	        {y: 15,  label: "Feb" }
 	        ]
 	      }]
 	    });
@@ -124,15 +116,34 @@
 	        horizontalAlign: "center"
 	      },
 	      theme: "theme2",
-	      data: [{        
+	      backgroundColor:"#dcdaeb",
+	      data: [
+	      {        
 	        type: "column",  
 	        showInLegend: true, 
-	        legendMarkerColor: "grey",
-	        legendText: "Months",
+	        legendMarkerColor: "blue",
+	        legendText: "Gaps in Care",
 	        dataPoints: [      
-	          {y: 297571, label: "January"},
-	          {y: 267017,  label: "Febrary" },
-	          {y: 175200,  label: "March"}
+	        {y: 400, label: "Sep"},
+	        {y: 500, label: "Oct"},
+	        {y: 650, label: "Nov"},
+	        {y: 300, label: "Dec"},
+	        {y: 150, label: "Jan"},
+	        {y: 100, label: "Feb"}
+	        ]
+	      },   
+	      {        
+	        type: "column",  
+	        showInLegend: true, 
+	        legendMarkerColor: "red",
+	        legendText: "Readmissions",
+	        dataPoints: [      
+	        {y: 100,  label: "Sep" },
+	        {y: 200,  label: "Oct" },
+	        {y: 300,  label: "Nov" },
+	        {y: 100,  label: "Dec" },
+	        {y: 60,  label: "Jan" },
+	        {y: 40,  label: "Feb" }
 	        ]
 	      }]
 	    });
@@ -142,7 +153,7 @@
 		var chart5 = new CanvasJS.Chart("chartContainer5",
 	    {
 	      title:{
-	        text: "Rx x Months"    
+	        text: "Rx vs Gaps in Care per Month"    
 	      },
 	      axisY: {
 	        title: "Unit"
@@ -151,31 +162,43 @@
 	        verticalAlign: "bottom",
 	        horizontalAlign: "center"
 	      },
-	      theme: "theme1",
-	      data: [{        
+	      theme: "theme2",
+	      backgroundColor:"#dcdaeb",
+	      data: [
+	      {        
 	        type: "column",  
 	        showInLegend: true, 
-	        legendMarkerColor: "grey",
-	        legendText: "Months",
+	        legendMarkerColor: "blue",
+	        legendText: "Rx Adherence",
 	        dataPoints: [      
-	          {y: 297571, label: "January"},
-	          {y: 267017,  label: "Febrary" },
-	          {y : 175200,  label: "March"},
-	          {y: 154580,  label: "April"},
-	          {y: 116000,  label: "June"},
-	          {y: 97800, label: "July"}
+	        {y: 40000,  label: "Sep" },
+	        {y: 40000,  label: "Oct" },
+	        {y: 50000,  label: "Nov" },
+	        {y: 30000,  label: "Dec" }
+	        ]
+	      },   
+	      {        
+	        type: "column",  
+	        showInLegend: true, 
+	        legendMarkerColor: "red",
+	        legendText: "Gaps in Care",
+	        dataPoints: [      
+	        {y: 80000,  label: "Sep" },
+	        {y: 80000,  label: "Oct" },
+	        {y:100000,  label: "Nov" },
+	        {y: 60000,  label: "Dec" }
 	        ]
 	      }]
 	    });
+	
 	    chart5.render();
-	  }
-    </script>
-	<script type="text/javascript" src="resources/scripts/canvasjs.min.js"></script>
-	<script src="resources/scripts/Chart.min.js"></script>
+  	}
+  </script>
+  <script type="text/javascript" src="resources/scripts/canvasjs.min.js"></script>
+  <script src="resources/scripts/Chart.min.js"></script>
   </head>
 
   <body>
-    <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -216,57 +239,40 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="help.html"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
-            <li><a href="http://www.4thsource.com"><img alt="4thSource Logo" src="resources/images/logo_4thsource.jpg"></a></li>
+            <li></li>
+            <li>
+              <a href="http://www.4thsource.com" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                <img alt="4thSource Logo" src="resources/images/logo_4thsource.jpg">
+              </a>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
     <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Import External File</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="import_data" role="button">Import Data »</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Program Reconciliation</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="run_reconciliation.html" role="button">Run Reconciliation »</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Case Managment</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
-          <p><a class="btn btn-default" href="view_open_cases.html" role="button">View Open Cases »</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
       <div class="page-header">
-        <h1>Dashboard</h1>
+        <h1>Welcome to Connected Care</h1>
         <p class="lead">In this page you will see quickly all information represented in these charts.</p>
         <div class="row">
-		   <div class="col-md-4">
-			  <div id="chartContainer1" style="height: 300px; width: 100%;"></div>
+		   <div align="center" class="col-xs-6" style="background-color:white;border:0">
+			  <div id="chartContainer2" style="height: 300px; width: 80%;"></div>
 		   </div>
-		  <div class="col-md-4">
-			  <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
-		   </div>
-		   <div class="col-md-4">
-			  <div id="chartContainer3" style="height: 300px; width: 100%;"></div>
+		   <div align="center" class="col-xs-6" style="background-color:white;border:0">
+			  <div id="chartContainer3" style="height: 300px; width: 80%;"></div>
 		   </div>
         </div>
-        <div class="row">
-   			<div class="col-xs-6">
-   				<div id="chartContainer4" style="height: 300px; width: 100%;"></div>
+        <div align="center"  class="row">
+   			<div class="col-xs-6" style="background-color:white;border:0">
+   				<div id="chartContainer4" style="height: 300px; width: 80%;"></div>
    			</div>
-   			<div class="col-xs-6">
-   				<div id="chartContainer5" style="height: 300px; width: 100%;"></div>
+   			<div align="center"  class="col-xs-6" style="background-color:white;border:0">
+   				<div id="chartContainer5" style="height:300px;width:80%" ></div>
    			</div>
         </div>
   	  </div>
     </div>
-    <!-- Bootstrap core JavaScript -->
+    <!-- Bootstrap core JavaScript
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="resources/scripts/jquery.min.js"></script>
     <script src="resources/scripts/bootstrap.min.js"></script>

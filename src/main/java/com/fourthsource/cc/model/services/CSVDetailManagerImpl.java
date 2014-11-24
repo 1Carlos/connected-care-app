@@ -27,4 +27,10 @@ public class CSVDetailManagerImpl implements CSVDetailManager {
 		return csvDetailDAO.saveCSVDetail(entity);
 	}
 	
+	@Override
+	@Transactional
+	public void deleteByCSVHeadId(Integer id) {
+		csvDetailDAO.deleteByCSVHeadId(id);
+	}
+	
 }

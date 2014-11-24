@@ -62,6 +62,12 @@ public class CSVFileManager {
 		logger.info("Reading CSV file and getting data...");
 		List<String> fileData = FileManager.readFile(file);
 
+		return this.getFileData(fileData, listHeader);
+	}
+	
+	public List<CSVDetailEntity> getFileData(List<String> fileData, List<FileTitleHeaderProperties> listHeader) throws Exception {
+		logger.info("Reading CSV file and getting data...");
+
 		Collections.sort(listHeader, new Comparator<FileTitleHeaderProperties>() {
 	        @Override
 	        public int compare(FileTitleHeaderProperties obj1, FileTitleHeaderProperties obj2) {

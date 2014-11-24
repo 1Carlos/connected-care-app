@@ -8,5 +8,6 @@ public interface CSVDetailManager {
 	
 	public Set<CSVDetailEntity> getAllByCSVHeadId(Integer id);
     public Integer saveCSVDetail(CSVDetailEntity entity);
+    public void deleteByCSVHeadId(Integer id);
     
 }

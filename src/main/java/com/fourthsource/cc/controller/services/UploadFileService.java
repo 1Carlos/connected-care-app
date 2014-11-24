@@ -58,14 +58,19 @@ public class UploadFileService {
                 Integer id = csvHeadManager.saveCSVFileName(fileName);
                 
                 readFileThread.setIdFile(id);
-                readFileThread.start();
+                
+                /* This process will run synchronized */
+                
+                readFileThread.run();
                 
                 Message message = new Message(fileUploadProperties.getSuccessMessage());
                 message.setMessageType(MessageType.OK);
                 message.setMessage(String.format(message.getMessage(), fileName));
                 
-                response.setResponse(message);
                 response.setIdFile(id);
+                response.setRowsInFile(readFileThread.getRowsInFile());
+                response.setRowsLoaded(readFileThread.getRowsLoaded());
+                response.setResponse(message);
             } catch (Exception e) {
             	Message message = new Message(fileUploadProperties.getGeneralException());
             	message.setMessageType(MessageType.ERROR);

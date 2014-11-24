@@ -20,7 +20,7 @@ public class PatientService  {
 	@Autowired
 	private PatientManager patientManager;
 	
-	@RequestMapping(value="/getPatientService", method=RequestMethod.GET)
+	@RequestMapping(value="/getPatientService", method=RequestMethod.POST)
     public @ResponseBody ResponseListPatients getAllPatients() {
 		logger.debug("Method getAllPatients()");
 		ResponseListPatients response = new ResponseListPatients();

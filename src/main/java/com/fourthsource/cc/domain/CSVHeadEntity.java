@@ -39,7 +39,7 @@ public class CSVHeadEntity implements Serializable {
     private Date updateDate;
     
     @JsonManagedReference
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "csvHeadEntity")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "csvId")
     private Set<CSVDetailEntity> csvDetailEntity = new HashSet<CSVDetailEntity>(0);
 	
 	public String getCsvName() {

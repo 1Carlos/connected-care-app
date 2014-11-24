@@ -28,7 +28,7 @@ public class CSVDetailEntity implements Serializable {
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CSV_ID", nullable = false)
-	private CSVHeadEntity csvHeadEntity;
+	private CSVHeadEntity csvId;
 	
 	@Column(name="CASE_WORKER_FIRST_NAME")
 	private String caseWorkerFirstName;
@@ -171,12 +171,12 @@ public class CSVDetailEntity implements Serializable {
 		this.csvDetailId = csvDetailId;
 	}
 	
-	public CSVHeadEntity getCsvHeadEntity() {
-		return csvHeadEntity;
+	public CSVHeadEntity getCsvId() {
+		return csvId;
 	}
 
-	public void setCsvHeadEntity(CSVHeadEntity csvHeadEntity) {
-		this.csvHeadEntity = csvHeadEntity;
+	public void setCsvId(CSVHeadEntity csvId) {
+		this.csvId = csvId;
 	}
 
 	public String getDiagnosisCode1() {

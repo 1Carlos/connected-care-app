@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fourthsource.cc.controller.services.UploadFileService;
+import com.fourthsource.cc.controller.utils.FileManager;
 import com.fourthsource.cc.domain.CSVDetailEntity;
 import com.fourthsource.cc.domain.CSVHeadEntity;
 import com.fourthsource.cc.domain.properties.FileTitleHeaderProperties;
@@ -32,6 +33,8 @@ public class ReadFileThread extends Thread {
 	private CSVDetailManager csvDetailManager;
 	
 	private int idFile;
+	private int rowsInFile;
+	private int rowsLoaded;
 	
 	public int getIdFile() {
 		return idFile;
@@ -40,22 +43,43 @@ public class ReadFileThread extends Thread {
 	public void setIdFile(int idFile) {
 		this.idFile = idFile;
 	}
+
+	public int getRowsInFile() {
+		return rowsInFile;
+	}
+
+	public void setRowsInFile(int rowsInFile) {
+		this.rowsInFile = rowsInFile;
+	}
+
+	public int getRowsLoaded() {
+		return rowsLoaded;
+	}
+
+	public void setRowsLoaded(int rowsLoaded) {
+		this.rowsLoaded = rowsLoaded;
+	}
 	
 	@Override
 	public void run() {
 		logger.info("Thread '" + this.getName() + "' is running, idFile = " + this.idFile);
+		this.rowsLoaded = 0;
 		
 		try {
 			CSVHeadEntity entity = csvHeadManager.getCSVHead(this.idFile);
 			File file = new File(fileUploadProperties.getPath() + entity.getCsvName());
 			List<FileTitleHeaderProperties> fileHeaders = csvFileManager.getTitleHeadersFromProperties();
-			List<CSVDetailEntity> data = csvFileManager.getFileData(file, fileHeaders);
+			List<String> fileData = FileManager.readFile(file);
+			List<CSVDetailEntity> data = csvFileManager.getFileData(fileData, fileHeaders);
 			
 			for(CSVDetailEntity row : data) {
-				row.setCsvHeadEntity(entity);
+				row.setCsvId(entity);
 				Integer idRow = csvDetailManager.saveCSVDetail(row);
+				this.rowsLoaded++;
 				logger.debug("ID generated for row: " + idRow);	
 			}
+			
+			this.rowsInFile = fileData.size();
 		} catch(Exception e) {
 			logger.error(e.getMessage(), e);
 		}

@@ -18,13 +18,12 @@
     <!-- Custom styles for this template -->
     <link href="resources/styles/navbar-fixed-top.css" rel="stylesheet">
 
-    <script src="resources/scripts/jquery.min.js"></script>
+	<script src="resources/scripts/jquery.min.js"></script>
+	<script src="resources/scripts/upload-file.js"></script>
     <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
-    <script src="resources/scripts/upload-file.js"></script>
   </head>
 
   <body>
-    <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -68,9 +67,13 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="help.html"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
-            <li><a href="http://www.4thsource.com"><img alt="4thSource Logo" src="resources/images/logo_4thsource.jpg"></a></li>
+            <li>
+              <a href="http://www.4thsource.com" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                <img alt="4thSource Logo" src="resources/images/logo_4thsource.jpg">
+              </a>
+            </li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
     <div class="container">
@@ -78,26 +81,50 @@
       <div class="page-header">
         <h1>Import Data</h1>
         <p class="lead">Please choose a file that you need import to the system.</p>
-        <div class="jumbotron">
-			<form id="fileUploadForm">
-				<input id="fileUpload" type="file" name="file" class="filestyle">
+	  </div>
+      <center>
+        <div style="width:400px">
+		  <center>
+			<form id="file-upload-form">
+				<input type="file" name="file" class="filestyle" />
 			</form>
-		    </br>
-			</br>
-			</br>
-			<center>
-				<p>
-					<a id="fileUploadButton" class="btn btn-primary btn-lg" href="javascript:void(0);" role="button">Upload File</a>
-				</p>
-			</center>
+		    <br/>
+			<br/>
+			<p>
+			  <button id="file-upload-button" type="button" class="btn btn-primary btn-lg">
+                Upload File
+              </button>
+			</p>
+			<br/>
+			<br/>
+		  </center>
 	  	</div>
+	  	<div id="events-result" class="alert alert-danger" style="width:800px">Error.</div>
+      </center>
       </div>
+      <div class="modal fade" id="process-modal" tabindex="-1" role="dialog" aria-labelledby="process-modal-label" aria-hidden="true">
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	          <h4 class="modal-title" id="process-modal-label">Please Wait</h4>
+	        </div>
+	        <div class="modal-body center-block">
+	          <div class="progress progress-striped active">
+ 			    <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+ 			    </div>
+		      </div>
+	        </div>
+	        <div class="modal-footer">
+	        </div>
+	      </div>
+	    </div>
+	  </div>
 	  <!-- Bootstrap core JavaScript -->
 	  <!-- Placed at the end of the document so the pages load faster -->
 	  <script src="resources/scripts/bootstrap.min.js"></script>
 	  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	  <script src="resources/scripts/ie10-viewport-bug-workaround.js"></script>
 	  <script type="text/javascript" src="resources/scripts/bootstrap-filestyle.min.js"></script>
-	</div>
   </body>
 </html>

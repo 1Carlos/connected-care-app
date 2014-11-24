@@ -1,8 +1,10 @@
 package com.fourthsource.cc.model.dao;
 
+import java.util.List;
 import java.util.Set;
 
 import org.hibernate.Hibernate;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -26,6 +28,15 @@ public class CSVDetailDAOImpl implements CSVDetailDAO  {
 	@Override
 	public Integer saveCSVDetail(CSVDetailEntity entity) {
 		return (Integer)sessionFactory.getCurrentSession().save(entity);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void deleteByCSVHeadId(Integer id) {
+		Query q = sessionFactory.getCurrentSession().createQuery("from CSVDetailEntity where csvId.id = :id");
+		q.setParameter("id", id);
+		List<CSVDetailEntity> list = q.list();
+		sessionFactory.getCurrentSession().delete(list);
 	}
 
 }
