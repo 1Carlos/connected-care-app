@@ -60,7 +60,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Case Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="dashboard_setup.html">Dashboard </a></li>
-                <li><a href="view_open_cases.html">View Open Cases </a></li>
+                <li><a href="view_open_cases">View Open Cases </a></li>
                 <li><a href="search_cases.html">Search Cases </a></li>
               </ul>
             </li>

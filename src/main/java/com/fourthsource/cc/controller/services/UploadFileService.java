@@ -42,7 +42,7 @@ public class UploadFileService {
 	
 	@RequestMapping(value="/uploadFileService", method=RequestMethod.POST)
     public @ResponseBody ResponseFileUpload handleFileUploaded(@RequestParam("file") MultipartFile file) {
-		logger.debug("Method handleFileUploaded()");
+		logger.debug("Service handleFileUploaded()");
 		ResponseFileUpload response = new ResponseFileUpload();
 		String path = fileUploadProperties.getPath();
 		
@@ -91,7 +91,7 @@ public class UploadFileService {
 	
 	@ExceptionHandler(MaxUploadSizeExceededException.class)
 	public @ResponseBody ResponseFileUpload handleMaxUploadSizeExceededException(MaxUploadSizeExceededException e) {
-		logger.debug("Handling MaxUploadSizeExceededException");
+		logger.debug("Handling Service MaxUploadSizeExceededException");
 		ResponseFileUpload response = new ResponseFileUpload();
 		Message message = new Message(fileUploadProperties.getFileSizeExceeded());
 		message.setMessageType(MessageType.ERROR);

@@ -1,34 +1,18 @@
 $(document).ready(function() {
-	$("#confirm-data-validation").click(function() {
-		var idFile = $("#idFile").val();
-		var rowsLoaded = $("#rowsLoaded").val();
-		
-		var url = "normalization";
-		var form = $("<form action='" + url + "' method='post'>" +
-					   "<input type='hidden' name='idFile' value='" + idFile + "' />" +
-					   "<input type='hidden' name='rowsLoaded' value='" + rowsLoaded + "' />" +
-		  			 "</form>");
-		
-		$("body").append(form);
-		form.submit();
-	});
+	$("#events-result-success").hide();
+	$("#events-result-error").hide();
 	
-	$("#cancel-data-validation").click(function() {
-		var idFile = $("#idFile").val();
-		
-		var DTO = Object();
-		DTO.idFile = idFile;
-		
+	$("#start-reconciliation").click(function() {
 		$.ajax({
 			type: "POST",
 			dataType: "JSON",
 			contentType: "application/json",
-			url: "services/deleteByCSVHeadId",
-			data: JSON.stringify(DTO)
+			url: "services/callReconciliationProcess",
 		}).done(function(data) {
+			$("#events-result-success").show();
+		}).error(function(data) {
+			$("#events-result-error").show();
 		});
-		
-		window.location = "import_data";
 	});
 });
 

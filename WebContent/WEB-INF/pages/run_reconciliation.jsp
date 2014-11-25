@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,7 +61,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Case Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="dashboard_setup.html">Dashboard </a></li>
-                <li><a href="view_open_cases.html">View Open Cases </a></li>
+                <li><a href="view_open_cases">View Open Cases </a></li>
                 <li><a href="search_cases.html">Search Cases </a></li>
               </ul>
             </li>
@@ -83,10 +85,12 @@
         <div class="jumbotron">
     	  <center>
     	    <br/>
-    	    <p><a class="btn btn-primary btn-lg" href="run_reconciliation2.html" role="button">Start Reconciliation</a></p>
+    	    <p><a id="start-reconciliation" class="btn btn-primary btn-lg" role="button">Start Reconciliation</a></p>
     	  </center>
         </div>
 	  </div>
+	  <div id="events-result-success" class="alert alert-success">Successful! Please go to the option <a href="view_open_cases">View Open Cases</a></div>
+	  <div id="events-result-error" class="alert alert-danger">An error has ocurred calling the reconciliation process, please try again</div>
     </div>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="resources/scripts/jquery.min.js"></script>
@@ -94,5 +98,5 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="resources/scripts/ie10-viewport-bug-workaround.js"></script>
 	<script type="text/javascript" src="resources/scripts/bootstrap-filestyle.min.js"></script>  
-</body>
+  </body>
 </html>

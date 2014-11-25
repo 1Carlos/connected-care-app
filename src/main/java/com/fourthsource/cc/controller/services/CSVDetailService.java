@@ -25,7 +25,7 @@ public class CSVDetailService  {
 	
 	@RequestMapping(value="/getAllByCSVHeadId", method=RequestMethod.POST)
     public @ResponseBody ResponseListCSVDetail getAllByCSVHeadId(@RequestBody RequestCSVHead request) {
-		logger.debug("Method getAllByCSVHeadId()");
+		logger.debug("Service getAllByCSVHeadId()");
 		ResponseListCSVDetail response = new ResponseListCSVDetail();
 		response.setList(csvDetailManager.getAllByCSVHeadId(request.getIdFile()));
 		return response;
@@ -33,10 +33,21 @@ public class CSVDetailService  {
 	
 	@RequestMapping(value="/deleteByCSVHeadId", method=RequestMethod.POST)
     public void deleteByCSVHeadId(@RequestBody RequestCSVHead request) {
-		logger.debug("Method deleteByCSVHeadId()");
+		logger.debug("Service deleteByCSVHeadId()");
 		
 		try {
 			csvDetailManager.deleteByCSVHeadId(request.getIdFile());
+		} catch(HibernateException e) {
+			logger.error(e.getMessage(), e);
+		}
+    }
+	
+	@RequestMapping(value="/callReconciliationProcess", method=RequestMethod.POST)
+    public void callReconciliationProcess() {
+		logger.debug("Service callReconciliationProcess()");
+		
+		try {
+			csvDetailManager.callReconciliationProcess();
 		} catch(HibernateException e) {
 			logger.error(e.getMessage(), e);
 		}

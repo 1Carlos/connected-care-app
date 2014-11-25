@@ -22,7 +22,7 @@ public class PatientService  {
 	
 	@RequestMapping(value="/getPatientService", method=RequestMethod.POST)
     public @ResponseBody ResponseListPatients getAllPatients() {
-		logger.debug("Method getAllPatients()");
+		logger.debug("Service getAllPatients()");
 		ResponseListPatients response = new ResponseListPatients();
 		response.setList(patientManager.getAllPatients());
 		return response;
