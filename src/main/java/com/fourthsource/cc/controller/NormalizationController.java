@@ -29,7 +29,7 @@ public class NormalizationController {
 		logger.debug("Loading \"normalization\" page");
 		Map<String, Object> model = new HashMap<String, Object>();
 		
-//		csvDetailManager.callNormalizationProcess();
+		csvDetailManager.callNormalizationProcess();
 		List<CSVDetailEntity> list = csvDetailManager.getAllProcessedByCSVHeadId(idFile);
 		
 		model.put("list", list);

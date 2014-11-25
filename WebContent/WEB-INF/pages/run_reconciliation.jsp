@@ -17,6 +17,8 @@
     <!-- Custom styles for this template -->
     <link href="resources/styles/navbar-fixed-top.css" rel="stylesheet">
 
+	<script src="resources/scripts/jquery.min.js"></script>
+	<script src="resources/scripts/run-reconciliation.js"></script>
     <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
   </head>
 
