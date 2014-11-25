@@ -10,10 +10,8 @@ $(document).ready(function() {
 			url: "services/callReconciliationProcess",
 		}).done(function(data) {
 			$("#events-result-success").show();
-		}).error(function(data) {
+		}).error(function(jqXHR, textStatus, errorThrown) {
 			$("#events-result-error").show();
 		});
 	});
 });
-
-

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fourthsource.cc.domain.Message;
+import com.fourthsource.cc.domain.properties.CommonProperties;
 import com.fourthsource.cc.domain.requests.RequestCSVHead;
 import com.fourthsource.cc.domain.responses.ResponseListCSVDetail;
 import com.fourthsource.cc.model.services.CSVDetailManager;
@@ -19,6 +21,9 @@ import com.fourthsource.cc.model.services.CSVDetailManager;
 public class CSVDetailService  {
 
 	private final static Logger logger = LoggerFactory.getLogger(CSVDetailService.class);
+	
+	@Autowired
+	private CommonProperties commonProperties;
 	
 	@Autowired
 	private CSVDetailManager csvDetailManager;
@@ -32,25 +37,35 @@ public class CSVDetailService  {
     }
 	
 	@RequestMapping(value="/deleteByCSVHeadId", method=RequestMethod.POST)
-    public void deleteByCSVHeadId(@RequestBody RequestCSVHead request) {
+    public @ResponseBody Message deleteByCSVHeadId(@RequestBody RequestCSVHead request) {
 		logger.debug("Service deleteByCSVHeadId()");
+		Message response = null;
 		
 		try {
 			csvDetailManager.deleteByCSVHeadId(request.getIdFile());
+			response = commonProperties.getSuccessMessage();
 		} catch(HibernateException e) {
+			response = commonProperties.getTransactionException();
 			logger.error(e.getMessage(), e);
 		}
+
+		return response;
     }
 	
 	@RequestMapping(value="/callReconciliationProcess", method=RequestMethod.POST)
-    public void callReconciliationProcess() {
+    public @ResponseBody Message callReconciliationProcess() {
 		logger.debug("Service callReconciliationProcess()");
+		Message response = null;
 		
 		try {
 			csvDetailManager.callReconciliationProcess();
+			response = commonProperties.getSuccessMessage();
 		} catch(HibernateException e) {
+			response = commonProperties.getTransactionException();
 			logger.error(e.getMessage(), e);
 		}
+		
+		return response;
     }
 	
 }

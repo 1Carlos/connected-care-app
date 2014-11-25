@@ -56,6 +56,21 @@
 	    </property>
 	</bean>
     
+	<bean id="commonProperties" class="com.fourthsource.cc.domain.properties.CommonProperties">
+	    <property name="successMessage">
+	        <bean id="successMessage" class="com.fourthsource.cc.domain.Message">
+				<property name="code" value="${transaction.property.code.success}" />
+	    		<property name="message" value="${transaction.property.message.success}" />
+			</bean>
+	    </property>
+		<property name="transactionException">
+	        <bean id="transactionException" class="com.fourthsource.cc.domain.Message">
+				<property name="code" value="${transaction.property.code.transactionException}" />
+	    		<property name="message" value="${transaction.property.message.transactionException}" />
+			</bean>
+	    </property>
+	</bean>
+	
     <!-- Data Source Parameters -->
 
 	<bean 	id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close" p:driverClassName="${db.dataSource.driver}"
