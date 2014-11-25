@@ -22,7 +22,6 @@
     <link href="resources/styles/navbar-fixed-top.css" rel="stylesheet">
 
 	<script src="resources/scripts/jquery.min.js"></script>
-	<script src="resources/scripts/data-validation.js"></script>
     <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
   </head>
   <body>
@@ -81,7 +80,7 @@
     <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
       <div class="page-header">
-        <h1>Data Validation</h1>
+        <h1>Normalization</h1>
         <p class="lead"></p>
       </div>
         <center>
@@ -90,19 +89,16 @@
             <br/>
             <br/>
             <p>
-            	<a id="confirm-data-validation" class="btn btn-primary btn-lg" role="button">Confirm to Import</a>
-            	<a id="cancel-data-validation" class="btn btn-danger btn-lg" role="button">Cancel</a>
+            	<a id="confirm-data-validation" href="run_reconciliation" class="btn btn-primary btn-lg" role="button">Reconciliation</a>
             </p>
             <br/>
-            <div class="alert alert-success">File was loaded.</div>
-            <div class="alert alert-warning" role="alert"><c:out value="${rowsLoaded}"/> of <c:out value="${rowsInFile}"/> records were loaded.</div>
-            <c:if test="${rowsNotLoaded > 0}">
-   				<div class="alert alert-danger" role="alert"><c:out value="${rowsNotLoaded}"/> record(s) cannot be loaded...</div>
+            <div class="alert alert-success" id="events-result">Successful! Process was completed. <a href="import_data">Import another file.</a></div>
+            <div class="alert alert-warning" role="alert"><c:out value="${rowsProcessed}"/> of <c:out value="${rowsLoaded}"/> records were imported</div>
+            <c:if test="${rowsNotProcessed > 0}">
+            	<div class="alert alert-danger" role="alert"><c:out value="${rowsNotProcessed}"/> records were inconsistent...</div>
 			</c:if>
             <br/>
             <br/>
-            <input type="hidden" id="idFile" value="<c:out value="${idFile}"/>" />
-            <input type="hidden" id="rowsLoaded" value="<c:out value="${rowsLoaded}"/>" />
            	<table id="table-style" data-height="299" class="table table-hover" style="margin-top: -41px;" data-row-style="rowStyle">
               <thead>
                 <tr>
@@ -145,7 +141,7 @@
                 </tr>
               </thead>
               <tbody>
-                <c:forEach var="listValue" items="${list}">
+              	<c:forEach var="listValue" items="${list}">
                	  <tr>
 				    <td><c:out value="${listValue.patientLastName}"/></td>
 				    <td><c:out value="${listValue.patientFirstName}"/></td>

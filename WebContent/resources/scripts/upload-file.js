@@ -41,6 +41,7 @@ $(document).ready(function() {
 	        },
 	        error: function() {
 	        	$(":file").filestyle('clear');
+	        	$("#process-modal").modal("hide");
 	        	$("#events-result").show();
 	        	$("#events-result").text("Error connecting server.");
 	        }

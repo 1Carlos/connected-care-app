@@ -1,5 +1,6 @@
 package com.fourthsource.cc.model.services;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,12 @@ public class CSVDetailManagerImpl implements CSVDetailManager {
 	
 	@Override
 	@Transactional
+	public List<CSVDetailEntity> getAllProcessedByCSVHeadId(Integer id) {
+		return csvDetailDAO.getAllProcessedByCSVHeadId(id);
+	}
+	
+	@Override
+	@Transactional
 	public Integer saveCSVDetail(CSVDetailEntity entity) {
 		return csvDetailDAO.saveCSVDetail(entity);
 	}
@@ -31,6 +38,18 @@ public class CSVDetailManagerImpl implements CSVDetailManager {
 	@Transactional
 	public void deleteByCSVHeadId(Integer id) {
 		csvDetailDAO.deleteByCSVHeadId(id);
+	}
+	
+	@Override
+	@Transactional
+	public void callNormalizationProcess() {
+		csvDetailDAO.callSPGetPatientInfo();
+	}
+	
+	@Override
+	@Transactional
+	public void callReconciliationProcess() {
+		csvDetailDAO.callSPReconciliation();
 	}
 	
 }

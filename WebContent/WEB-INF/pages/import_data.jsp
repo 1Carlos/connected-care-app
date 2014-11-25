@@ -52,7 +52,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Program Reconciliation <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="run_reconciliation.html">Run Reconciliation </a></li>
+                <li><a href="run_reconciliation">Run Reconciliation </a></li>
                 <li><a href="program_setup.html">Program Setup </a></li>
               </ul>
             </li>
