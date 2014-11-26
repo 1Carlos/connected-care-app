@@ -11,18 +11,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class BaseController {
 
 	private final static Logger logger = LoggerFactory.getLogger(BaseController.class);
-	private static final String VIEW = "index";
+	private static final String VIEW_INDEX = "index";
+	private static final String VIEW_HELP = "help";
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String root(ModelMap model) {
 		logger.debug("Starting \"index\" page");
-		return VIEW;
+		return VIEW_INDEX;
 	}
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap model) {
 		logger.debug("Starting \"index\" page");
-		return VIEW;
+		return VIEW_INDEX;
+	}
+	
+	@RequestMapping(value = "/help", method = RequestMethod.GET)
+	public String help(ModelMap model) {
+		logger.debug("Loading \"help\" page");
+		return VIEW_HELP;
 	}
 	
 }

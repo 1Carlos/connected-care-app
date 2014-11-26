@@ -225,20 +225,20 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Program Reconciliation <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="run_reconciliation">Run Reconciliation </a></li>
-                <li><a href="program_setup.html">Program Setup </a></li>
+                <li><a href="program_setup">Program Setup </a></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Case Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="dashboard_setup.html">Dashboard </a></li>
+                <li><a href="dashboard_setup">Dashboard </a></li>
                 <li><a href="view_open_cases">View Open Cases </a></li>
-                <li><a href="search_cases.html">Search Cases </a></li>
+                <li><a href="search_cases">Search Cases </a></li>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="help.html"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
+            <li><a href="help"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
             <li></li>
             <li>
               <a href="http://www.4thsource.com" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
