@@ -95,6 +95,8 @@
     <bean id="csvHeadManager" class="com.fourthsource.cc.model.services.CSVHeadManagerImpl"></bean>
     <bean id="csvDetailDAO" class="com.fourthsource.cc.model.dao.CSVDetailDAOImpl"></bean>
     <bean id="csvDetailManager" class="com.fourthsource.cc.model.services.CSVDetailManagerImpl"></bean>
+    <bean id="casesViewDAO" class="com.fourthsource.cc.model.dao.CasesViewDAOImpl"></bean>
+    <bean id="casesViewManager" class="com.fourthsource.cc.model.services.CasesViewManagerImpl"></bean>
     
     <tx:annotation-driven transaction-manager="transactionManager"/>
     

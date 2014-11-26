@@ -6,5 +6,6 @@
         <mapping class="com.fourthsource.cc.domain.PatientEntity" />
         <mapping class="com.fourthsource.cc.domain.CSVHeadEntity" />
         <mapping class="com.fourthsource.cc.domain.CSVDetailEntity" />
+        <mapping class="com.fourthsource.cc.domain.CasesViewEntity" />
     </session-factory>
 </hibernate-configuration>

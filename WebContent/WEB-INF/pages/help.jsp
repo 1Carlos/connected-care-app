@@ -87,9 +87,9 @@
         <div class="">
           <h3>Import External File</h3>
           <br/>
-          What type of file I can import?
+          What type of file can I import?
           <br/>
-          What happens when the importing is truncated?
+          What happen when the importing process is truncated?
           <br/>
           <h3>Program Reconciliation</h3>
           <br/>

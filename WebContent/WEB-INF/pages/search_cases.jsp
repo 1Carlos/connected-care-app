@@ -89,7 +89,7 @@
         <div class="row">
 			<div class="fixed-table-toolbar">
 			  <div class="columns columns-right btn-group pull-right">
-			    <button class="btn btn-default" type="button" name="Search" title="Search">
+			    <button class="btn btn-default" style="height: 34px;" type="button" name="Search" title="Search">
 			      <i class="glyphicon glyphicon-search"></i>
 			    </button>
 			    <div class="keep-open btn-group" title="Columns">
@@ -188,7 +188,7 @@
 	              <td style="">M</td>
 	              <td style="">Smith, Joe</td>
 	              <td style="">10/1/2014</td>
-	              <td style="">Hospital / St Maryâs</td>
+	              <td style="">Hospital / St Marys</td>
 	              <td style="">Rx, Appt</td>
 	            </tr>
 	            <tr>
@@ -200,11 +200,11 @@
 	              <td style="">Fayette</td>
 	              <td style="">Marge</td>
 	              <td style="">3/1/1950</td>
-	              <td style="">I25.2 â Myocardial Infacrtion</td>
+	              <td style="">I25.2  Myocardial Infacrtion</td>
 	              <td style="">F</td>
 	              <td style="">Wood, Fran</td>
 	              <td style="">10/1/2014</td>
-	              <td style="">Hospital / St Maryâs</td>
+	              <td style="">Hospital / St Mars</td>
 	              <td style="">Rx</td>
 	            </tr> 
 	          </tbody>
@@ -216,6 +216,6 @@
     <script src="resources/scripts/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="resources/scripts/ie10-viewport-bug-workaround.js"></script>
-    <script src="./scripts/jasny-bootstrap.min.js"></script>
+    <script src="resources/scripts/jasny-bootstrap.min.js"></script>
   </body>
 </html>

@@ -80,7 +80,7 @@
     <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
       <div class="page-header">
-        <h1>View Cases Open</h1>
+        <h1>View Open Cases</h1>
         <p class="lead">List of all open patients cases.</p>
         <div class="row"></br></div>
         <div class="row">
