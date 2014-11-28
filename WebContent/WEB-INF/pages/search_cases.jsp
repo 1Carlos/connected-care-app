@@ -19,7 +19,12 @@
 
     <!-- Custom styles for this template -->
     <link href="resources/styles/navbar-fixed-top.css" rel="stylesheet">
+    <link rel="stylesheet" href="resources/styles/jquery-ui.css" />
 
+    <script src="resources/scripts/jquery.min.js"></script>
+    <script src="resources/scripts/jquery-ui.js"></script>
+    <script src="resources/scripts/bootstrap.min.js"></script>
+    <script src="resources/scripts/search-cases.js"></script>
     <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
   </head>
   <body>
@@ -84,64 +89,87 @@
       <!-- Main component for a primary marketing message or call to action -->
       <div class="page-header">
         <h1>Search Cases</h1>
-        <p class="lead">List of all cases.</p>
-        <div class="row"><br/></div>
+        <div class="row" style="margin-bottom:0px;">
+          <div class="col-md-6" style="background-color:white; border:0;">
+            <p class="lead">List of all cases.</p>
+          </div>
+        </div>
+        <!-- Search fields -->
         <div class="row">
-			<div class="fixed-table-toolbar">
-			  <div class="columns columns-right btn-group pull-right">
-			    <button class="btn btn-default" style="height: 34px;" type="button" name="Search" title="Search">
-			      <i class="glyphicon glyphicon-search"></i>
-			    </button>
-			    <div class="keep-open btn-group" title="Columns">
-			      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-			        <i class="glyphicon glyphicon-th icon-th"></i> 
-			        <span class="caret"></span>
-			      </button>
-			      <ul class="dropdown-menu" role="menu">
-			        <li>
-			          <label><input type="checkbox" data-field="id" value="1" checked="checked" /> Case ID</label>
-			        </li>
-			        <li>
-			          <label><input type="checkbox" data-field="name" value="2" checked="checked" /> Last</label>
-			        </li>
-			        <li>
-			          <label><input type="checkbox" data-field="price" value="3" checked="checked" /> First</label>
-			        </li>
-		            <li>
-		              <label><input type="checkbox" data-field="price" value="3" checked="checked" /> DOB</label>
-		            </li>
-		            <li>
-		              <label><input type="checkbox" data-field="price" value="3" checked="checked" /> Case Worker</label>
-		            </li>
-			      </ul>
-			    </div>
-			  </div>
-			  <div class="pull-right search">
-			    <input class="form-control" type="text" placeholder="Search" />
-			  </div>
-			</div>
-	        <div class="row">
-			  <br/>
-			</div>
-			<div class="row">
-			  <br/>
-			</div>
-			<div class="row">
-			  <br/>
-			</div>
-			<table id="table-style" data-height="299" class="table table-striped table-bordered table-hover" style="margin-top: -41px;" >
-	          <thead>
-		          <tr>
+          <table class="table-condensed" style="border:1px solid #DDDDDD; ">
+            <tbody>
+              <tr>
+                <td><strong>Patient Name: </strong></td>
+                <td><input id="patientName" type="text" class="form-control"></td>
+                <td><strong>Diagnosis Code: </strong></td>
+                <td><input id="icdInformation" type="text" class="form-control"></td>
+              </tr>
+              <tr>
+                <td><strong>Order Actual Date: </strong></td>
+                <td>
+                	From 
+                	<input type="text" size="12" id="fromOrderActualDate" class="form-control datepicker" style="width:100px; display:inline;" /> 
+                	To 
+                	<input type="text" size="12" id="toOrderActualDate" class="form-control datepicker" style="width:100px; display:inline;" />
+                </td>
+                <td><strong>Order Schedule Date: </strong></td>
+                <td>
+                	From 
+                	<input type="text" size="12" id="fromScheduleDate" class="form-control datepicker" style="width:100px; display:inline;" /> 
+                	To 
+                	<input type="text" size="12" id="toScheduleDate" class="form-control datepicker" style="width:100px; display:inline;" />
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Source Type: </strong></td>
+                <td>
+                  <select id="sourceType" class="form-control">
+                    <option value="0">All</option>
+                    <option value="hospital">Hospital</option>
+                    <option value="pharmacy">Pharmacy</option>
+                    <option value="practice">Practice</option>
+                  </select>
+                </td>
+                <td><strong>Order Type: </strong></td>
+                <td>
+                  <select id="orderType" class="form-control">
+                    <option value="0">All</option>
+                    <option value="rx">Prescription</option>
+                    <option value="appt">Appointment</option>
+                    <option value="education">Education</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                </td>
+                <td>
+                  <br/>
+                  <p><a id="search-button" class="btn btn-primary btn-lg" href="javascript:void(0);" role="button">Search</a></p>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <br/>
+        <div class="row">
+          <table id="table-cases" data-height="300" class="table table-striped table-bordered table-hover" style="margin-top:-40px;" >
+            <thead>
+	            <tr>
 		            <th style="">
-		              <div class="th-inner ">Case ID</div>
+		              <div class="th-inner ">Case</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
-		              <div class="th-inner ">Patient Last</div>
+		              <div class="th-inner ">Patient Last Name</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
-		              <div class="th-inner ">Patient First</div>
+		              <div class="th-inner ">Patient First Name</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
@@ -149,71 +177,37 @@
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
-		              <div class="th-inner ">Diagnosis Code</div>
-		              <div class="fht-cell"></div>
-		            </th>
-		            <th style="">
 		              <div class="th-inner ">Gender</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
-		              <div class="th-inner ">Case Worker Name</div>
+		              <div class="th-inner ">Diagnosis Code</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
-		              <div class="th-inner ">Order Date</div>
+		              <div class="th-inner ">Order Actual Date</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
-		              <div class="th-inner ">Source Type/Name </div>
+		              <div class="th-inner ">Order Schedule Date</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
-		              <div class="th-inner ">Gap Type</div>
+		              <div class="th-inner ">Source Type / Name </div>
 		              <div class="fht-cell"></div>
 		            </th>
-		          </tr>
-	          </thead>
-	          <tbody data-link="row" class="rowlink">
-	            <tr>
-	              <td>
-	                <a href="case_detail_123.html">
-	                  123
-	                </a>
-	              </td>
-	              <td style="">Jones</td>
-	              <td style="">Don</td>
-	              <td style="">1/1/1940</td>
-	              <td style="">J17 - Pneumonia</td>
-	              <td style="">M</td>
-	              <td style="">Smith, Joe</td>
-	              <td style="">10/1/2014</td>
-	              <td style="">Hospital / St Marys</td>
-	              <td style="">Rx, Appt</td>
-	            </tr>
-	            <tr>
-	              <td style="">
-	                <a href="case_detail_123.html">
-	                  124
-	                </a>
-	              </td>
-	              <td style="">Fayette</td>
-	              <td style="">Marge</td>
-	              <td style="">3/1/1950</td>
-	              <td style="">I25.2  Myocardial Infacrtion</td>
-	              <td style="">F</td>
-	              <td style="">Wood, Fran</td>
-	              <td style="">10/1/2014</td>
-	              <td style="">Hospital / St Mars</td>
-	              <td style="">Rx</td>
-	            </tr> 
-	          </tbody>
-	        </table>    				
+		            <th style="">
+		              <div class="th-inner ">Order Type</div>
+		              <div class="fht-cell"></div>
+		            </th>
+		    	</tr>
+            </thead>
+            <tbody data-link="row" class="rowlink">
+            </tbody>
+          </table>
         </div>
 	  </div>
     </div>
-    <script src="resources/scripts/jquery.min.js"></script>
-    <script src="resources/scripts/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="resources/scripts/ie10-viewport-bug-workaround.js"></script>
     <script src="resources/scripts/jasny-bootstrap.min.js"></script>

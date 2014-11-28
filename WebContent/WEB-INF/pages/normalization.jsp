@@ -115,11 +115,11 @@
                     <div class="fht-cell"></div>
                   </th>
                   <th style="">
-                    <div class="th-inner ">Diagnosis Code</div>
+                    <div class="th-inner ">Gender</div>
                     <div class="fht-cell"></div>
                   </th>
                   <th style="">
-                    <div class="th-inner ">Gender</div>
+                    <div class="th-inner ">Diagnosis Code</div>
                     <div class="fht-cell"></div>
                   </th>
                   <th style="">
@@ -135,7 +135,7 @@
                     <div class="fht-cell"></div>
                   </th>
                   <th style="">
-                    <div class="th-inner ">Gap Type</div>
+                    <div class="th-inner ">Order Type</div>
                     <div class="fht-cell"></div>
                   </th>
                 </tr>
@@ -146,7 +146,6 @@
 				    <td><c:out value="${listValue.patientLastName}"/></td>
 				    <td><c:out value="${listValue.patientFirstName}"/></td>
 				    <td><fmt:formatDate pattern="yyyy-MM-dd" value="${listValue.patientDateOfBirth}" /></td>
-				    <td><c:out value="${listValue.diagnosisCode1}"/></td>
 				    <c:choose>
 					    <c:when test="${listValue.patientGender == 0}">
 	        				<td>F</td>
@@ -155,6 +154,7 @@
 	        				<td>M</td>
 	    				</c:otherwise>
     				</c:choose>
+    				<td><c:out value="${listValue.diagnosisCode1}"/></td>
 				    <td><c:out value="${listValue.caseWorkerLastName}, ${listValue.caseWorkerFirstName}"/></td>
 				    <td><fmt:formatDate pattern="yyyy-MM-dd" value="${listValue.orderActualDate}" /></td>
 				    <td><c:out value="${listValue.sourceType} / ${listValue.sourceName}"/></td>

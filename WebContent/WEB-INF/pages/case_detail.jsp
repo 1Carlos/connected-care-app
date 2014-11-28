@@ -1,38 +1,28 @@
-<!DOCTYPE html>
-<!-- saved from url=(0050)http://getbootstrap.com/examples/navbar-fixed-top/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="resources/favicon.ico">
-	<link href="resources/styles/grid.css" rel="stylesheet">
+    <link rel="icon" href="resources/favicon.ico" />
+	<link href="resources/styles/grid.css" rel="stylesheet" />
 
     <title>Connected Care Solution by 4th Source Inc</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="resources/styles/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/styles/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
-    <link href="resources/styles/navbar-fixed-top.css" rel="stylesheet">
+    <link href="resources/styles/navbar-fixed-top.css" rel="stylesheet" />
+    <link rel="stylesheet" href="resources/styles/jquery-ui.css" />
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-	
-  
   </head>
-
   <body>
-
-    <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -77,23 +67,19 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="help"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
-            <li><a href="http://www.4thsource.com" style="padding-top: 0px;
-                                                          padding-right: 0px;
-                                                          padding-bottom: 0px;
-                                                          padding-left: 0px;">
-                <img alt="4thSource Logo" src="logo_4thsource.jpg">
-                </a>
+            <li>
+              <a href="http://www.4thsource.com" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                <img alt="4thSource Logo" src="resources/images/logo_4thsource.jpg">
+              </a>
             </li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>
-
-    <!--IMPROVE #2-->
     <div class="container">
       <div class="row">
-        <div class="col-md-4" style="background-color:white;border:0">
-        <p class="text-left"><h4>Case Information</h4></p>
+        <div class="col-md-4" style="background-color:white; border:0">
+            <p class="text-left"><h4>Case Information</h4></p>
             <table class="table table-condensed" border="0">
               <tbody>
                 <tr style="height:15.0pt">
@@ -119,8 +105,8 @@
               </tbody>
             </table>
         </div>
-        <div class="col-md-4" style="background-color:white;border:0">
-        <p class="text-left"><h4>&nbsp;</h4></p>
+        <div class="col-md-4" style="background-color:white; border:0">
+            <p class="text-left"><h4>&nbsp;</h4></p>
             <table class="table table-condensed" border="0">
               <tbody>
                 <tr style="height:15.0pt">
@@ -148,8 +134,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4" style="background-color:white;border:0">
-          <p class="text-left"><h4>Progress Notes</h4></p>
+        <div class="col-md-4" style="background-color:white; border:0">
+            <p class="text-left"><h4>Progress Notes</h4></p>
             <table class="table table-condensed" border="0">
               <tbody>
                 <tr style="height:15.0pt">
@@ -175,8 +161,8 @@
               </tbody>
             </table>            
         </div>
-        <div class="col-md-4" style="background-color:white;border:0">
-          <p class="text-left"><h4>Case Details</h4></p>
+        <div class="col-md-4" style="background-color:white; border:0">
+            <p class="text-left"><h4>Case Details</h4></p>
             <table class="table table-condensed" border="0">
               <tbody>
                 <tr style="height:15.0pt">
@@ -204,10 +190,9 @@
             </table>            
         </div>
       </div>
-
       <div class="row" >
-        <div class="col-md-8" style="background-color:white;border:0">
-          <p class="text-left"><h4>Update Case / Add Notes</h4></p>
+        <div class="col-md-8" style="background-color:white; border:0">
+            <p class="text-left"><h4>Update Case / Add Notes</h4></p>
             <table class="table table-condensed" border="0">
               <tbody>
                 <tr style="height:15.0pt">
@@ -225,11 +210,13 @@
                   </td>
                   <td height="60px" style="width:30%;height:15.0pt">
                     Next Follow Up:
-                    </br></br></br>Follow-up Not Required:
+                    <br/><br/><br/>
+                    Follow-up Not Required:
                   </td>
                   <td style="width:15%;height:15.0pt">
                     <input type="text" size="12" id="datepicker">
-                    </br></br></br><input type="checkbox">
+                    <br/><br/><br/>
+                    <input type="checkbox">
                   </td>
                 </tr>
                 <tr>
@@ -237,49 +224,32 @@
                   <td></td>
                   <td></td>
                 </tr>
-                <!--<tr style="height:15.0pt">
-                  <td style="width:40%;height:15.0pt">
-                  </td>
-                  <td style="width:30%;height:15.0pt">
-                    Follow-up Not Required:
-                  </td>
-                  <td style="width:30%;height:15.0pt">
-                    <input type="checkbox">
-                  </td>
-                </tr>-->
               </tbody>
             </table>    
         </div>
       </div>
-
-
-<!--Finished design/-->
+    </div>
     <div class="container">
-            <!--/Save Button-->
-            <tr>
-              <td><a href="view_open_cases"><span><button type="button" class="btn btn-default btn-md">Save Case</span></a>
-              </td>
-            </tr>
-    </div> <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+      <a href="view_open_cases">
+        <span>
+          <button type="button" class="btn btn-default btn-md">
+            Save Case
+          </button>
+        </span>
+      </a>
+    </div>
+    
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./scripts/jquery.min.js"></script>
-    <script src="./scripts/bootstrap.min.js"></script>
+    <script src="resources/scripts/jquery.min.js"></script>
+    <script src="resources/scripts/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="./scripts/ie10-viewport-bug-workaround.js"></script>
-    <link rel="stylesheet" href="./css/jquery-ui.css">
-    <script src="./scripts/jquery-1.10.2.js"></script>
-    <script src="./scripts/jquery-ui.js"></script>
-    <!--<link rel="stylesheet" href="./css/style.css">-->
+    <script src="resources/scripts/ie10-viewport-bug-workaround.js"></script>
+    <script src="resources/scripts/jquery-ui.js"></script>
+
     <script>
-    $(function() {
-      $( "#datepicker" ).datepicker();
-    });
+      $(function() {
+        $( "#datepicker" ).datepicker();
+      });
     </script>
-
-
-</body>
+  </body>
 </html>

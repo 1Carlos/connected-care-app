@@ -21,7 +21,7 @@ public class PatientService  {
 	private PatientManager patientManager;
 	
 	@RequestMapping(value="/getPatientService", method=RequestMethod.POST)
-    public @ResponseBody ResponseListPatients getAllPatients() {
+    private @ResponseBody ResponseListPatients getAllPatients() {
 		logger.debug("Service getAllPatients()");
 		ResponseListPatients response = new ResponseListPatients();
 		response.setList(patientManager.getAllPatients());

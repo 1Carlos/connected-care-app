@@ -15,8 +15,14 @@ public class CasesViewEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="ID")
+    private Integer id;
+	
     @Column(name="CASE_ID")
     private Integer caseId;
+    
+    @Column(name="PATIENT_ID")
+    private Integer patientId;
     
     @Column(name="PATIENT_FIRST_NAME")
     private String patientFirstName;
@@ -42,21 +48,40 @@ public class CasesViewEntity implements Serializable {
     @Column(name="ORDER_SCHEDULE_DATE")
     private Date orderScheduleDate;
     
-    @Column(name="SOURCE_ID")
-    private Integer sourceId;
+    @Column(name="CASE_STATUS")
+    private Integer caseStatus;
+    
+    @Column(name="SOURCE_TYPE")
+    private String sourceType;
+    
+    @Column(name="SOURCE_NAME")
+    private String sourceName;
     
     @Column(name="ORDER_TYPE")
     private String orderType;
     
-    @Column(name="CASE_STATUS")
-    private Integer caseStatus;
-    
+    public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
     public Integer getCaseId() {
     	return caseId;
 	}
 
 	public void setCaseId(Integer caseId) {
 		this.caseId = caseId;
+	}
+	
+	public Integer getPatientId() {
+		return patientId;
+	}
+
+	public void setPatientId(Integer patientId) {
+		this.patientId = patientId;
 	}
 	
 	public String getPatientFirstName() {
@@ -123,12 +148,28 @@ public class CasesViewEntity implements Serializable {
 		this.orderScheduleDate = orderScheduleDate;
 	}
 	
-	public Integer getSourceId() {
-		return sourceId;
+	public Integer getCaseStatus() {
+		return caseStatus;
+	}
+
+	public void setCaseStatus(Integer caseStatus) {
+		this.caseStatus = caseStatus;
 	}
 	
-	public void setSourceId(Integer sourceId) {
-		this.sourceId = sourceId;
+	public String getSourceType() {
+		return sourceType;
+	}
+	
+	public void setSourceType(String sourceType) {
+		this.sourceType = sourceType;
+	}
+	
+	public String getSourceName() {
+		return sourceName;
+	}
+
+	public void setSourceName(String sourceName) {
+		this.sourceName = sourceName;
 	}
 	
 	public String getOrderType() {
@@ -137,14 +178,6 @@ public class CasesViewEntity implements Serializable {
 	
 	public void setOrderType(String orderType) {
 		this.orderType = orderType;
-	}
-
-	public Integer getCaseStatus() {
-		return caseStatus;
-	}
-
-	public void setCaseStatus(Integer caseStatus) {
-		this.caseStatus = caseStatus;
 	}
 
 }

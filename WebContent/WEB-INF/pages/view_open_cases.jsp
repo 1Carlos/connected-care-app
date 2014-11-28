@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
   <head>
@@ -20,6 +22,8 @@
     <!-- Custom styles for this template -->
     <link href="resources/styles/navbar-fixed-top.css" rel="stylesheet">
 
+    <script src="resources/scripts/jquery.min.js"></script>
+    <script src="resources/scripts/search-cases.js"></script>
     <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
   </head>
   <body>
@@ -84,19 +88,19 @@
         <p class="lead">List of all open patients cases.</p>
         <div class="row"></br></div>
         <div class="row">
-	        <table id="table-style" data-height="299" class="table table-hover" style="margin-top: -41px;">
+	        <table data-height="299" class="table table-hover" style="margin-top: -41px;">
 	          <thead>
 		          <tr>
 		            <th style="">
-		              <div class="th-inner ">Case ID</div>
+		              <div class="th-inner ">Case</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
-		              <div class="th-inner ">Patient Last</div>
+		              <div class="th-inner ">Patient Last Name</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
-		              <div class="th-inner ">Patient First</div>
+		              <div class="th-inner ">Patient First Name</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
@@ -104,71 +108,56 @@
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
-		              <div class="th-inner ">Diagnosis Code</div>
-		              <div class="fht-cell"></div>
-		            </th>
-		            <th style="">
 		              <div class="th-inner ">Gender</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
-		              <div class="th-inner ">Case Worker Name</div>
+		              <div class="th-inner ">Diagnosis Code</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
-		              <div class="th-inner ">Order Date</div>
+		              <div class="th-inner ">Order Actual Date</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
-		              <div class="th-inner ">Source Type/Name </div>
+		              <div class="th-inner ">Order Schedule Date</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
-		              <div class="th-inner ">Gap Type</div>
+		              <div class="th-inner ">Source Type / Name </div>
+		              <div class="fht-cell"></div>
+		            </th>
+		            <th style="">
+		              <div class="th-inner ">Order Type</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		          </tr>
 	          </thead>
 	          <tbody data-link="row" class="rowlink">
+	          	<c:forEach var="listValue" items="${list}">
 		          <tr>
 		            <td>
-		              <a href="case_detail_123.html">
-		                  123
+		              <a href="javascript:goToCaseDetail(<c:out value="${listValue.caseId}"/>);">
+		                  <c:out value="${listValue.caseId}"/>
 		              </a>
 		            </td>
-		            <td style="">Jones</td>
-		            <td style="">Don</td>
-		            <td style="">1/1/1940</td>
-		            <td style="">J17 - Pneumonia</td>
-		            <td style="">M</td>
-		            <td style="">Smith, Joe</td>
-		            <td style="">10/1/2014</td>
-		            <td style="">Hospital / St Mary’s</td>
-		            <td style="">Rx, Appt</td>
+		            <td style=""><c:out value="${listValue.patientLastName}"/></td>
+		            <td style=""><c:out value="${listValue.patientFirstName}"/></td>
+		            <td style=""><fmt:formatDate pattern="yyyy-MM-dd" value="${listValue.patientDOB}" /></td>
+		            <td style=""><c:out value="${listValue.patientGender}"/></td>
+		            <td style=""><c:out value="${listValue.diagnosisCode}"/> - <c:out value="${listValue.diagnosisName}"/></td>
+		            <td style=""><fmt:formatDate pattern="yyyy-MM-dd" value="${listValue.orderActualDate}" /></td>
+		            <td style=""><fmt:formatDate pattern="yyyy-MM-dd" value="${listValue.orderScheduleDate}" /></td>
+		            <td style=""><c:out value="${listValue.sourceType}"/></td>
+		            <td style=""><c:out value="${listValue.orderType}"/></td>
 		          </tr>
-		          <tr>
-		            <td style="">
-		              <a href="case_detail_123.html">
-		                 124              
-		              </a>
-		            </td>
-		            <td style="">Fayette</td>
-		            <td style="">Marge</td>
-		            <td style="">3/1/1950</td>
-		            <td style="">I25.2 – Myocardial Infacrtion</td>
-		            <td style="">F</td>
-		            <td style="">Wood, Fran</td>
-		            <td style="">10/1/2014</td>
-		            <td style="">Hospital / St Mary’s</td>
-		            <td style="">Rx</td>
-	          	  </tr>
+		        </c:forEach>
 	          </tbody>
 	        </table>
         </div>
 	  </div>
     </div> 
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="resources/scripts/jquery.min.js"></script>
     <script src="resources/scripts/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="resources/scripts/ie10-viewport-bug-workaround.js"></script>
