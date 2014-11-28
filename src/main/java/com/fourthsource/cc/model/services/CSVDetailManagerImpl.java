@@ -3,6 +3,7 @@ package com.fourthsource.cc.model.services;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +20,9 @@ public class CSVDetailManagerImpl implements CSVDetailManager {
 	@Override
 	@Transactional
 	public Set<CSVDetailEntity> getAllByCSVHeadId(Integer id) {
-		return csvDetailDAO.getAllByCSVHeadId(id);
+		Set<CSVDetailEntity> list = csvDetailDAO.getAllByCSVHeadId(id);
+		Hibernate.initialize(list);
+		return list;
 	}
 	
 	@Override

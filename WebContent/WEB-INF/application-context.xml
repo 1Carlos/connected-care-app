@@ -89,14 +89,16 @@
         </property>
     </bean>
      
-    <bean id="patientDAO" class="com.fourthsource.cc.model.dao.PatientDAOImpl"></bean>
-    <bean id="patientManager" class="com.fourthsource.cc.model.services.PatientManagerImpl"></bean>
     <bean id="csvHeadDAO" class="com.fourthsource.cc.model.dao.CSVHeadDAOImpl"></bean>
     <bean id="csvHeadManager" class="com.fourthsource.cc.model.services.CSVHeadManagerImpl"></bean>
     <bean id="csvDetailDAO" class="com.fourthsource.cc.model.dao.CSVDetailDAOImpl"></bean>
     <bean id="csvDetailManager" class="com.fourthsource.cc.model.services.CSVDetailManagerImpl"></bean>
     <bean id="casesViewDAO" class="com.fourthsource.cc.model.dao.CasesViewDAOImpl"></bean>
     <bean id="casesViewManager" class="com.fourthsource.cc.model.services.CasesViewManagerImpl"></bean>
+    <bean id="patientDAO" class="com.fourthsource.cc.model.dao.PatientDAOImpl"></bean>
+    <bean id="patientManager" class="com.fourthsource.cc.model.services.PatientManagerImpl"></bean>
+    <bean id="casesDAO" class="com.fourthsource.cc.model.dao.CasesDAOImpl"></bean>
+    <bean id="casesManager" class="com.fourthsource.cc.model.services.CasesManagerImpl"></bean>
     
     <tx:annotation-driven transaction-manager="transactionManager"/>
     

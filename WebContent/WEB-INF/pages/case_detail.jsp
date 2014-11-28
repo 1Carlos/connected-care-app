@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
   <head>
@@ -20,6 +22,9 @@
     <link href="resources/styles/navbar-fixed-top.css" rel="stylesheet" />
     <link rel="stylesheet" href="resources/styles/jquery-ui.css" />
 
+	<script src="resources/scripts/jquery.min.js"></script>
+    <script src="resources/scripts/jquery-ui.js"></script>
+    <script src="resources/scripts/case-detail.js"></script>
     <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
   </head>
   <body>
@@ -79,55 +84,64 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4" style="background-color:white; border:0">
-            <p class="text-left"><h4>Case Information</h4></p>
+            <h4>Case Information</h4>
             <table class="table table-condensed" border="0">
               <tbody>
                 <tr style="height:15.0pt">
-                  <td style="width:35%"><strong>Case ID:</strong></td>
-                  <td style="width:65%"><strong>123</strong></td>
+                  <td style="width:35%">Case ID:</td>
+                  <td style="width:65%"><strong><c:out value="${object.id}"/></strong></td>
                 </tr>
                 <tr style="height:15.0pt">
                   <td style="width:35%">Patient Name:</td>   
-                  <td style="width:65%">Keenan, Maynard James</td>
+                  <td style="width:65%"><c:out value="${object.patientId.lastName}"/>, <c:out value="${object.patientId.firstName}"/></td>
                 </tr>
                 <tr style="height:15.0pt">
                   <td style="width:35%">Date of Birth:</td>
-                  <td style="width:65%">4/30/1964</td>
+                  <td style="width:65%"><fmt:formatDate pattern="yyyy-MM-dd" value="${object.patientId.dateOfBirth}" /></td>
                 </tr>
                 <tr style="height:15.0pt">
                   <td style="width:35%">Gender: </td>
-                  <td style="width:65%">M</td>
+                  <td style="width:65%">
+                    <c:choose>
+					  <c:when test="${object.patientId.gender == 0}">
+	        			F
+	    			  </c:when>
+	    			  <c:otherwise>
+	        			M
+	    			  </c:otherwise>
+    				</c:choose>
+                  </td>
                 </tr>
                 <tr style="height:15.0pt">
                   <td style="width:35%">Address:</td>  
-                  <td style="width:65%">100 Main St Sedona, AZ 19882</td>
+                  <td style="width:65%"></td>
+                </tr>
+                <tr style="height:15.0pt">
+                  <td style="width:35%">Phone:</td>  
+                  <td style="width:65%"></td>
+                </tr>
+                <tr style="height:15.0pt">
+                  <td style="width:35%">Case Worker:</td>
+                  <td style="width:65%"><c:out value="${object.caseWorkerId.lastName}"/>, <c:out value="${object.caseWorkerId.firstName}"/></td>
+                </tr>
+                <tr style="height:15.0pt">
+                  <td style="width:35%">Follow-up Date:</td>    
+                  <td style="width:65%"><fmt:formatDate pattern="yyyy-MM-dd" value="${object.followUpDate}" /></td>
                 </tr>
               </tbody>
             </table>
         </div>
         <div class="col-md-4" style="background-color:white; border:0">
-            <p class="text-left"><h4>&nbsp;</h4></p>
+            <h4>Diagnosis Information</h4>
             <table class="table table-condensed" border="0">
               <tbody>
                 <tr style="height:15.0pt">
-                  <td style="width:35%;height:15.0pt">&nbsp;</td>
-                  <td style="width:65%;height:15.0pt">&nbsp;</td>
+                  <td style="width:35%"><strong>ICD Code</strong></td>
+                  <td style="width:65%"><strong>ICD Description</strong></td>
                 </tr>
                 <tr style="height:15.0pt">
                   <td style="width:35%">Diagnosis:</td>
-                  <td style="width:65%">J17 - Pneumonia</td>
-                </tr>
-                <tr style="height:15.0pt">
-                  <td style="width:35%">Case Worker:</td>
-                  <td style="width:65%">Smith, Joe</td>
-                </tr>
-                <tr style="height:15.0pt">
-                  <td style="width:35%">Follow-up Date:</td>    
-                  <td style="width:65%">12/1/2014</td>
-                </tr>
-                <tr style="height:15.0pt">
-                  <td style="width:35%">Phone </td>  
-                  <td style="width:65%">310-709-6976</td>
+                  <td style="width:65%"></td>
                 </tr>
               </tbody>
             </table>
@@ -135,34 +149,26 @@
       </div>
       <div class="row">
         <div class="col-md-4" style="background-color:white; border:0">
-            <p class="text-left"><h4>Progress Notes</h4></p>
+            <h4>Progress Notes</h4>
             <table class="table table-condensed" border="0">
               <tbody>
                 <tr style="height:15.0pt">
                   <td style="width:35%;height:15.0pt"><strong>Date</strong></td>
                   <td style="width:65%;height:15.0pt"><strong>Progress Notes</strong></td>
                 </tr>
-                <tr style="height:15.0pt">
-                  <td style="width:35%">9/28/2014</td>
-                  <td style="width:65%">Patient Admitted to ER with difficulty breathing</td>
-                </tr>
-                <tr style="height:15.0pt">
-                  <td style="width:35%">9/28/2014</td>
-                  <td style="width:65%">Patient given breathing treatments and Rx intravenously</td>
-                </tr>
-                <tr style="height:15.0pt">
-                  <td style="width:35%">9/28/2014</td>    
-                  <td style="width:65%">Patient discharged with orders for Rxs and follow up appointment</td>
-                </tr>
-                <tr style="height:15.0pt">
-                  <td style="width:35%">9/28/2014</td>  
-                  <td style="width:65%">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </td>
-                </tr>
+                <c:forEach var="listOrders" items="${object.ordersEntity}">
+                	<c:forEach var="listNotes" items="${listOrders.noteEntity}">
+		                <tr style="height:15.0pt">
+		                  <td style="width:35%"><fmt:formatDate pattern="yyyy-MM-dd" value="${listNotes.creationDate}" /></td>
+		                  <td style="width:65%"><c:out value="${listNotes.noteDetails}"/></td>
+		                </tr>
+	                </c:forEach>
+                </c:forEach>
               </tbody>
             </table>            
         </div>
         <div class="col-md-4" style="background-color:white; border:0">
-            <p class="text-left"><h4>Case Details</h4></p>
+            <h4>Case Details</h4>
             <table class="table table-condensed" border="0">
               <tbody>
                 <tr style="height:15.0pt">
@@ -172,32 +178,37 @@
                   <td style="width:20%;height:15.0pt"><strong>Date</strong></td>
                   <td style="width:20%;height:15.0pt"><strong>Status</strong></td>
                 </tr>
-                <tr style="height:15.0pt">
-                  <td style="width:20%;height:15.0pt">Rx</td>
-                  <td style="width:20%;height:15.0pt">Levaquin</td>
-                  <td style="width:20%;height:15.0pt">Dr Ford</td>
-                  <td style="width:20%;height:15.0pt">10/1/2014</td>
-                  <td style="width:20%;height:15.0pt">NOT SOLD</td>
-                </tr>
-                <tr style="height:15.0pt">
-                  <td style="width:20%;height:15.0pt">Appt</td>
-                  <td style="width:20%;height:15.0pt">Follow Up with Dr. Hardy</td>
-                  <td style="width:20%;height:15.0pt">Dr Ford</td>
-                  <td style="width:20%;height:15.0pt">10/1/2014</td>
-                  <td style="width:20%;height:15.0pt">NOT KEPT</td>
-                </tr>
+                <c:forEach var="listOrders" items="${object.ordersEntity}">
+                  <tr style="height:15.0pt">
+                    <td style="width:20%;height:15.0pt">
+                      <c:if test="${listOrders.orderType == 1}">
+   				        Rx
+			          </c:if>
+                      <c:if test="${listOrders.orderType == 2}">
+   				        Appt
+			          </c:if>
+			          <c:if test="${listOrders.orderType == 3}">
+   				        Education
+			          </c:if>
+                    </td>
+                    <td style="width:20%;height:15.0pt"><c:out value="${listOrders.orderDetails}"/></td>
+                    <td style="width:20%;height:15.0pt"></td>
+                    <td style="width:20%;height:15.0pt"><fmt:formatDate pattern="yyyy-MM-dd" value="${listOrders.orderActualDate}" /></td>
+                    <td style="width:20%;height:15.0pt"></td>
+                  </tr>
+                </c:forEach>
               </tbody>
             </table>            
         </div>
       </div>
       <div class="row" >
         <div class="col-md-8" style="background-color:white; border:0">
-            <p class="text-left"><h4>Update Case / Add Notes</h4></p>
+            <h4>Update Case / Add Notes</h4>
             <table class="table table-condensed" border="0">
               <tbody>
                 <tr style="height:15.0pt">
                   <td style="width:50%;height:15.0pt">
-                    <p class="text-left"><h4>Note</h4></p>
+                    <h4>Note</h4>
                   </td>
                   <td>
                   </td>
@@ -206,7 +217,7 @@
                 </tr>
                 <tr style="height:15.0pt">
                   <td style="width:35%;height:15.0pt">
-                    <textarea rows="5" cols="35">Please add the note...</textarea>
+                    <textarea rows="5" cols="35" class="form-control" placeholder="Please add note..."></textarea>
                   </td>
                   <td height="60px" style="width:30%;height:15.0pt">
                     Next Follow Up:
@@ -214,15 +225,10 @@
                     Follow-up Not Required:
                   </td>
                   <td style="width:15%;height:15.0pt">
-                    <input type="text" size="12" id="datepicker">
-                    <br/><br/><br/>
-                    <input type="checkbox">
+                    <input class="form-control datepicker" type="text" size="12" >
+                    <br/>
+                    <input class="form-control" type="checkbox">
                   </td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
                 </tr>
               </tbody>
             </table>    
@@ -230,7 +236,7 @@
       </div>
     </div>
     <div class="container">
-      <a href="view_open_cases">
+      <a href="javascript:void(0);">
         <span>
           <button type="button" class="btn btn-default btn-md">
             Save Case
@@ -238,18 +244,9 @@
         </span>
       </a>
     </div>
-    
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="resources/scripts/jquery.min.js"></script>
     <script src="resources/scripts/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="resources/scripts/ie10-viewport-bug-workaround.js"></script>
-    <script src="resources/scripts/jquery-ui.js"></script>
-
-    <script>
-      $(function() {
-        $( "#datepicker" ).datepicker();
-      });
-    </script>
   </body>
 </html>

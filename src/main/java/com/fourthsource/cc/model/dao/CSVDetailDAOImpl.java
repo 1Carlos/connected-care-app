@@ -24,9 +24,7 @@ public class CSVDetailDAOImpl implements CSVDetailDAO  {
 	
 	@Override
 	public Set<CSVDetailEntity> getAllByCSVHeadId(Integer id) {
-		Set<CSVDetailEntity> list = ((CSVHeadEntity)sessionFactory.getCurrentSession().load(CSVHeadEntity.class, id)).getCsvDetailEntity();
-		Hibernate.initialize(list);
-		return list;
+		return ((CSVHeadEntity)sessionFactory.getCurrentSession().load(CSVHeadEntity.class, id)).getCsvDetailEntity();
 	}
 	
 	@Override

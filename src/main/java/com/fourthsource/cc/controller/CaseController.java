@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fourthsource.cc.domain.CaseEntity;
 import com.fourthsource.cc.domain.CasesViewEntity;
+import com.fourthsource.cc.model.services.CasesManager;
 import com.fourthsource.cc.model.services.CasesViewManager;
 
 @Controller
@@ -25,6 +27,9 @@ public class CaseController {
 	
 	@Autowired
 	private CasesViewManager casesViewManager;
+	
+	@Autowired
+	private CasesManager casesManager;
 	
 	@RequestMapping(value="/view_open_cases", method=RequestMethod.GET)
 	public ModelAndView dataValidation() {
@@ -47,7 +52,11 @@ public class CaseController {
 	@RequestMapping(value="/case_detail", method=RequestMethod.POST)
 	public ModelAndView caseDetail(int caseId) {
 		logger.debug("Loading \"case_detail\" page");
+		CaseEntity entity = casesManager.getCaseById(caseId);
+		
 		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("object", entity);
+		
 		return new ModelAndView(VIEW_CASE_DETAIL, model); 
 	}
 	

@@ -16,27 +16,21 @@ import javax.persistence.Table;
 import org.codehaus.jackson.annotate.JsonManagedReference;
 
 @Entity
-@Table(name = "patient")
-public class PatientEntity implements Serializable {
+@Table(name = "caseworker")
+public class CaseWorkerEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @Column(name="PATIENT_ID")
+    @Column(name="CASE_WORKER_ID")
     @GeneratedValue
     private Integer id;
      
-    @Column(name="PATIENT_FIRST_NAME")
+    @Column(name="FIRST_NAME")
     private String firstName;
  
-    @Column(name="PATIENT_LAST_NAME")
+    @Column(name="LAST_NAME")
     private String lastName;
-    
-    @Column(name="PATIENT_DATE_OF_BIRTH")
-    private Date dateOfBirth;
-
-    @Column(name="PATIENT_GENDER")
-    private Integer gender;
     
     @Column(name="CREATION_DATE")
     private Date creationDate;
@@ -45,7 +39,7 @@ public class PatientEntity implements Serializable {
     private Date updateDate;
     
     @JsonManagedReference
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "patientId")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "caseWorkerId")
     private Set<CaseEntity> casesEntity = new HashSet<CaseEntity>(0);
     
 	public Integer getId() {
@@ -72,22 +66,6 @@ public class PatientEntity implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
-	public Integer getGender() {
-		return gender;
-	}
-
-	public void setGender(Integer gender) {
-		this.gender = gender;
-	}
-
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -103,7 +81,7 @@ public class PatientEntity implements Serializable {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
-
+	
 	public Set<CaseEntity> getCasesEntity() {
 		return casesEntity;
 	}
