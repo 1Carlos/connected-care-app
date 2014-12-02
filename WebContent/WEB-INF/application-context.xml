@@ -95,10 +95,14 @@
     <bean id="csvDetailManager" class="com.fourthsource.cc.model.services.CSVDetailManagerImpl"></bean>
     <bean id="casesViewDAO" class="com.fourthsource.cc.model.dao.CasesViewDAOImpl"></bean>
     <bean id="casesViewManager" class="com.fourthsource.cc.model.services.CasesViewManagerImpl"></bean>
-    <bean id="patientDAO" class="com.fourthsource.cc.model.dao.PatientDAOImpl"></bean>
-    <bean id="patientManager" class="com.fourthsource.cc.model.services.PatientManagerImpl"></bean>
     <bean id="casesDAO" class="com.fourthsource.cc.model.dao.CasesDAOImpl"></bean>
     <bean id="casesManager" class="com.fourthsource.cc.model.services.CasesManagerImpl"></bean>
+    <bean id="orderDAO" class="com.fourthsource.cc.model.dao.OrderDAOImpl"></bean>
+    <bean id="orderManager" class="com.fourthsource.cc.model.services.OrderManagerImpl"></bean>
+    <bean id="noteDAO" class="com.fourthsource.cc.model.dao.NoteDAOImpl"></bean>
+    <bean id="noteManager" class="com.fourthsource.cc.model.services.NoteManagerImpl"></bean>
+    <bean id="patientDAO" class="com.fourthsource.cc.model.dao.PatientDAOImpl"></bean>
+    <bean id="patientManager" class="com.fourthsource.cc.model.services.PatientManagerImpl"></bean>
     
     <tx:annotation-driven transaction-manager="transactionManager"/>
     

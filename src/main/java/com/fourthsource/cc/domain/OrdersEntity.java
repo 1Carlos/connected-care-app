@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.codehaus.jackson.annotate.JsonBackReference;
 import org.codehaus.jackson.annotate.JsonManagedReference;
@@ -40,6 +41,9 @@ public class OrdersEntity implements Serializable {
     
     @Column(name="ORDER_STATUS")
     private Integer orderStatus;
+    
+    @Transient
+    private String orderStatusDescription;
     
     @Column(name="ORDER_ACTUAL_DATE")
     private Date orderActualDate;
@@ -97,6 +101,14 @@ public class OrdersEntity implements Serializable {
 		this.orderStatus = orderStatus;
 	}
 
+	public String getOrderStatusDescription() {
+		return orderStatusDescription;
+	}
+
+	public void setOrderStatusDescription(String orderStatusDescription) {
+		this.orderStatusDescription = orderStatusDescription;
+	}
+	
 	public Date getOrderActualDate() {
 		return orderActualDate;
 	}

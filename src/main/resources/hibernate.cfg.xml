@@ -6,9 +6,14 @@
         <mapping class="com.fourthsource.cc.domain.CSVHeadEntity" />
         <mapping class="com.fourthsource.cc.domain.CSVDetailEntity" />
         <mapping class="com.fourthsource.cc.domain.CasesViewEntity" />
+        <mapping class="com.fourthsource.cc.domain.CaseEntity" />
+        <mapping class="com.fourthsource.cc.domain.PatientAddressEntity" />
+        <mapping class="com.fourthsource.cc.domain.PatientPhoneEntity" />
+        <mapping class="com.fourthsource.cc.domain.PatientDiagnosisEntity" />
         <mapping class="com.fourthsource.cc.domain.PatientEntity" />
         <mapping class="com.fourthsource.cc.domain.CaseWorkerEntity" />
-        <mapping class="com.fourthsource.cc.domain.CaseEntity" />
+        <mapping class="com.fourthsource.cc.domain.Icd10Entity" />
+        <mapping class="com.fourthsource.cc.domain.Icd10ProgramsEntity" />
         <mapping class="com.fourthsource.cc.domain.OrdersEntity" />
         <mapping class="com.fourthsource.cc.domain.NoteEntity" />
     </session-factory>

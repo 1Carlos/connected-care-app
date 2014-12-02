@@ -148,7 +148,7 @@
 		            <td style=""><c:out value="${listValue.diagnosisCode}"/> - <c:out value="${listValue.diagnosisName}"/></td>
 		            <td style=""><fmt:formatDate pattern="yyyy-MM-dd" value="${listValue.orderActualDate}" /></td>
 		            <td style=""><fmt:formatDate pattern="yyyy-MM-dd" value="${listValue.orderScheduleDate}" /></td>
-		            <td style=""><c:out value="${listValue.sourceType}"/></td>
+		            <td style=""><c:out value="${listValue.sourceType}"/> / <c:out value="${listValue.sourceName}"/></td>
 		            <td style=""><c:out value="${listValue.orderType}"/></td>
 		          </tr>
 		        </c:forEach>

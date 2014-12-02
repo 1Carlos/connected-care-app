@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,23 +14,22 @@ import javax.persistence.Table;
 import org.codehaus.jackson.annotate.JsonBackReference;
 
 @Entity
-@Table(name = "Note")
-public class NoteEntity implements Serializable {
- 
+@Table(name = "phone")
+public class PatientPhoneEntity implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
- 
+
 	@Id
-	@Column(name="NOTE_ID")
-	@GeneratedValue
+	@Column(name="PHONE_ID")
 	private Integer id;
 	
 	@JsonBackReference
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ORDER_ID", nullable = false)
-	private OrdersEntity orderId;
-
-	@Column(name="NOTE_DETAILS")
-	private String noteDetails;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "PATIENT_ID", nullable = false)
+	private PatientEntity patientId;
+	
+	@Column(name="PHONE")
+	private String phone;
 	
 	@Column(name="CREATION_DATE")
 	private Date creationDate;
@@ -39,34 +37,34 @@ public class NoteEntity implements Serializable {
 	@Column(name="UPDATE_DATE")
 	private Date updateDate;
 	
-	public Integer getId() {
+    public Integer getId() {
 		return id;
 	}
-	
-	public void setId(Integer id) {
+
+    public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public OrdersEntity getOrderId() {
-		return orderId;
+	public PatientEntity getPatientId() {
+		return patientId;
 	}
 
-	public void setOrderId(OrdersEntity orderId) {
-		this.orderId = orderId;
+	public void setPatientId(PatientEntity patientId) {
+		this.patientId = patientId;
 	}
 	
-	public String getNoteDetails() {
-		return noteDetails;
+	public String getPhone() {
+		return phone;
 	}
-	
-	public void setNoteDetails(String noteDetails) {
-		this.noteDetails = noteDetails;
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	
 	public Date getCreationDate() {
 		return creationDate;
 	}
-	
+
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
@@ -78,5 +76,5 @@ public class NoteEntity implements Serializable {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
-	
+
 }

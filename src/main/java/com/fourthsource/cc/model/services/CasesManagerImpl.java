@@ -24,15 +24,28 @@ public class CasesManagerImpl implements CasesManager {
 		
 		Hibernate.initialize(entity.getPatientId());
 		Hibernate.initialize(entity.getCaseWorkerId());
-		Hibernate.initialize(entity.getOrdersEntity());
 		
-		Set<OrdersEntity> orders = entity.getOrdersEntity();
+		Set<OrdersEntity> ordersList = entity.getOrdersEntity();
 		
-		for(OrdersEntity order : orders) {
-			Hibernate.initialize(order.getNoteEntity());
+		Hibernate.initialize(ordersList);
+		
+		for(OrdersEntity orders : ordersList) {
+			Hibernate.initialize(orders.getNoteEntity());
 		}
-		
+
 		return entity;
+	}
+	
+	@Override
+	@Transactional
+	public CaseEntity getSimpleCaseById(int id) {
+		return casesDAO.getCaseById(id);
+	}
+	
+	@Override
+	@Transactional
+	public void updateCase(CaseEntity entity) {
+		casesDAO.updateCase(entity);
 	}
 	
 }

@@ -44,6 +44,10 @@ public class CaseEntity implements Serializable {
 	private Integer caseStatus;
 	
     @JsonManagedReference
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "caseId")
+    private Set<PatientDiagnosisEntity> patientDiagnosisEntity = new HashSet<PatientDiagnosisEntity>(0);
+	
+    @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "caseId")
     private Set<OrdersEntity> ordersEntity = new HashSet<OrdersEntity>(0);
 
@@ -87,6 +91,14 @@ public class CaseEntity implements Serializable {
 		this.caseStatus = caseStatus;
 	}
 
+	public Set<PatientDiagnosisEntity> getPatientDiagnosisEntity() {
+		return patientDiagnosisEntity;
+	}
+
+	public void setPatientDiagnosisEntity(Set<PatientDiagnosisEntity> patientDiagnosisEntity) {
+		this.patientDiagnosisEntity = patientDiagnosisEntity;
+	}
+
 	public Set<OrdersEntity> getOrdersEntity() {
 		return ordersEntity;
 	}
@@ -94,5 +106,5 @@ public class CaseEntity implements Serializable {
 	public void setOrdersEntity(Set<OrdersEntity> ordersEntity) {
 		this.ordersEntity = ordersEntity;
 	}
-	
+
 }

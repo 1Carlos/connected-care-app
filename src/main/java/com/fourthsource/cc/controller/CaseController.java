@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fourthsource.cc.domain.CaseEntity;
 import com.fourthsource.cc.domain.CasesViewEntity;
+import com.fourthsource.cc.domain.OrdersEntity;
 import com.fourthsource.cc.model.services.CasesManager;
 import com.fourthsource.cc.model.services.CasesViewManager;
 
@@ -54,10 +55,33 @@ public class CaseController {
 		logger.debug("Loading \"case_detail\" page");
 		CaseEntity entity = casesManager.getCaseById(caseId);
 		
+		for(OrdersEntity ordersEntity : entity.getOrdersEntity()) {
+			/* 
+			 * OrderType = 1 (Rx)
+			 * OrderType = 2 (Appt)
+			 * OrderType = 3 (Education)
+			 * OrderType = 4 (Measurement)
+			 * 
+			 * */
+			if(ordersEntity.getOrderType() == 1) {
+				if(ordersEntity.getOrderActualDate() != null) {
+					ordersEntity.setOrderStatusDescription("SOLD");
+				} else {
+					ordersEntity.setOrderStatusDescription("NOT SOLD");
+				}
+			} else if(ordersEntity.getOrderType() == 2) {
+				if(ordersEntity.getOrderActualDate() != null) {
+					ordersEntity.setOrderStatusDescription("KEPT");
+				} else {
+					ordersEntity.setOrderStatusDescription("NOT KEPT");
+				}
+			}
+		}
+		
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("object", entity);
 		
-		return new ModelAndView(VIEW_CASE_DETAIL, model); 
+		return new ModelAndView(VIEW_CASE_DETAIL, model);
 	}
 	
 }

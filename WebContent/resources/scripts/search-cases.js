@@ -82,6 +82,7 @@ function getHTMLRow(object) {
 	var diagnosisName = object.diagnosisName == null ? "" : object.diagnosisName;
 	var orderActualDate = object.orderActualDate == null ? "" : $.datepicker.formatDate("yy-mm-dd", new Date(object.orderActualDate));
 	var orderScheduleDate = object.orderScheduleDate == null ? "" : $.datepicker.formatDate("yy-mm-dd", new Date(object.orderScheduleDate));
+	var sourceType = object.sourceType == null ? "" : object.sourceType;
 	var sourceName = object.sourceName == null ? "" : object.sourceName;
 	var orderType = object.orderType == null ? "" : object.orderType;
 	
@@ -99,7 +100,7 @@ function getHTMLRow(object) {
 			"<td>" + diagnosisCode + " - " + diagnosisName + "</td>" +
 			"<td>" + orderActualDate + "</td>" +
 			"<td>" + orderScheduleDate + "</td>" +
-			"<td>" + sourceName + "</td>" +
+			"<td>" + sourceType + " / " + sourceName + "</td>" +
 			"<td>" + orderType + "</td>" +
     	"</tr>";
   

@@ -45,6 +45,14 @@ public class PatientEntity implements Serializable {
     private Date updateDate;
     
     @JsonManagedReference
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "patientId")
+    private Set<PatientAddressEntity> patientAddressEntity = new HashSet<PatientAddressEntity>(0);
+    
+    @JsonManagedReference
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "patientId")
+    private Set<PatientPhoneEntity> patientPhoneEntity = new HashSet<PatientPhoneEntity>(0);
+    
+    @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "patientId")
     private Set<CaseEntity> casesEntity = new HashSet<CaseEntity>(0);
     
@@ -104,6 +112,22 @@ public class PatientEntity implements Serializable {
 		this.updateDate = updateDate;
 	}
 
+	public Set<PatientAddressEntity> getPatientAddressEntity() {
+		return patientAddressEntity;
+	}
+
+	public void setPatientAddressEntity(Set<PatientAddressEntity> patientAddressEntity) {
+		this.patientAddressEntity = patientAddressEntity;
+	}
+
+	public Set<PatientPhoneEntity> getPatientPhoneEntity() {
+		return patientPhoneEntity;
+	}
+
+	public void setPatientPhoneEntity(Set<PatientPhoneEntity> patientPhoneEntity) {
+		this.patientPhoneEntity = patientPhoneEntity;
+	}
+	
 	public Set<CaseEntity> getCasesEntity() {
 		return casesEntity;
 	}
@@ -111,5 +135,5 @@ public class PatientEntity implements Serializable {
 	public void setCasesEntity(Set<CaseEntity> casesEntity) {
 		this.casesEntity = casesEntity;
 	}
-	
+
 }

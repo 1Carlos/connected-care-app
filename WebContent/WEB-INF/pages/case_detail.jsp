@@ -24,6 +24,7 @@
 
 	<script src="resources/scripts/jquery.min.js"></script>
     <script src="resources/scripts/jquery-ui.js"></script>
+    <script src="resources/scripts/validator.js"></script>
     <script src="resources/scripts/case-detail.js"></script>
     <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
   </head>
@@ -114,11 +115,24 @@
                 </tr>
                 <tr style="height:15.0pt">
                   <td style="width:35%">Address:</td>  
-                  <td style="width:65%"></td>
+                  <td style="width:65%">
+                    <c:forEach var="listPatientAddress" items="${object.patientId.patientAddressEntity}" varStatus="loop">
+                      <c:if test="${loop.first}">
+                	    <c:out value="${listPatientAddress.addressLine1}"/> <c:out value="${listPatientAddress.city}"/>, 
+                	    <c:out value="${listPatientAddress.state}"/> <c:out value="${listPatientAddress.zipCode}"/>
+                	  </c:if>
+                    </c:forEach>
+                  </td>
                 </tr>
                 <tr style="height:15.0pt">
                   <td style="width:35%">Phone:</td>  
-                  <td style="width:65%"></td>
+                  <td style="width:65%">
+                    <c:forEach var="listPatientPhone" items="${object.patientId.patientPhoneEntity}" varStatus="loop">
+                      <c:if test="${loop.first}">
+                	    <c:out value="${listPatientPhone.phone}"/>
+                	  </c:if>
+                    </c:forEach>
+                  </td>
                 </tr>
                 <tr style="height:15.0pt">
                   <td style="width:35%">Case Worker:</td>
@@ -139,34 +153,17 @@
                   <td style="width:35%"><strong>ICD Code</strong></td>
                   <td style="width:65%"><strong>ICD Description</strong></td>
                 </tr>
-                <tr style="height:15.0pt">
-                  <td style="width:35%">Diagnosis:</td>
-                  <td style="width:65%"></td>
-                </tr>
+                <c:forEach var="listDiagnosis" items="${object.patientDiagnosisEntity}">
+                  <tr style="height:15.0pt">
+                    <td style="width:35%"><c:out value="${listDiagnosis.diagnosisId.icdCode}"/></td>
+                    <td style="width:65%"><c:out value="${listDiagnosis.diagnosisId.codeDescription1}"/></td>
+                  </tr>
+                </c:forEach>
               </tbody>
             </table>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4" style="background-color:white; border:0">
-            <h4>Progress Notes</h4>
-            <table class="table table-condensed" border="0">
-              <tbody>
-                <tr style="height:15.0pt">
-                  <td style="width:35%;height:15.0pt"><strong>Date</strong></td>
-                  <td style="width:65%;height:15.0pt"><strong>Progress Notes</strong></td>
-                </tr>
-                <c:forEach var="listOrders" items="${object.ordersEntity}">
-                	<c:forEach var="listNotes" items="${listOrders.noteEntity}">
-		                <tr style="height:15.0pt">
-		                  <td style="width:35%"><fmt:formatDate pattern="yyyy-MM-dd" value="${listNotes.creationDate}" /></td>
-		                  <td style="width:65%"><c:out value="${listNotes.noteDetails}"/></td>
-		                </tr>
-	                </c:forEach>
-                </c:forEach>
-              </tbody>
-            </table>            
-        </div>
         <div class="col-md-4" style="background-color:white; border:0">
             <h4>Case Details</h4>
             <table class="table table-condensed" border="0">
@@ -174,7 +171,6 @@
                 <tr style="height:15.0pt">
                   <td style="width:20%;height:15.0pt"><strong>Order</strong></td>
                   <td style="width:20%;height:15.0pt"><strong>Order Detail</strong></td>
-                  <td style="width:20%;height:15.0pt"><strong>Written</strong></td>
                   <td style="width:20%;height:15.0pt"><strong>Date</strong></td>
                   <td style="width:20%;height:15.0pt"><strong>Status</strong></td>
                 </tr>
@@ -190,12 +186,36 @@
 			          <c:if test="${listOrders.orderType == 3}">
    				        Education
 			          </c:if>
+			          <c:if test="${listOrders.orderType == 4}">
+   				        Measurement
+			          </c:if>
                     </td>
                     <td style="width:20%;height:15.0pt"><c:out value="${listOrders.orderDetails}"/></td>
-                    <td style="width:20%;height:15.0pt"></td>
                     <td style="width:20%;height:15.0pt"><fmt:formatDate pattern="yyyy-MM-dd" value="${listOrders.orderActualDate}" /></td>
-                    <td style="width:20%;height:15.0pt"></td>
+                    <td style="width:20%;height:15.0pt"><c:out value="${listOrders.orderStatusDescription}"/></td>
                   </tr>
+                </c:forEach>
+              </tbody>
+            </table>            
+        </div>
+        <div class="col-md-4" style="background-color:white; border:0">
+            <h4>Progress Notes</h4>
+            <table id="progressNoteTable" class="table table-condensed" border="0">
+              <tbody>
+                <tr style="height:15.0pt">
+                  <td style="width:35%;height:15.0pt"><strong>Date</strong></td>
+                  <td style="width:65%;height:15.0pt"><strong>Progress Notes</strong></td>
+                </tr>
+                <c:forEach var="listOrders" items="${object.ordersEntity}" varStatus="loop">
+                    <c:if test="${loop.first}">
+                      <c:set var="idOrder" value="${listOrders.id}"/>
+                    </c:if>
+                	<c:forEach var="listNotes" items="${listOrders.noteEntity}">
+		                <tr style="height:15.0pt">
+		                  <td style="width:35%"><fmt:formatDate pattern="yyyy-MM-dd" value="${listNotes.creationDate}" /></td>
+		                  <td style="width:65%"><c:out value="${listNotes.noteDetails}"/></td>
+		                </tr>
+	                </c:forEach>
                 </c:forEach>
               </tbody>
             </table>            
@@ -203,7 +223,10 @@
       </div>
       <div class="row" >
         <div class="col-md-8" style="background-color:white; border:0">
+          <form id="addNoteForm" action="javascript:addProgressNote();" class="form-horizontal" data-toggle="validator" role="form">
             <h4>Update Case / Add Notes</h4>
+            <input id="idCase" type="hidden" value="${object.id}"/>
+            <input id="idOrder" type="hidden" value="${idOrder}"/>
             <table class="table table-condensed" border="0">
               <tbody>
                 <tr style="height:15.0pt">
@@ -216,33 +239,28 @@
                   </td>
                 </tr>
                 <tr style="height:15.0pt">
-                  <td style="width:35%;height:15.0pt">
-                    <textarea rows="5" cols="35" class="form-control" placeholder="Please add note..."></textarea>
+                  <td style="height:15.0pt">
+                    <div class="form-group">
+                      <textarea id="noteDescription" rows="5" cols="35" class="form-control" style="width:90%;" placeholder="Please add note..." required></textarea>
+                    </div>
                   </td>
-                  <td height="60px" style="width:30%;height:15.0pt">
-                    Next Follow Up:
-                    <br/><br/><br/>
-                    Follow-up Not Required:
-                  </td>
-                  <td style="width:15%;height:15.0pt">
-                    <input class="form-control datepicker" type="text" size="12" >
-                    <br/>
-                    <input class="form-control" type="checkbox">
+                  <td style="height:15.0pt">
+                    <div class="form-group">
+                      <label for="nextFollowUpDate" class="control-label" style="width:180px;">Next Follow Up:</label>
+                      <input id="nextFollowUpDate" type="text" size="12" class="form-control datepicker" style="display:inline; width:100px;" required/>
+                    </div>
+                    <div class="form-group">
+                      <label for="checkBoxFollowUpRequired" class="control-label" style="width:180px;">Follow-up Not Required:</label>
+                      <input id="checkBoxFollowUpRequired" type="checkbox" class="form-control" style="display:inline; width:40px;"/>
+                    </div>
                   </td>
                 </tr>
               </tbody>
-            </table>    
+            </table>
+            <button type="submit" class="btn btn-primary btn-md">Save Note</button>
+          </form>
         </div>
       </div>
-    </div>
-    <div class="container">
-      <a href="javascript:void(0);">
-        <span>
-          <button type="button" class="btn btn-default btn-md">
-            Save Case
-          </button>
-        </span>
-      </a>
     </div>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="resources/scripts/bootstrap.min.js"></script>

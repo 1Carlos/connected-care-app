@@ -6,24 +6,19 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.fourthsource.cc.domain.CaseEntity;
+import com.fourthsource.cc.domain.OrdersEntity;
 
 @Repository
-public class CasesDAOImpl implements CasesDAO  {
+public class OrderDAOImpl implements OrderDAO  {
 	
 	@Autowired
     private SessionFactory sessionFactory;
 	
 	@Override
-	public CaseEntity getCaseById(int id) {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(CaseEntity.class);
+	public OrdersEntity getOrderById(int id) {
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(OrdersEntity.class);
 		criteria.add(Restrictions.eq("id", id));
-		return (CaseEntity) criteria.uniqueResult();
-	}
-	
-	@Override
-	public void updateCase(CaseEntity entity) {
-		sessionFactory.getCurrentSession().update(entity);
+		return (OrdersEntity) criteria.uniqueResult();
 	}
 	
 }
