@@ -11,6 +11,7 @@
     <link rel="icon" href="resources/favicon.ico">
 	<link href="resources/styles/grid.css" rel="stylesheet">
     <link href="resources/styles/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="resources/styles/jquery.dataTables.css" rel="stylesheet">
 
     <title>Connected Care Solution by 4th Source Inc</title>
 
@@ -99,46 +100,33 @@
           <table class="table-condensed" style="border:1px solid #DDDDDD; ">
             <tbody>
               <tr>
+                <td><strong>Case Id: </strong></td>
+                <td><input id="caseId" type="text" class="form-control"></td>
                 <td><strong>Patient Name: </strong></td>
                 <td><input id="patientName" type="text" class="form-control"></td>
-                <td><strong>Diagnosis Code: </strong></td>
-                <td><input id="icdInformation" type="text" class="form-control"></td>
               </tr>
               <tr>
-                <td><strong>Order Actual Date: </strong></td>
+                <td><strong>Case Worker: </strong></td>
+                <td><input id="caseWorker" type="text" class="form-control"></td>
+                <td><strong>Follow Up Date: </strong></td>
                 <td>
                 	From 
-                	<input type="text" size="12" id="fromOrderActualDate" class="form-control datepicker" style="width:100px; display:inline;" /> 
+                	<input type="text" size="12" id="fromFollowUpDate" class="form-control datepicker" style="width:100px; display:inline;" /> 
                 	To 
-                	<input type="text" size="12" id="toOrderActualDate" class="form-control datepicker" style="width:100px; display:inline;" />
-                </td>
-                <td><strong>Order Schedule Date: </strong></td>
-                <td>
-                	From 
-                	<input type="text" size="12" id="fromScheduleDate" class="form-control datepicker" style="width:100px; display:inline;" /> 
-                	To 
-                	<input type="text" size="12" id="toScheduleDate" class="form-control datepicker" style="width:100px; display:inline;" />
+                	<input type="text" size="12" id="toFollowUpDate" class="form-control datepicker" style="width:100px; display:inline;" />
                 </td>
               </tr>
               <tr>
-                <td><strong>Source Type: </strong></td>
+                <td><strong>Case Status: </strong></td>
                 <td>
-                  <select id="sourceType" class="form-control">
-                    <option value="0">All</option>
-                    <option value="hospital">Hospital</option>
-                    <option value="pharmacy">Pharmacy</option>
-                    <option value="practice">Practice</option>
+                  <select id="caseStatus" class="form-control">
+                    <option value="2">All</option>
+                    <option value="0">Open</option>
+                    <option value="1">Close</option>
                   </select>
                 </td>
-                <td><strong>Order Type: </strong></td>
-                <td>
-                  <select id="orderType" class="form-control">
-                    <option value="0">All</option>
-                    <option value="rx">Prescription</option>
-                    <option value="appt">Appointment</option>
-                    <option value="education">Education</option>
-                  </select>
-                </td>
+                <td></td>
+                <td></td>
               </tr>
               <tr>
                 <td>
@@ -157,7 +145,7 @@
         </div>
         <br/>
         <div class="row">
-          <table id="table-cases" data-height="300" class="table table-striped table-bordered table-hover" style="margin-top:-40px;" >
+          <table id="table-cases" data-height="300" class="table table-striped table-hover display" style="margin-top:-40px;">
             <thead>
 	            <tr>
 		            <th style="">
@@ -180,6 +168,7 @@
 		              <div class="th-inner ">Gender</div>
 		              <div class="fht-cell"></div>
 		            </th>
+<!-- 
 		            <th style="">
 		              <div class="th-inner ">Diagnosis Code</div>
 		              <div class="fht-cell"></div>
@@ -196,8 +185,21 @@
 		              <div class="th-inner ">Source Type / Name </div>
 		              <div class="fht-cell"></div>
 		            </th>
+ -->
+		            <th style="">
+		              <div class="th-inner ">Case Worker</div>
+		              <div class="fht-cell"></div>
+		            </th>
+		            <th style="">
+		              <div class="th-inner ">Follow Up Date</div>
+		              <div class="fht-cell"></div>
+		            </th>
 		            <th style="">
 		              <div class="th-inner ">Order Type</div>
+		              <div class="fht-cell"></div>
+		            </th>
+		            <th style="">
+		              <div class="th-inner ">Case Status</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		    	</tr>
@@ -211,5 +213,7 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="resources/scripts/ie10-viewport-bug-workaround.js"></script>
     <script src="resources/scripts/jasny-bootstrap.min.js"></script>
+    <script src="resources/scripts/jquery.dataTables.min.js"></script>
+    
   </body>
 </html>

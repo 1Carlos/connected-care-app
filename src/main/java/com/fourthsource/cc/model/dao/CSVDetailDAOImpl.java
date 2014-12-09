@@ -55,10 +55,12 @@ public class CSVDetailDAOImpl implements CSVDetailDAO  {
 		sessionFactory.getCurrentSession().doWork(new Work() {
 			@Override
 			public void execute(Connection connection) throws SQLException {
-				CallableStatement statement = connection.prepareCall("{CALL sp_GetPatientInfo(?, ?, ?)}");
-				statement.registerOutParameter(1, java.sql.Types.INTEGER);
-				statement.registerOutParameter(2, java.sql.Types.INTEGER);
-				statement.registerOutParameter(3, java.sql.Types.INTEGER);
+				CallableStatement statement = connection.prepareCall("{CALL sp_GetPatientInfo(?, ?, ?, ?, ?)}");
+			    statement.registerOutParameter(1, java.sql.Types.INTEGER);
+			    statement.registerOutParameter(2, java.sql.Types.INTEGER);
+			    statement.registerOutParameter(3, java.sql.Types.INTEGER);
+			    statement.registerOutParameter(4, java.sql.Types.INTEGER);
+			    statement.registerOutParameter(5, java.sql.Types.INTEGER);
 				statement.execute();
 				statement.close();
 			}
@@ -73,8 +75,20 @@ public class CSVDetailDAOImpl implements CSVDetailDAO  {
 	
 	@Override
 	public void callSPReconciliation() {
-		Query q = sessionFactory.getCurrentSession().createSQLQuery("CALL sp_Reconciliation()");
-		q.executeUpdate();
+		sessionFactory.getCurrentSession().doWork(new Work() {
+			@Override
+			public void execute(Connection connection) throws SQLException {
+				CallableStatement statement = connection.prepareCall("{CALL sp_Reconciliation(?, ?, ?, ?, ?)}");
+			    statement.registerOutParameter(1, java.sql.Types.INTEGER);
+			    statement.registerOutParameter(2, java.sql.Types.INTEGER);
+			    statement.registerOutParameter(3, java.sql.Types.INTEGER);
+			    statement.registerOutParameter(4, java.sql.Types.INTEGER);
+			    statement.registerOutParameter(5, java.sql.Types.INTEGER);
+				statement.execute();
+				statement.close();
+			}
+		});
+		//Query q = sessionFactory.getCurrentSession().createSQLQuery("CALL sp_Reconciliation()");
 	}
 	
 }

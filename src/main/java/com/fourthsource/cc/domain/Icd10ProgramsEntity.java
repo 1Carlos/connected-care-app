@@ -8,7 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.codehaus.jackson.annotate.JsonBackReference;
@@ -24,11 +24,16 @@ public class Icd10ProgramsEntity implements Serializable {
     @Column(name="ICD10_PROGRAMS_ID")
     private Integer icd10ProgramsId;	
 	
-	@JsonBackReference
-	@ManyToOne(fetch = FetchType.LAZY)
+	/*@JsonBackReference
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ICD_CODE_ID", nullable = false)
-	private Icd10Entity icdCode;
-     
+	private Icd10Entity icdCodeId;*/
+	
+    @JsonBackReference
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ICD_CODE_ID", nullable = false)
+	private Icd10Entity icdCodeId;    
+    
     @Column(name="RX_ADHERENCE")
     private Integer rxAdherence;
  
@@ -46,12 +51,12 @@ public class Icd10ProgramsEntity implements Serializable {
 		this.icd10ProgramsId = icd10ProgramsId;
 	}
     
-	public Icd10Entity getIcdCode() {
-		return icdCode;
+	public Icd10Entity getIcdCodeId() {
+		return icdCodeId;
 	}
 
-	public void setIcdCode(Icd10Entity icdCode) {
-		this.icdCode = icdCode;
+	public void setIcdCodeId(Icd10Entity icdCodeId) {
+		this.icdCodeId = icdCodeId;
 	}
 
 	public Integer getRxAdherence() {
@@ -66,7 +71,7 @@ public class Icd10ProgramsEntity implements Serializable {
 		return apptAdherence;
 	}
 
-	public void setapptAdherence(Integer apptAdherence) {
+	public void setApptAdherence(Integer apptAdherence) {
 		this.apptAdherence = apptAdherence;
 	}
 

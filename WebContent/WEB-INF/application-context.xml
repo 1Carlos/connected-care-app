@@ -73,7 +73,7 @@
 	
     <!-- Data Source Parameters -->
 
-	<bean 	id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close" p:driverClassName="${db.dataSource.driver}"
+	<bean 	id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" p:driverClassName="${db.dataSource.driver}"
 			p:url="${db.dataSource.URL}" p:username="${db.dataSource.user}" p:password="${db.dataSource.password}" />
   
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -103,6 +103,10 @@
     <bean id="noteManager" class="com.fourthsource.cc.model.services.NoteManagerImpl"></bean>
     <bean id="patientDAO" class="com.fourthsource.cc.model.dao.PatientDAOImpl"></bean>
     <bean id="patientManager" class="com.fourthsource.cc.model.services.PatientManagerImpl"></bean>
+    <bean id="icd10DAO" class="com.fourthsource.cc.model.dao.Icd10DAOImpl"></bean>
+    <bean id="icd10Manager" class="com.fourthsource.cc.model.services.Icd10ManagerImpl"></bean>
+    <bean id="icd10ProgramsDAO" class="com.fourthsource.cc.model.dao.Icd10ProgramsDAOImpl"></bean>
+    <bean id="icd10ProgramsManager" class="com.fourthsource.cc.model.services.Icd10ProgramsManagerImpl"></bean>
     
     <tx:annotation-driven transaction-manager="transactionManager"/>
     

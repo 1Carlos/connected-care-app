@@ -35,6 +35,9 @@ public class CasesViewEntity implements Serializable {
 
     @Column(name="PATIENT_GENDER")
     private String patientGender;
+    
+    @Column(name="CASE_STATUS")
+    private Integer caseStatus;
 
     @Column(name="DIAGNOSIS_CODE")
     private String diagnosisCode;
@@ -48,9 +51,6 @@ public class CasesViewEntity implements Serializable {
     @Column(name="ORDER_SCHEDULE_DATE")
     private Date orderScheduleDate;
     
-    @Column(name="CASE_STATUS")
-    private Integer caseStatus;
-    
     @Column(name="SOURCE_TYPE")
     private String sourceType;
     
@@ -59,6 +59,15 @@ public class CasesViewEntity implements Serializable {
     
     @Column(name="ORDER_TYPE")
     private String orderType;
+    
+    @Column(name="CASE_WORKER_LAST_NAME")
+    private String caseWorkerLastName;
+    
+    @Column(name="CASE_WORKER_FIRST_NAME")
+    private String caseWorkerFirstName;
+    
+    @Column(name="FOLLOW_UP_DATE")
+    private String followUpDate;
     
     public Integer getId() {
 		return id;
@@ -180,4 +189,33 @@ public class CasesViewEntity implements Serializable {
 		this.orderType = orderType;
 	}
 
+    public String getCaseWorkerLastName(){
+    	return caseWorkerLastName;
+    }
+
+    public void setCaseWorkerLastName(String caseWorkerLastName){
+    	this.caseWorkerLastName = caseWorkerLastName;
+    }
+    
+    //@Column(name="CASE_WORKER_FIRST_NAME")
+    //private String caseWorkerFirstName;
+
+    public String getCaseWorkerFirstName(){
+    	return caseWorkerFirstName;
+    }
+
+    public void setCaseWorkerFirstName(String caseWorkerFirstName){
+    	this.caseWorkerFirstName = caseWorkerFirstName;
+    }
+    
+    /*@Column(name="FOLLOW_UP_DATE")
+    private String followUpDate;*/
+
+    public String getFollowUpDate(){
+    	return followUpDate;
+    }
+
+    public void setFollowUpDate(String followUpDate){
+    	this.followUpDate = followUpDate;
+    }
 }

@@ -21,3 +21,23 @@ hr {
   margin-top: 40px;
   margin-bottom: 40px;
 }
+
+/* Field: Date  */
+#progressNoteTable tr:nth-child(odd){
+	font-weight: 'Strong';
+}
+/* Field: Worker */
+#progressNoteTable tr:nth-child(even){
+	height:15.0pt;
+}
+/* Field: Date  */
+#progressNoteTable td:nth-of-type(odd){ 
+	width:30%; vertical-align:top;
+	font-style: 'Italic';
+}
+/* Field: Worker Name   */
+#progressNoteTable td:nth-of-type(even){
+	width:70%; vertical-align:right;
+	font-weight: 'Strong';
+	font-style: 'Italic';
+}		

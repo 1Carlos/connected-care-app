@@ -71,7 +71,8 @@ public class CSVFileManager {
 		Collections.sort(listHeader, new Comparator<FileTitleHeaderProperties>() {
 	        @Override
 	        public int compare(FileTitleHeaderProperties obj1, FileTitleHeaderProperties obj2) {
-	            return Integer.compare(obj1.getId(), obj2.getId());
+	            return new Integer (obj1.getId()).compareTo(obj2.getId());
+	            		//Integer.compare(obj1.getId(), obj2.getId()); //jre 1.8
 	        }
 	    });
 		

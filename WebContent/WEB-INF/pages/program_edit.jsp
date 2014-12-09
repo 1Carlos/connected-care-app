@@ -79,12 +79,13 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="help"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
-                        <li><a href="http://www.4thsource.com" style="padding-top: 0px;
+            <li><a href="http://www.4thsource.com" style="padding-top: 0px;
                                                           padding-right: 0px;
                                                           padding-bottom: 0px;
                                                           padding-left: 0px;">
                 <img alt="4thSource Logo" src="resources/images/logo_4thsource.jpg">
                 </a>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -104,14 +105,11 @@
 		<div align="right">
 		  <!--TOOLBAR-->
 		  <div class="btn-toolbar right" role="toolbar" aria-label="">
-		    <button id="button-new-record" type="button" class="btn btn-default" aria-label="Add ICD Code">
-		      <span class="glyphicon glyphicon-plus" aria-hidden="true">  Add</span>
+		    <button id="cancel-data-validation" type="button" class="btn btn-default" aria-label="Cancel">
+		      <span class="glyphicon glyphicon-remove" aria-hidden="true">  Cancel</span>
 		    </button>
-		    <button id="button-edit-record" type="button" class="btn btn-default" aria-label="Modify ICD Code">
-		      <span class="glyphicon glyphicon-pencil" aria-hidden="true">  Modify</span>
-		    </button>
-		    <button id="button-delete-record" type="button" class="btn btn-default" aria-label="Remove ICD Code">
-		      <span class="glyphicon glyphicon-trash" aria-hidden="true">  Remove</span>
+		    <button id="confirm-edit-data" type="button" class="btn btn-default" aria-label="Save">
+		      <span class="glyphicon glyphicon-ok" aria-hidden="true">  Save</span>
 		    </button>
 		  </div><!--END/TOOLBAR-->  
 		</div><!--END/RIGHT -->
@@ -146,58 +144,63 @@
                         </thead>
                     <tbody>
 <!-- Records from the database -->
-		                <c:forEach var="listValue" items="${list}">
 		               	  <tr>
 						    <td>
-						    	<input type="radio"  name="icd10ProgramsId" id="icd10ProgramsId" value="<c:out value="${listValue.icd10ProgramsId}"/>">
-							    <input type="hidden" name="icdCodeId" value="<c:out value="${listValue.icdCodeId.icdCodeId}"/>">
+						    	<input type="hidden" name="icd10ProgramsId" id="icd10ProgramsId" value="<c:out value="${object.icd10ProgramsId}"/>">
+							    <input type="hidden" name="icdCodeId" id="icdCodeId" value="<c:out value="${object.icdCodeId.icdCodeId}"/>">
 						    </td>
 						    <td>
-							    <input type="hidden" name="icdCode" id="icdCode" value="<c:out value="${listValue.icdCodeId.icdCode}"/>">
-							    <input type="hidden" name="codeDesc1" id="codeDesc1" value="<c:out value="${listValue.icdCodeId.codeDesc1}"/>">
-							    <c:out value="${listValue.icdCodeId.icdCode} - ${listValue.icdCodeId.codeDesc1}"/>
+							    <input type="text" name="icdCode" id="icdCode" value="<c:out value="${object.icdCodeId.icdCode}"/>" readonly>
 						    </td>
 						    <td>
-							    <c:choose>
-								    <c:when test="${listValue.rxAdherence == 0}">
-				        				NO
-				    				</c:when>
-				    				<c:otherwise>
-				        				YES
-				    				</c:otherwise>
-			    				</c:choose>
+							    <select id="rxAdherence">
+								    <c:choose>
+									    <c:when test="${object.rxAdherence == 0}">
+					        				<option value="0" selected>NO</option>>
+					        				<option value="1">YES</option>>
+					    				</c:when>
+					    				<c:otherwise>
+					        				<option value="0">NO</option>>
+					        				<option value="1" selected>YES</option>>
+					    				</c:otherwise>
+				    				</c:choose>
+							    </select>
 		    				</td>
 		    				<td>
-							    <c:choose>
-								    <c:when test="${listValue.apptAdherence == 0}">
-				        				NO
-				    				</c:when>
-				    				<c:otherwise>
-				        				YES
-				    				</c:otherwise>
-			    				</c:choose>
+							    <select id="apptAdherence">
+								    <c:choose>
+									    <c:when test="${object.apptAdherence == 0}">
+					        				<option value="0" selected>NO</option>>
+					        				<option value="1">YES</option>>
+					    				</c:when>
+					    				<c:otherwise>
+					        				<option value="0">NO</option>>
+					        				<option value="1" selected>YES</option>>
+					    				</c:otherwise>
+				    				</c:choose>
+							    </select>
 		    				</td>
 		    				<td>
-							    <c:choose>
-								    <c:when test="${listValue.education == 0}">
-				        				NO
-				    				</c:when>
-				    				<c:otherwise>
-				        				YES
-				    				</c:otherwise>
-			    				</c:choose>
+							    <select id="education">
+								    <c:choose>
+									    <c:when test="${object.education == 0}">
+					        				<option value="0" selected>NO</option>>
+					        				<option value="1">YES</option>>
+					    				</c:when>
+					    				<c:otherwise>
+					        				<option value="0">NO</option>>
+					        				<option value="1" selected>YES</option>>
+					    				</c:otherwise>
+				    				</c:choose>
+							    </select>
 		    				</td>
 						  </tr>
-					    </c:forEach>
 <!-- Records from the database -->
                       </tbody>
                     </table>
             </div>
      </div>
 <!-- TABLE -->
-
-
-
 
 
     <!-- Bootstrap core JavaScript

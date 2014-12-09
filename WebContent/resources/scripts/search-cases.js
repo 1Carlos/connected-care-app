@@ -4,9 +4,18 @@ $(document).ready(function() {
 	$(".datepicker").datepicker({
 		dateFormat: "dd/mm/yy"
 	});
+
+    $('#datatable').DataTable();
 	
 	$("#search-button").click(function() {
 		var patientName = $("#patientName").val();
+		var caseId = $("#caseId").val();
+		var fromFollowUpDate = $("#fromFollowUpDate").datepicker("getDate");
+		var toFollowUpDate = $("#toFollowUpDate").datepicker("getDate");
+		var caseStatus = $("#caseStatus").val();
+		var caseWorker = $("#caseWorker").val();
+		
+		/*
 		var icdInformation = $("#icdInformation").val();
 		var fromOrderDate = $("#fromOrderActualDate").datepicker("getDate");
 		var toOrderDate = $("#toOrderActualDate").datepicker("getDate");
@@ -14,16 +23,23 @@ $(document).ready(function() {
 		var toScheduleDate = $("#toScheduleDate").datepicker("getDate");
 		var sourceType = $("#sourceType").val();
 		var orderType = $("#orderType").val();
+		*/
 		
 		var DTO = Object();
 		DTO.patientName = patientName;
-		DTO.icdInformation = icdInformation;
+		DTO.caseId = caseId;
+		DTO.fromFollowUpDate = fromFollowUpDate;
+		DTO.toFollowUpDate = toFollowUpDate;
+		DTO.caseStatus = caseStatus;
+		DTO.caseWorker = caseWorker;
+		
+		/*DTO.icdInformation = icdInformation;
 		DTO.fromOrderDate = fromOrderDate;
 		DTO.toOrderDate = toOrderDate;
 		DTO.fromScheduleDate = fromScheduleDate;
 		DTO.toScheduleDate = toScheduleDate;
 		DTO.sourceType = sourceType;
-		DTO.orderType = orderType;
+		DTO.orderType = orderType;*/
 		
 		$("#table-cases").show();
 		
@@ -78,13 +94,17 @@ function getHTMLRow(object) {
 	var patientFirstName = object.patientFirstName == null ? "" : object.patientFirstName;
 	var patientDOB = object.patientDOB == null ? "" : $.datepicker.formatDate("yy-mm-dd", new Date(object.patientDOB));
 	var patientGender = object.patientGender == null ? "" : object.patientGender;
-	var diagnosisCode = object.diagnosisCode == null ? "" : object.diagnosisCode;
-	var diagnosisName = object.diagnosisName == null ? "" : object.diagnosisName;
-	var orderActualDate = object.orderActualDate == null ? "" : $.datepicker.formatDate("yy-mm-dd", new Date(object.orderActualDate));
-	var orderScheduleDate = object.orderScheduleDate == null ? "" : $.datepicker.formatDate("yy-mm-dd", new Date(object.orderScheduleDate));
-	var sourceType = object.sourceType == null ? "" : object.sourceType;
-	var sourceName = object.sourceName == null ? "" : object.sourceName;
+	//var diagnosisCode = object.diagnosisCode == null ? "" : object.diagnosisCode;
+	//var diagnosisName = object.diagnosisName == null ? "" : object.diagnosisName;
+	//var orderActualDate = object.orderActualDate == null ? "" : $.datepicker.formatDate("yy-mm-dd", new Date(object.orderActualDate));
+	//var orderScheduleDate = object.orderScheduleDate == null ? "" : $.datepicker.formatDate("yy-mm-dd", new Date(object.orderScheduleDate));
+	//var sourceType = object.sourceType == null ? "" : object.sourceType;
+	//var sourceName = object.sourceName == null ? "" : object.sourceName;
+	var caseWorkerLastName = object.caseWorkerLastName == null ? "" : object.caseWorkerLastName;
+	var caseWorkerFirstName = object.caseWorkerFirstName == null ? "" : object.caseWorkerFirstName;
+	var caseStatus = object.caseStatus == null ? "" : object.caseStatus;
 	var orderType = object.orderType == null ? "" : object.orderType;
+	var followUpDate = object.followUpDate == null ? "" : $.datepicker.formatDate("yy-mm-dd", new Date(object.followUpDate));
 	
 	var row =
 		"<tr>" +
@@ -97,11 +117,14 @@ function getHTMLRow(object) {
 			"<td>" + patientFirstName + "</td>" +
 			"<td>" + patientDOB + "</td>" +
 			"<td>" + patientGender + "</td>" +
-			"<td>" + diagnosisCode + " - " + diagnosisName + "</td>" +
+			/*"<td>" + diagnosisCode + " - " + diagnosisName + "</td>" +
 			"<td>" + orderActualDate + "</td>" +
 			"<td>" + orderScheduleDate + "</td>" +
-			"<td>" + sourceType + " / " + sourceName + "</td>" +
+			"<td>" + sourceType + " / " + sourceName + "</td>" +*/
+			"<td>" + caseWorkerLastName + "," + caseWorkerFirstName + "</td>" +
+			"<td>" + followUpDate + "</td>" +
 			"<td>" + orderType + "</td>" +
+			"<td>" + (caseStatus == 0 ? "OPEN" : "CLOSED") + "</td>" +
     	"</tr>";
   
   	return row;

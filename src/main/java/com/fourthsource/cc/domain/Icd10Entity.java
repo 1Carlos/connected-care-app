@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -32,14 +33,18 @@ public class Icd10Entity implements Serializable {
     private String codeType;
     
     @Column(name="CODE_DESC1")
-    private String codeDescription1;
+    private String codeDesc1;
 
     @Column(name="CODE_DESC2")
-    private String codeDescription2;
+    private String codeDesc2;
+
+    /*@JsonManagedReference
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "icdCodeId")
+    private Set<Icd10ProgramsEntity> icd10ProgramsEntity = new HashSet<Icd10ProgramsEntity>(0);*/
 
     @JsonManagedReference
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "icdCode")
-    private Set<Icd10ProgramsEntity> icd10ProgramsEntity = new HashSet<Icd10ProgramsEntity>(0);
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "icdCodeId")
+    private Icd10ProgramsEntity icd10ProgramsEntity;    
     
     @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "diagnosisId")
@@ -69,20 +74,20 @@ public class Icd10Entity implements Serializable {
 		this.codeType = codeType;
 	}
 
-	public String getCodeDescription1() {
-		return codeDescription1;
+	public String getCodeDesc1() {
+		return codeDesc1;
 	}
 
-	public void setCodeDescription1(String codeDescription1) {
-		this.codeDescription1 = codeDescription1;
+	public void setCodeDesc1(String codeDesc1) {
+		this.codeDesc1 = codeDesc1;
 	}
     
-	public String getCodeDescription2() {
-		return codeDescription2;
+	public String getCodeDesc2() {
+		return codeDesc2;
 	}
 
-	public void setCodeDescription2(String codeDescription2) {
-		this.codeDescription2 = codeDescription2;
+	public void setCodeDesc2(String codeDesc2) {
+		this.codeDesc2 = codeDesc2;
 	}
 
 	public Set<PatientDiagnosisEntity> getPatientDiagnosisEntity() {

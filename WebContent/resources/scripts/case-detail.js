@@ -31,14 +31,24 @@ function addProgressNote() {
 	var date = $.datepicker.formatDate("yy-mm-dd", new Date());
 	
 	var row =
-		"<tr>" +
+        "<tr style=\"\">" + 
+		"	<td style=\"width:30%;vertical-align:top;\"><b><i>" + date + "</i></b></td>"+
+        "	<td style=\"width:70%;vertical-align:right;\" align=\"right\"><strong><i>Smith, Joe</i></strong></td>" + 
+        "</tr>" + 
+        "<tr style=\"height:15.0pt\">" + 
+          "<td style=\"vertical-align:top;\" colspan=\"2\" >" + noteDescription + "</td>"
+        "</tr>";
+        
+		/*"<tr>" +
 			"<td>" +
 			    date +
 			"</td>" +
+		"</tr>"+
+		"<tr>" +
 			"<td>" +
 				noteDescription +
 			"</td>" +
-		"</tr>";
+		"</tr>";*/
 	
 	$("#progressNoteTable tbody").append(row);
 }

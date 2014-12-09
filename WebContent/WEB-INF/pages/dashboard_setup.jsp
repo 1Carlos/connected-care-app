@@ -21,167 +21,180 @@
 
     <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
     <script type="text/javascript">
-	  window.onload = function () {
-		  var chart2 = new CanvasJS.Chart("chartContainer2",
-		    {
-		      title:{
-		        text: "Readmissions by Month"    
-		      },
-		      axisY: {
-		        title: "Quantity"
-		      },
-		      legend: {
-		        verticalAlign: "bottom",
-		        horizontalAlign: "center"
-		      },
-		      theme: "theme2",
-		      backgroundColor:"#dcdaeb",
-		      data: [{        
-		        type: "column",  
-		        showInLegend: true, 
-		        legendMarkerColor: "grey",
-		        legendText: "Months",
-		        dataPoints: [      
-		        {y: 70, label: "Sep"},
-		        {y: 90,  label: "Oct" },
-		        {y: 100,  label: "Nov"},
-		        {y: 50, label: "Dec"},
-		        {y: 25,  label: "Jan" },
-		        {y: 20,  label: "Feb"}
-		        ]
-		      }]
-		    });
-		    chart2.render();
-		
-		  var chart3 = new CanvasJS.Chart("chartContainer3",
-		    {
-		      title:{
-		        text: "Gaps in Care By Month"    
-		      },
-		      axisY: {
-		        title: "Unit"
-		      },
-		      legend: {
-		        verticalAlign: "bottom",
-		        horizontalAlign: "center"
-		      },
-		      theme: "theme2",
-		      backgroundColor:"#dcdaeb",
-		      data: [{        
-		        type: "column",  
-		        showInLegend: true, 
-		        legendMarkerColor: "blue",
-		        legendText: "Appt Adherence",
-		        dataPoints: [      
-		        {y: 30, label: "Sep"},
-		        {y: 50, label: "Oct"},
-		        {y: 50, label: "Nov"},
-		        {y: 20, label: "Dec"},
-		        {y: 15, label: "Jan"},
-		        {y: 15, label: "Feb"}
-		        ]},   
-		      {        
-		        type: "column",  
-		        showInLegend: true, 
-		        legendMarkerColor: "red",
-		        legendText: "Rx Adherence",
-		        dataPoints: [      
-		        {y: 80,  label: "Sep" },
-		        {y: 80,  label: "Oct" },
-		        {y:100,  label: "Nov" },
-		        {y: 60,  label: "Dec" },
-		        {y: 20,  label: "Jan" },
-		        {y: 15,  label: "Feb" }
-		        ]
-		      }]
-		    });
-		    chart3.render();
-		
-		  var chart4 = new CanvasJS.Chart("chartContainer4",
-		    {
-		      title:{
-		        text: "Gaps in Care v. Readmissions"    
-		      },
-		      axisY: {
-		        title: "Units"
-		      },
-		      legend: {
-		        verticalAlign: "bottom",
-		        horizontalAlign: "center"
-		      },
-		      theme: "theme2",
-		      backgroundColor:"#dcdaeb",
-		      data: [{        
-		        type: "column",  
-		        showInLegend: true, 
-		        legendMarkerColor: "blue",
-		        legendText: "Gaps in Care",
-		        dataPoints: [      
-		        {y: 400, label: "Sep"},
-		        {y: 500, label: "Oct"},
-		        {y: 650, label: "Nov"},
-		        {y: 300, label: "Dec"},
-		        {y: 150, label: "Jan"},
-		        {y: 100, label: "Feb"}
-		        ]},   
-		      {        
-		        type: "column",  
-		        showInLegend: true, 
-		        legendMarkerColor: "red",
-		        legendText: "Readmissions",
-		        dataPoints: [      
-		        {y: 100,  label: "Sep" },
-		        {y: 200,  label: "Oct" },
-		        {y: 300,  label: "Nov" },
-		        {y: 100,  label: "Dec" },
-		        {y: 60,  label: "Jan" },
-		        {y: 40,  label: "Feb" }
-		        ]
-		      }]
-		    });
-		    chart4.render();
-		  
-		  var chart5 = new CanvasJS.Chart("chartContainer5",
-		    {
-		      title:{
-		        text: "Rx vs Gaps in Care per Month"    
-		      },
-		      axisY: {
-		        title: "Unit"
-		      },
-		      legend: {
-		        verticalAlign: "bottom",
-		        horizontalAlign: "center"
-		      },
-		      theme: "theme2",
-		      backgroundColor:"#dcdaeb",
-		      data: [{        
-		        type: "column",  
-		        showInLegend: true, 
-		        legendMarkerColor: "blue",
-		        legendText: "Rx Adherence",
-		        dataPoints: [      
-		        {y: 40000,  label: "Sep" },
-		        {y: 40000,  label: "Oct" },
-		        {y: 50000,  label: "Nov" },
-		        {y: 30000,  label: "Dec" }
-		        ]
-		      },   
-		      {        
-		        type: "column",  
-		        showInLegend: true, 
-		        legendMarkerColor: "red",
-		        legendText: "Gaps in Care",
-		        dataPoints: [      
-		        {y: 80000,  label: "Sep" },
-		        {y: 80000,  label: "Oct" },
-		        {y:100000,  label: "Nov" },
-		        {y: 60000,  label: "Dec" }
-		        ]
-		      }]
-		    });
-		    chart5.render();
-	  }
+    window.onload = function () {
+    	var chart2 = new CanvasJS.Chart("chartContainer2",
+        {
+          title:{
+            text: "Readmissions by Month"    
+          },
+          axisY: {
+            title: "Quantity"
+          },
+          legend: {
+            verticalAlign: "bottom",
+            horizontalAlign: "center"
+          },
+          theme: "theme2",
+          backgroundColor:"white",
+          data: [
+
+          {        
+            type: "column",  
+            showInLegend: true, 
+            legendMarkerColor: "grey",
+            legendText: "Months",
+            dataPoints: [      
+            {y: 70, label: "Sep"},
+            {y: 90,  label: "Oct" },
+            {y: 100,  label: "Nov"},
+            {y: 50, label: "Dec"},
+            {y: 25,  label: "Jan" },
+            {y: 20,  label: "Feb"}
+            ]
+          }   
+          ]
+        });
+
+        chart2.render();
+
+    	var chart3 = new CanvasJS.Chart("chartContainer3",
+        {
+          title:{
+            text: "Gaps in Care By Month"    
+          },
+          axisY: {
+            title: "Unit"
+          },
+          legend: {
+            verticalAlign: "bottom",
+            horizontalAlign: "center"
+          },
+          theme: "theme2",
+          backgroundColor:"white",
+          data: [
+          {        
+            type: "column",  
+            showInLegend: true, 
+            legendMarkerColor: "blue",
+            legendText: "Appt Adherence",
+            dataPoints: [      
+            {y: 30, label: "Sep"},
+            {y: 50, label: "Oct"},
+            {y: 50, label: "Nov"},
+            {y: 20, label: "Dec"},
+            {y: 15, label: "Jan"},
+            {y: 15, label: "Feb"}
+            ] //Appt Adherence
+          },   
+          {        
+            type: "column",  
+            showInLegend: true, 
+            legendMarkerColor: "red",
+            legendText: "Rx Adherence",
+            dataPoints: [      
+            {y: 80,  label: "Sep" },
+            {y: 80,  label: "Oct" },
+            {y:100,  label: "Nov" },
+            {y: 60,  label: "Dec" },
+            {y: 20,  label: "Jan" },
+            {y: 15,  label: "Feb" }
+            ] //Rx Adherence
+          }]
+        });
+
+        chart3.render();
+
+    	var chart4 = new CanvasJS.Chart("chartContainer4",
+        {
+          title:{
+            text: "Gaps in Care v. Readmissions"    
+          },
+          axisY: {
+            title: "Units"
+          },
+          legend: {
+            verticalAlign: "bottom",
+            horizontalAlign: "center"
+          },
+          theme: "theme2",
+          backgroundColor:"white",
+          data: [
+          {        
+            type: "column",  
+            showInLegend: true, 
+            legendMarkerColor: "blue",
+            legendText: "Gaps in Care",
+            dataPoints: [      
+            {y: 400, label: "Sep"},
+            {y: 500, label: "Oct"},
+            {y: 650, label: "Nov"},
+            {y: 300, label: "Dec"},
+            {y: 150, label: "Jan"},
+            {y: 100, label: "Feb"}
+            ] //Appt Adherence
+          },   
+          {        
+            type: "column",  
+            showInLegend: true, 
+            legendMarkerColor: "red",
+            legendText: "Readmissions",
+            dataPoints: [      
+            {y: 100,  label: "Sep" },
+            {y: 200,  label: "Oct" },
+            {y: 300,  label: "Nov" },
+            {y: 100,  label: "Dec" },
+            {y: 60,  label: "Jan" },
+            {y: 40,  label: "Feb" }
+            ] //Rx Adherence
+          }]
+        });
+
+        chart4.render();
+    	
+    	var chart5 = new CanvasJS.Chart("chartContainer5",
+        {
+          title:{
+            text: "Rx vs Gaps in Care per Month"    
+          },
+          axisY: {
+            title: "Unit"
+          },
+          legend: {
+            verticalAlign: "bottom",
+            horizontalAlign: "center"
+          },
+          theme: "theme2",
+          backgroundColor:"white",
+          data: [
+          {        
+            type: "column",  
+            showInLegend: true, 
+            legendMarkerColor: "blue",
+            legendText: "Rx Adherence",
+            dataPoints: [      
+            {y: 40000,  label: "Sep" },
+            {y: 40000,  label: "Oct" },
+            {y: 50000,  label: "Nov" },
+            {y: 30000,  label: "Dec" }
+            ] //Appt Adherence
+          },   
+          {        
+            type: "column",  
+            showInLegend: true, 
+            legendMarkerColor: "red",
+            legendText: "Gaps in Care",
+            dataPoints: [      
+            {y: 80000,  label: "Sep" },
+            {y: 80000,  label: "Oct" },
+            {y:100000,  label: "Nov" },
+            {y: 60000,  label: "Dec" }
+            ] //Rx Adherence
+          }]
+        });
+
+        chart5.render();
+      
+      }
     </script>
     <script type="text/javascript" src="resources/scripts/canvasjs.min.js"></script>
     <script src="resources/scripts/Chart.min.js"></script>

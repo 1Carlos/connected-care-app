@@ -1,7 +1,7 @@
 package com.fourthsource.cc.domain.requests;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class RequestSearchCaseView implements Serializable {
 
@@ -15,6 +15,10 @@ public class RequestSearchCaseView implements Serializable {
 	private Date toScheduleDate;
 	private String sourceType;
 	private String orderType;
+	private String fromFollowUpDate;
+	private String toFollowUpDate;
+	private String caseWorker;
+	private Integer caseStatus;
 	
 	public Integer getCaseId() {
 		return caseId;
@@ -86,6 +90,38 @@ public class RequestSearchCaseView implements Serializable {
 
 	public void setOrderType(String orderType) {
 		this.orderType = orderType;
+	}
+
+	public String getFromFollowUpDate() {
+		return fromFollowUpDate;
+	}
+
+	public void setFromFollowUpDate(String fromFollowUpDate) {
+		this.fromFollowUpDate = fromFollowUpDate;
+	}
+
+	public String getToFollowUpDate() {
+		return toFollowUpDate;
+	}
+
+	public void setToFollowUpDate(String toFollowUpDate) {
+		this.toFollowUpDate = toFollowUpDate;
+	}
+
+	public String getCaseWorker() {
+		return caseWorker;
+	}
+
+	public void setCaseWorker(String caseWorker) {
+		this.caseWorker = caseWorker;
+	}
+
+	public Integer getCaseStatus() {
+		return caseStatus;
+	}
+
+	public void setCaseStatus(Integer caseStatus) {
+		this.caseStatus = caseStatus;
 	}
 
 }

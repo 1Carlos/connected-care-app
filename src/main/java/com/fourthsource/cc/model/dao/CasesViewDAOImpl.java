@@ -27,7 +27,7 @@ public class CasesViewDAOImpl implements CasesViewDAO  {
 	@SuppressWarnings("unchecked")
 	public List<CasesViewEntity> getAllOpenCases() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(CasesViewEntity.class);
-		criteria.add(Restrictions.eq("caseStatus", 1));
+		criteria.add(Restrictions.eq("caseStatus", 0));
 		return criteria.list();
 	}
 	
