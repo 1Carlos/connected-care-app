@@ -136,7 +136,7 @@
                 </tr>
                 <tr style="height:15.0pt">
                   <td style="width:35%"><strong>Case Worker:</strong></td>
-                  <td style="width:65%"><c:out value="${object.caseWorkerId.lastName}"/>, <c:out value="${object.caseWorkerId.firstName}"/></td>
+                  <td style="width:65%"><label id="caseWorkerName" style="font-style:normal;"><c:out value="${object.caseWorkerId.lastName}"/>, <c:out value="${object.caseWorkerId.firstName}"/></label></td>
                 </tr>
                 <tr style="height:15.0pt">
                   <td style="width:35%"><strong>Follow-up Date:</strong></td>    
@@ -233,7 +233,9 @@
 		                <tr style="">
 		                  <td style=""><strong><i><fmt:formatDate pattern="yyyy-MM-dd" value="${listNotes.creationDate}" /></i></strong></td>
 		                  <td style="" align="right"><strong><i>
-		                  <c:out value="${listOrders.caseId.caseWorkerId.lastName}"/>, <c:out value="${listOrders.caseId.caseWorkerId.firstName}"/>
+		                  <s:if test="${listNotes.creationDate != null}">
+			                  <c:out value="${listOrders.caseId.caseWorkerId.lastName}"/>,<c:out value="${listOrders.caseId.caseWorkerId.firstName}"/>
+		                  </s:if>
 		                  </i></strong></td>
 	                    </tr>		                  
 		                <tr style="">

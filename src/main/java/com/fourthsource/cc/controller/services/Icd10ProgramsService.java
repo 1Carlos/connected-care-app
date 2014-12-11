@@ -87,5 +87,23 @@ public class Icd10ProgramsService  {
 		return response;
     }
 
+	@RequestMapping(value="/deleteIcd10Programs", method=RequestMethod.POST)
+    private @ResponseBody Message deleteIcd10Programs(@RequestBody RequestIcd10Programs request) {
+		logger.debug("Service deleteIcd10Programs()");
+		Message response = null;
+		
+		try {
+			Icd10ProgramsEntity icd10ProgramsEntity = icd10ProgramsManager.getIcd10ProgramsById(request.getIcd10ProgramsId()); //request.getIcd10ProgramsId()
+			icd10ProgramsManager.deleteIcd10(icd10ProgramsEntity);
+			
+			response = commonProperties.getSuccessMessage();
+		} catch(HibernateException e) {
+			response = commonProperties.getTransactionException();
+			logger.error(e.getMessage(), e);
+		}
+
+		return response;
+    }
+	
 	
 }

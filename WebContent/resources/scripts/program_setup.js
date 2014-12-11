@@ -11,7 +11,11 @@ $(document).ready(function() {
 		var record = $("input:radio[name='icd10ProgramsId']:checked");
 		var index = record.index();
 		var icd10ProgramValue = record.val();
-		//alert("icd10ProgramValue:>"+icd10ProgramValue);
+		if (index < 0){
+			alert("Please, select one ICD Code.");
+			return false;
+		}
+		
 		
 		var icdCode = record.closest('td').next().find('input').val();
 		//var icdCode = $("input:radio[name='icd10ProgramsId']:checked").next().text();
@@ -35,10 +39,31 @@ $(document).ready(function() {
 	});
 
 	$("#button-delete-record").click(function() {
-		var isOK = window.confirm("Confirm to delete this ICD Code?");
-		if (isOK){
-			window.location = "program_setup";
+		var record = $("input:radio[name='icd10ProgramsId']:checked");
+		var index = record.index();
+		var icd10ProgramValue = record.val();
+		if (index < 0){
+			alert("Please, select one ICD Code.");
+			return false;
 		}
+		if ( window.confirm("Confirm to delete this ICD Code?") ){
+		
+			var DTO = Object();
+
+			DTO.icd10ProgramsId = icd10ProgramValue;
+
+			$.ajax({
+				type: "POST",
+				dataType: "JSON",
+				contentType: "application/json",
+				url: "services/deleteIcd10Programs",
+				data: JSON.stringify(DTO)
+			}).done(function(data) {
+				goRefresh();
+			});
+
+		}		
+
 	});
 	
 	/* Add ICd10 Code*/
@@ -57,7 +82,7 @@ $(document).ready(function() {
 		DTO.rxAdherence 	= rxAdherence;
 		DTO.apptAdherence 	= apptAdherence;
 		DTO.education 		= education;
-		
+
 		$.ajax({
 			type: "POST",
 			dataType: "JSON",

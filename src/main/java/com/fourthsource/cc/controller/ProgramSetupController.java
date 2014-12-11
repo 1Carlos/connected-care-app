@@ -59,33 +59,6 @@ public class ProgramSetupController {
 		model.put("object", entity);
 		return new ModelAndView(VIEWe, model); 
 	}
-	
-	/*@RequestMapping(value="/program_update", method=RequestMethod.POST)
-	public ModelAndView updateProgram(RequestIcd10Programs request) {
-		logger.debug("Loading \"updateProgram\" page");
-		
-		try {
-			Icd10ProgramsEntity icd10ProgramsEntity = icd10ProgramsManager.getIcd10ProgramsById(request.getIcd10ProgramsId());
-			
-			//icd10ProgramsEntity.setIcdCodeId(icd10Entity);
-			icd10ProgramsEntity.setRxAdherence(request.getRxAdherence());
-			icd10ProgramsEntity.setApptAdherence(request.getApptAdherence());
-			icd10ProgramsEntity.setEducation(request.getEducation());
-			
-			icd10ProgramsManager.upDateIcd10(icd10ProgramsEntity);
-			
-			response = commonProperties.getSuccessMessage();
-		} catch(HibernateException e) {
-			response = commonProperties.getTransactionException();
-			logger.error(e.getMessage(), e);
-		}
-		Icd10ProgramsEntity entity = icd10ProgramsManager.getIcd10ProgramsById(icd10ProgramsId);
-		//Icd10ProgramsEntity entity = icd10ProgramsService.getIcd10ProgramsById(id);
-		//entity.setIcdCode(icdCode);
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("object", entity);
-		return new ModelAndView(VIEWe, model); 
-	}*/
 
 	
 }

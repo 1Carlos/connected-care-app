@@ -112,23 +112,19 @@
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
-		              <div class="th-inner ">Diagnosis Code</div>
+		              <div class="th-inner ">Case Worker</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
-		              <div class="th-inner ">Order Actual Date</div>
-		              <div class="fht-cell"></div>
-		            </th>
-		            <th style="">
-		              <div class="th-inner ">Order Schedule Date</div>
-		              <div class="fht-cell"></div>
-		            </th>
-		            <th style="">
-		              <div class="th-inner ">Source Type / Name </div>
+		              <div class="th-inner ">Follow Up Date</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		            <th style="">
 		              <div class="th-inner ">Order Type</div>
+		              <div class="fht-cell"></div>
+		            </th>
+		            <th style="">
+		              <div class="th-inner ">Case Status</div>
 		              <div class="fht-cell"></div>
 		            </th>
 		          </tr>
@@ -145,11 +141,21 @@
 		            <td style=""><c:out value="${listValue.patientFirstName}"/></td>
 		            <td style=""><fmt:formatDate pattern="yyyy-MM-dd" value="${listValue.patientDOB}" /></td>
 		            <td style=""><c:out value="${listValue.patientGender}"/></td>
-		            <td style=""><c:out value="${listValue.diagnosisCode}"/> - <c:out value="${listValue.diagnosisName}"/></td>
-		            <td style=""><fmt:formatDate pattern="yyyy-MM-dd" value="${listValue.orderActualDate}" /></td>
-		            <td style=""><fmt:formatDate pattern="yyyy-MM-dd" value="${listValue.orderScheduleDate}" /></td>
-		            <td style=""><c:out value="${listValue.sourceType}"/> / <c:out value="${listValue.sourceName}"/></td>
+		            <td style="">
+		            <c:out value="${listValue.caseWorkerLastName}"/> - <c:out value="${listValue.caseWorkerFirstName}"/>
+		            </td>
+		            <td style=""><fmt:formatDate pattern="yyyy-MM-dd" value="${listValue.followUpDate}" /></td>
 		            <td style=""><c:out value="${listValue.orderType}"/></td>
+		            <td style="">
+					    <c:choose>
+						    <c:when test="${listValue.caseStatus == 0}">
+		        				OPEN
+		    				</c:when>
+		    				<c:otherwise>
+		        				CLOSED
+		    				</c:otherwise>
+	    				</c:choose>
+		            </td>
 		          </tr>
 		        </c:forEach>
 	          </tbody>

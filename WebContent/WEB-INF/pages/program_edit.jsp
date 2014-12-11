@@ -106,10 +106,10 @@
 		  <!--TOOLBAR-->
 		  <div class="btn-toolbar right" role="toolbar" aria-label="">
 		    <button id="cancel-data-validation" type="button" class="btn btn-default" aria-label="Cancel">
-		      <span class="glyphicon glyphicon-remove" aria-hidden="true">  Cancel</span>
+		      <span class="glyphicon glyphicon-remove" aria-hidden="true">  </span>
 		    </button>
 		    <button id="confirm-edit-data" type="button" class="btn btn-default" aria-label="Save">
-		      <span class="glyphicon glyphicon-ok" aria-hidden="true">  Save</span>
+		      <span class="glyphicon glyphicon-ok" aria-hidden="true">  </span>
 		    </button>
 		  </div><!--END/TOOLBAR-->  
 		</div><!--END/RIGHT -->

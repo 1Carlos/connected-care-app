@@ -11,7 +11,6 @@
     <meta name="author" content="">
     <link rel="icon" href="resources/favicon.ico">
 	<link href="resources/styles/grid.css" rel="stylesheet">
-	<link href="resources/styles/ui-element.css" rel="stylesheet">
 
     <title>Connected Care Solution by 4th Source Inc</title>
 
@@ -80,7 +79,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="help"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
-            <li><a href="http://www.4thsource.com" style="padding-top: 0px;
+                        <li><a href="http://www.4thsource.com" style="padding-top: 0px;
                                                           padding-right: 0px;
                                                           padding-bottom: 0px;
                                                           padding-left: 0px;">
@@ -95,8 +94,8 @@
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="page-header">
-        <h1>Program Setup</h1>
-        <p class="lead">In this page you will set all ICD-10 codes that need for follow-up in all patient's cases.</p>
+        <h1>Priority Sets</h1>
+        <p class="lead">Prioritize patients and cases based on customized risk profiles.</p>
         <div class="row">
 			<!-- <div class="col-lg">Here add, update and delete the ICD-10 codes for the main program.
 			</div>  -->
@@ -105,11 +104,14 @@
 		<div align="right">
 		  <!--TOOLBAR-->
 		  <div class="btn-toolbar right" role="toolbar" aria-label="">
-		    <button id="cancel-data-validation" type="button" class="btn btn-default" aria-label="Cancel">
-		      <span class="glyphicon glyphicon-remove" aria-hidden="true">  </span>
+		    <button id="button-new-prioritize" type="button" class="btn btn-default" aria-label="Add Prioritize">
+		      <span class="glyphicon glyphicon-plus" aria-hidden="true">  </span>
 		    </button>
-		    <button id="confirm-new-data" type="button" class="btn btn-default" aria-label="Save">
-		      <span class="glyphicon glyphicon-ok" aria-hidden="true">  </span>
+		    <button id="button-update-prioritize" type="button" class="btn btn-default" aria-label="Update Prioritize">
+		      <span class="glyphicon glyphicon-pencil" aria-hidden="true">  </span>
+		    </button>
+		    <button id="button-delete-prioritize" type="button" class="btn btn-default" aria-label="Delete Prioritize">
+		      <span class="glyphicon glyphicon-trash" aria-hidden="true">  </span>
 		    </button>
 		  </div><!--END/TOOLBAR-->  
 		</div><!--END/RIGHT -->
@@ -125,88 +127,27 @@
                             <div class="fht-cell"></div>
                           </th>
                           <th style="">
-                            <div class="th-inner ">ICD-10</div>
+                            <div class="th-inner ">Description</div>
                             <div class="fht-cell"></div>
                           </th>
                           <th style="">
-                            <div class="th-inner ">Rx Adherence</div>
-                            <div class="fht-cell"></div>
-                          </th>
-                          <th style="">
-                            <div class="th-inner ">Appt Adherenece</div>
-                            <div class="fht-cell"></div>
-                          </th>
-                          <th style="">
-                            <div class="th-inner ">Education</div>
+                            <div class="th-inner ">Priority</div>
                             <div class="fht-cell"></div>
                           </th>
                         </tr>
                         </thead>
                     <tbody>
-		               	  <tr>
-							<td></td>
-							<td>
-								<input type="text" id="icdCode" size="6" required>
-							</td>
-							<td>
-								<select name="rxAdherence" id="rxAdherence" required>
-								  <option value="1">YES</option>
-								  <option value="0">NO</option>
-								</select>
-							</td>
-							<td>
-								<select name="apptAdherence" id="apptAdherence" required>
-								  <option value="1">YES</option>
-								  <option value="0">NO</option>
-								</select>
-							</td>
-							<td>
-								<select name="education" id="education" required>
-								  <option value="1">YES</option>
-								  <option value="0">NO</option>
-								</select>
-							</td>
-		               	  </tr>
-
 <!-- Records from the database -->
 		                <c:forEach var="listValue" items="${list}">
 		               	  <tr>
 						    <td>
-						    	<input type="hidden" name="icd10ProgramsId" value="<c:out value="${listValue.icd10ProgramsId}"/>">
-							    <input type="hidden" name="icdCodeId" value="<c:out value="${listValue.icdCodeId.icdCodeId}"/>">
+						    	<input type="radio"  name="prioritySetId" id="prioritySetId" value="<c:out value="${listValue.prioritySetId}"/>">
 						    </td>
 						    <td>
-							    <c:out value="${listValue.icdCodeId.icdCode} - ${listValue.icdCodeId.codeDesc1}"/>
+							    <c:out value="${listValue.description}"/>
 						    </td>
 						    <td>
-							    <c:choose>
-								    <c:when test="${listValue.rxAdherence == 0}">
-				        				NO
-				    				</c:when>
-				    				<c:otherwise>
-				        				YES
-				    				</c:otherwise>
-			    				</c:choose>
-		    				</td>
-		    				<td>
-							    <c:choose>
-								    <c:when test="${listValue.apptAdherence == 0}">
-				        				NO
-				    				</c:when>
-				    				<c:otherwise>
-				        				YES
-				    				</c:otherwise>
-			    				</c:choose>
-		    				</td>
-		    				<td>
-							    <c:choose>
-								    <c:when test="${listValue.education == 0}">
-				        				NO
-				    				</c:when>
-				    				<c:otherwise>
-				        				YES
-				    				</c:otherwise>
-			    				</c:choose>
+							    <c:out value="${listValue.priorityValue}"/>
 		    				</td>
 						  </tr>
 					    </c:forEach>

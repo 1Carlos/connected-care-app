@@ -41,4 +41,10 @@ public class Icd10ProgramsManagerImpl implements Icd10ProgramsManager {
 	public void upDateIcd10(Icd10ProgramsEntity entity) {
 		icd10ProgramsDAO.upDateIcd10(entity);
 	}	
+	
+	@Override
+	@Transactional
+	public void deleteIcd10(Icd10ProgramsEntity entity) {
+		icd10ProgramsDAO.deleteIcd10(entity);
+	}	
 }

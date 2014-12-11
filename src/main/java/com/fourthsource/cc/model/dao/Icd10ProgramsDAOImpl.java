@@ -50,4 +50,9 @@ public class Icd10ProgramsDAOImpl implements Icd10ProgramsDAO  {
 	public void upDateIcd10(Icd10ProgramsEntity entity) {
 		sessionFactory.getCurrentSession().update(entity);
 	}		
+	
+	@Override
+	public void deleteIcd10(Icd10ProgramsEntity entity) {
+		sessionFactory.getCurrentSession().delete(entity);
+	}		
 }

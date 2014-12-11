@@ -105,13 +105,13 @@
 		  <!--TOOLBAR-->
 		  <div class="btn-toolbar right" role="toolbar" aria-label="">
 		    <button id="button-new-record" type="button" class="btn btn-default" aria-label="Add ICD Code">
-		      <span class="glyphicon glyphicon-plus" aria-hidden="true">  Add</span>
+		      <span class="glyphicon glyphicon-plus" aria-hidden="true">  </span>
 		    </button>
 		    <button id="button-edit-record" type="button" class="btn btn-default" aria-label="Modify ICD Code">
-		      <span class="glyphicon glyphicon-pencil" aria-hidden="true">  Modify</span>
+		      <span class="glyphicon glyphicon-pencil" aria-hidden="true">  </span>
 		    </button>
 		    <button id="button-delete-record" type="button" class="btn btn-default" aria-label="Remove ICD Code">
-		      <span class="glyphicon glyphicon-trash" aria-hidden="true">  Remove</span>
+		      <span class="glyphicon glyphicon-trash" aria-hidden="true">  </span>
 		    </button>
 		  </div><!--END/TOOLBAR-->  
 		</div><!--END/RIGHT -->

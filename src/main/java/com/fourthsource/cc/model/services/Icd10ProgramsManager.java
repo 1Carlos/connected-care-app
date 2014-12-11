@@ -10,5 +10,6 @@ public interface Icd10ProgramsManager {
 	public Icd10ProgramsEntity getIcd10ProgramsById(Integer id);
 	public Integer saveIcd10(Icd10ProgramsEntity entity);
 	public void upDateIcd10(Icd10ProgramsEntity entity);
+	public void deleteIcd10(Icd10ProgramsEntity entity);
     
 }

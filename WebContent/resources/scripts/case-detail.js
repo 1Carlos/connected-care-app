@@ -10,6 +10,7 @@ function addProgressNote() {
 	var noteDescription = $("#noteDescription").val();
 	var nextFollowUpDate = $("#nextFollowUpDate").datepicker("getDate");
 	var checkBoxFollowUpRequired = $("#checkBoxFollowUpRequired").is(":checked");
+	var caseWorkerName = $("#caseWorkerName").val();
 
 	var DTO = Object();
 	DTO.caseId = idCase;
@@ -32,8 +33,8 @@ function addProgressNote() {
 	
 	var row =
         "<tr style=\"\">" + 
-		"	<td style=\"width:30%;vertical-align:top;\"><b><i>" + date + "</i></b></td>"+
-        "	<td style=\"width:70%;vertical-align:right;\" align=\"right\"><strong><i>Smith, Joe</i></strong></td>" + 
+		"  <td style=\"width:30%;vertical-align:top;\"><b><i>" + date + "</i></b></td>"+
+        "  <td style=\"width:70%;vertical-align:right;\" align=\"right\"><strong><i>" + caseWorkerName + "</i></strong></td>" + 
         "</tr>" + 
         "<tr style=\"height:15.0pt\">" + 
           "<td style=\"vertical-align:top;\" colspan=\"2\" >" + noteDescription + "</td>"
