@@ -66,6 +66,7 @@
               <ul class="dropdown-menu" role="menu">
                 <li><a href="run_reconciliation">Run Reconciliation </a></li>
                 <li><a href="program_setup">Program Setup </a></li>
+                <li><a href="priority_setup">Configure Prioritization </a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -160,30 +161,30 @@
 						    <td>
 							    <c:choose>
 								    <c:when test="${listValue.rxAdherence == 0}">
-				        				NO
+				        				No
 				    				</c:when>
 				    				<c:otherwise>
-				        				YES
+				        				Yes
 				    				</c:otherwise>
 			    				</c:choose>
 		    				</td>
 		    				<td>
 							    <c:choose>
 								    <c:when test="${listValue.apptAdherence == 0}">
-				        				NO
+				        				No
 				    				</c:when>
 				    				<c:otherwise>
-				        				YES
+				        				Yes
 				    				</c:otherwise>
 			    				</c:choose>
 		    				</td>
 		    				<td>
 							    <c:choose>
 								    <c:when test="${listValue.education == 0}">
-				        				NO
+				        				No
 				    				</c:when>
 				    				<c:otherwise>
-				        				YES
+				        				Yes
 				    				</c:otherwise>
 			    				</c:choose>
 		    				</td>

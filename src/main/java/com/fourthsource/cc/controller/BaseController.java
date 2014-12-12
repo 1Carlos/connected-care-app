@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class BaseController {
 
 	private final static Logger logger = LoggerFactory.getLogger(BaseController.class);
-	private static final String VIEW_INDEX = "index";
-	private static final String VIEW_HELP = "help";
+	private static final String VIEW_INDEX    = "index";
+	private static final String VIEW_HELP     = "help";
+	private static final String VIEW_PRIORITY = "priority_setup";
+	private static final String VIEW_RULES    = "priority_rules_setup";
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String root(ModelMap model) {
@@ -30,6 +32,18 @@ public class BaseController {
 	public String help(ModelMap model) {
 		logger.debug("Loading \"help\" page");
 		return VIEW_HELP;
+	}
+	
+	@RequestMapping(value = "/priority_setup", method = RequestMethod.GET)
+	public String priority(ModelMap model) {
+		logger.debug("Loading \"priority_setup\" page");
+		return VIEW_PRIORITY;
+	}
+	
+	@RequestMapping(value = "/priority_rules_setup", method = RequestMethod.GET)
+	public String priorityRules(ModelMap model) {
+		logger.debug("Loading \"priority_rules_setup\" page");
+		return VIEW_RULES;
 	}
 	
 }

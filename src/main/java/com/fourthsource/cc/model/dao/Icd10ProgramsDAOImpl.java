@@ -35,7 +35,7 @@ public class Icd10ProgramsDAOImpl implements Icd10ProgramsDAO  {
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Icd10ProgramsEntity> getAllIcd10Programs() {
-		Query q = sessionFactory.getCurrentSession().createQuery("FROM Icd10ProgramsEntity");
+		Query q = sessionFactory.getCurrentSession().createQuery("FROM Icd10ProgramsEntity ORDER by icdCodeId.icdCode");
 		//Query q = sessionFactory.getCurrentSession().createQuery("FROM Icd10ProgramsEntity pe JOIN FETCH pe.icdCodeId "); //used with Carlos
 		//q.setParameter("id", id);
 		return q.list();

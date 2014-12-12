@@ -24,11 +24,6 @@ public class Icd10ProgramsEntity implements Serializable {
     @Column(name="ICD10_PROGRAMS_ID")
     private Integer icd10ProgramsId;	
 	
-	/*@JsonBackReference
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ICD_CODE_ID", nullable = false)
-	private Icd10Entity icdCodeId;*/
-	
     @JsonBackReference
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ICD_CODE_ID", nullable = false)

@@ -67,6 +67,7 @@
               <ul class="dropdown-menu" role="menu">
                 <li><a href="run_reconciliation">Run Reconciliation </a></li>
                 <li><a href="program_setup">Program Setup </a></li>
+                <li><a href="priority_setup">Configure Prioritization </a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -150,20 +151,20 @@
 							</td>
 							<td>
 								<select name="rxAdherence" id="rxAdherence" required>
-								  <option value="1">YES</option>
-								  <option value="0">NO</option>
+								  <option value="1">Yes</option>
+								  <option value="0">No</option>
 								</select>
 							</td>
 							<td>
 								<select name="apptAdherence" id="apptAdherence" required>
-								  <option value="1">YES</option>
-								  <option value="0">NO</option>
+								  <option value="1">Yes</option>
+								  <option value="0">No</option>
 								</select>
 							</td>
 							<td>
 								<select name="education" id="education" required>
-								  <option value="1">YES</option>
-								  <option value="0">NO</option>
+								  <option value="1">Yes</option>
+								  <option value="0">No</option>
 								</select>
 							</td>
 		               	  </tr>

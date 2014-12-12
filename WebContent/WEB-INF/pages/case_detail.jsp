@@ -60,6 +60,7 @@
               <ul class="dropdown-menu" role="menu">
                 <li><a href="run_reconciliation">Run Reconciliation </a></li>
                 <li><a href="program_setup">Program Setup </a></li>
+                <li><a href="priority_setup">Configure Prioritization </a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -136,7 +137,7 @@
                 </tr>
                 <tr style="height:15.0pt">
                   <td style="width:35%"><strong>Case Worker:</strong></td>
-                  <td style="width:65%"><label id="caseWorkerName" style="font-style:normal;"><c:out value="${object.caseWorkerId.lastName}"/>, <c:out value="${object.caseWorkerId.firstName}"/></label></td>
+                  <td style="width:65%"><label id="caseWorkerName" for="caseWorkerName" class="control-label" style="font-style:normal;font-weight:normal;"><c:out value="${object.caseWorkerId.lastName}"/>, <c:out value="${object.caseWorkerId.firstName}"/></label></td>
                 </tr>
                 <tr style="height:15.0pt">
                   <td style="width:35%"><strong>Follow-up Date:</strong></td>    
@@ -147,10 +148,10 @@
                   <td style="width:65%">
                     <c:choose>
 					  <c:when test="${object.caseStatus == 0}">
-	        			OPEN
+	        			Open
 	    			  </c:when>
 	    			  <c:otherwise>
-	        			CLOSED
+	        			Closed
 	    			  </c:otherwise>
     				</c:choose>
                   </td>
@@ -233,9 +234,9 @@
 		                <tr style="">
 		                  <td style=""><strong><i><fmt:formatDate pattern="yyyy-MM-dd" value="${listNotes.creationDate}" /></i></strong></td>
 		                  <td style="" align="right"><strong><i>
-		                  <s:if test="${listNotes.creationDate != null}">
+		                  <c:if test="${listNotes.creationDate != null}">
 			                  <c:out value="${listOrders.caseId.caseWorkerId.lastName}"/>,<c:out value="${listOrders.caseId.caseWorkerId.firstName}"/>
-		                  </s:if>
+		                  </c:if>
 		                  </i></strong></td>
 	                    </tr>		                  
 		                <tr style="">

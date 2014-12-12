@@ -57,6 +57,7 @@
               <ul class="dropdown-menu" role="menu">
                 <li><a href="run_reconciliation">Run Reconciliation </a></li>
                 <li><a href="program_setup">Program Setup </a></li>
+                <li><a href="priority_setup">Configure Prioritization </a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -149,10 +150,10 @@
 		            <td style="">
 					    <c:choose>
 						    <c:when test="${listValue.caseStatus == 0}">
-		        				OPEN
+		        				Open
 		    				</c:when>
 		    				<c:otherwise>
-		        				CLOSED
+		        				Closed
 		    				</c:otherwise>
 	    				</c:choose>
 		            </td>

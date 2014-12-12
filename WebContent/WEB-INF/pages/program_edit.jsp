@@ -66,6 +66,7 @@
               <ul class="dropdown-menu" role="menu">
                 <li><a href="run_reconciliation">Run Reconciliation </a></li>
                 <li><a href="program_setup">Program Setup </a></li>
+                <li><a href="priority_setup">Configure Prioritization </a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -156,12 +157,12 @@
 							    <select id="rxAdherence">
 								    <c:choose>
 									    <c:when test="${object.rxAdherence == 0}">
-					        				<option value="0" selected>NO</option>>
-					        				<option value="1">YES</option>>
+					        				<option value="0" selected>No</option>>
+					        				<option value="1">Yes</option>>
 					    				</c:when>
 					    				<c:otherwise>
-					        				<option value="0">NO</option>>
-					        				<option value="1" selected>YES</option>>
+					        				<option value="0">No</option>>
+					        				<option value="1" selected>Yes</option>>
 					    				</c:otherwise>
 				    				</c:choose>
 							    </select>
@@ -170,12 +171,12 @@
 							    <select id="apptAdherence">
 								    <c:choose>
 									    <c:when test="${object.apptAdherence == 0}">
-					        				<option value="0" selected>NO</option>>
-					        				<option value="1">YES</option>>
+					        				<option value="0" selected>No</option>>
+					        				<option value="1">Yes</option>>
 					    				</c:when>
 					    				<c:otherwise>
-					        				<option value="0">NO</option>>
-					        				<option value="1" selected>YES</option>>
+					        				<option value="0">No</option>>
+					        				<option value="1" selected>Yes</option>>
 					    				</c:otherwise>
 				    				</c:choose>
 							    </select>
@@ -184,12 +185,12 @@
 							    <select id="education">
 								    <c:choose>
 									    <c:when test="${object.education == 0}">
-					        				<option value="0" selected>NO</option>>
-					        				<option value="1">YES</option>>
+					        				<option value="0" selected>No</option>>
+					        				<option value="1">Yes</option>>
 					    				</c:when>
 					    				<c:otherwise>
-					        				<option value="0">NO</option>>
-					        				<option value="1" selected>YES</option>>
+					        				<option value="0">No</option>>
+					        				<option value="1" selected>Yes</option>>
 					    				</c:otherwise>
 				    				</c:choose>
 							    </select>

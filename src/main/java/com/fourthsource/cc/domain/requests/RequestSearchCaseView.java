@@ -15,8 +15,8 @@ public class RequestSearchCaseView implements Serializable {
 	private Date toScheduleDate;
 	private String sourceType;
 	private String orderType;
-	private String fromFollowUpDate;
-	private String toFollowUpDate;
+	private Date fromFollowUpDate;
+	private Date toFollowUpDate;
 	private String caseWorker;
 	private Integer caseStatus;
 	
@@ -92,19 +92,19 @@ public class RequestSearchCaseView implements Serializable {
 		this.orderType = orderType;
 	}
 
-	public String getFromFollowUpDate() {
+	public Date getFromFollowUpDate() {
 		return fromFollowUpDate;
 	}
 
-	public void setFromFollowUpDate(String fromFollowUpDate) {
+	public void setFromFollowUpDate(Date fromFollowUpDate) {
 		this.fromFollowUpDate = fromFollowUpDate;
 	}
 
-	public String getToFollowUpDate() {
+	public Date getToFollowUpDate() {
 		return toFollowUpDate;
 	}
 
-	public void setToFollowUpDate(String toFollowUpDate) {
+	public void setToFollowUpDate(Date toFollowUpDate) {
 		this.toFollowUpDate = toFollowUpDate;
 	}
 

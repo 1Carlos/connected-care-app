@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- saved from url=(0050)http://getbootstrap.com/examples/navbar-fixed-top/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="resources/favicon.ico">
-	<link href="resources/styles/grid.css" rel="stylesheet">
+    <link href="resources/styles/grid.css" rel="stylesheet">
 
     <title>Connected Care Solution by 4th Source Inc</title>
 
@@ -66,6 +66,7 @@
               <ul class="dropdown-menu" role="menu">
                 <li><a href="run_reconciliation">Run Reconciliation </a></li>
                 <li><a href="program_setup">Program Setup </a></li>
+                <li><a href="priority_setup">Configure Prioritization </a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -94,73 +95,77 @@
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="page-header">
-        <h1>Priority Sets</h1>
+        <h1>Priority Setup</h1>
         <p class="lead">Prioritize patients and cases based on customized risk profiles.</p>
-        <div class="row">
-			<!-- <div class="col-lg">Here add, update and delete the ICD-10 codes for the main program.
-			</div>  -->
-        </div>
-		<!-- TABLE -->
-		<div align="right">
-		  <!--TOOLBAR-->
-		  <div class="btn-toolbar right" role="toolbar" aria-label="">
-		    <button id="button-new-prioritize" type="button" class="btn btn-default" aria-label="Add Prioritize">
-		      <span class="glyphicon glyphicon-plus" aria-hidden="true">  </span>
-		    </button>
-		    <button id="button-update-prioritize" type="button" class="btn btn-default" aria-label="Update Prioritize">
-		      <span class="glyphicon glyphicon-pencil" aria-hidden="true">  </span>
-		    </button>
-		    <button id="button-delete-prioritize" type="button" class="btn btn-default" aria-label="Delete Prioritize">
-		      <span class="glyphicon glyphicon-trash" aria-hidden="true">  </span>
-		    </button>
-		  </div><!--END/TOOLBAR-->  
-		</div><!--END/RIGHT -->
-	  </div><!-- END/Page-Header -->
-
-	<div class="fixed-table-container" style="height: 244px; padding-bottom: 37px;">
-	  </br>
+	    </div><!-- END/Page-Header -->
+    </br></br>
+      <div class="row" style="">
             <table class="table table-hover table-condensed" style="margin-top:-41px;">
-                        <thead>
-                        <tr>
-                          <th class="bs-checkbox " style="width: 36px; ">
-                            <div class="th-inner "></div>
-                            <div class="fht-cell"></div>
-                          </th>
-                          <th style="">
-                            <div class="th-inner ">Description</div>
-                            <div class="fht-cell"></div>
-                          </th>
-                          <th style="">
-                            <div class="th-inner ">Priority</div>
-                            <div class="fht-cell"></div>
-                          </th>
-                        </tr>
-                        </thead>
-                    <tbody>
+              <thead>
+              <tr>
+                <th style="width:15%;">
+                  <div class="th-inner "></div>
+                  <div class="fht-cell"></div>
+                </th>
+                <th style="width:45%;">
+                  <div class="th-inner ">Description</div>
+                  <div class="fht-cell"></div>
+                </th>
+                <th style="width:20%;">
+                  <div class="th-inner ">Priority Value</div>
+                  <div class="fht-cell"></div>
+                </th>
+                <th class="bs-checkbox " style="width:20%;">
+                  <div class="th-inner">Apply Priorities</div>
+                  <div class="fht-cell"></div>
+                </th>
+              </tr>
+              </thead>
+              <tbody>
 <!-- Records from the database -->
-		                <c:forEach var="listValue" items="${list}">
-		               	  <tr>
-						    <td>
-						    	<input type="radio"  name="prioritySetId" id="prioritySetId" value="<c:out value="${listValue.prioritySetId}"/>">
-						    </td>
-						    <td>
-							    <c:out value="${listValue.description}"/>
-						    </td>
-						    <td>
-							    <c:out value="${listValue.priorityValue}"/>
-		    				</td>
-						  </tr>
-					    </c:forEach>
+             	  <tr>
+  						    <td width="10%">
+                    <!--TOOLBAR-->
+                    <div class="btn-toolbar right" role="toolbar" aria-label="">
+                      <button id="button-new-priority" type="button" class="btn btn-default" aria-label="Add">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
+                      </button>
+                      <button id="button-update-priority" type="button" class="btn btn-default" aria-label="Update">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
+                      </button>
+                      <button id="button-delete-priority" type="button" class="btn btn-default" aria-label="Delete">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+                      </button>
+                    </div><!--END/TOOLBAR-->  
+        					</td>
+  						    <td width="50%">Men 75+ with Diabetes and Glaucoma</td>
+  						    <td width="15%">100</td>
+  		    				<td width="15%"><input type="checkbox" checked="true"></td>
+						    </tr>
+                <tr>
+                  <td>
+                    <!--TOOLBAR-->
+                    <div class="btn-toolbar right" role="toolbar" aria-label="">
+                      <button id="button-new-record" type="button" class="btn btn-default" aria-label="Add ICD Code">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
+                      </button>
+                      <button id="button-edit-record" type="button" class="btn btn-default" aria-label="Modify ICD Code">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
+                      </button>
+                      <button id="button-delete-record" type="button" class="btn btn-default" aria-label="Remove ICD Code">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+                      </button>
+                    </div><!--END/TOOLBAR-->  
+                  </td>
+                  <td>Age 65+ with High Blood Pressure</td>
+                  <td>50</td>
+                  <td><input type="checkbox" ></td>
+                </tr>
 <!-- Records from the database -->
-                      </tbody>
-                    </table>
-            </div>
+                </tbody>
+              </table>
      </div>
 <!-- TABLE -->
-
-
-
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -169,8 +174,8 @@
     <script src="resources/scripts/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="resources/scripts/ie10-viewport-bug-workaround.js"></script>
-	<script type="text/javascript" src="resources/scripts/bootstrap-filestyle.min.js"></script>  
-    <script src="resources/scripts/program_setup.js"></script>
+    <script type="text/javascript" src="resources/scripts/bootstrap-filestyle.min.js"></script>
+    <script src="resources/scripts/priority_setup.js"></script>
 
 </body>
 </html>

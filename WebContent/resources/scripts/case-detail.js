@@ -10,8 +10,8 @@ function addProgressNote() {
 	var noteDescription = $("#noteDescription").val();
 	var nextFollowUpDate = $("#nextFollowUpDate").datepicker("getDate");
 	var checkBoxFollowUpRequired = $("#checkBoxFollowUpRequired").is(":checked");
-	var caseWorkerName = $("#caseWorkerName").val();
-
+	var caseWorkerName = $("#caseWorkerName").html();
+	
 	var DTO = Object();
 	DTO.caseId = idCase;
 	DTO.orderId = idOrder;
@@ -39,17 +39,6 @@ function addProgressNote() {
         "<tr style=\"height:15.0pt\">" + 
           "<td style=\"vertical-align:top;\" colspan=\"2\" >" + noteDescription + "</td>"
         "</tr>";
-        
-		/*"<tr>" +
-			"<td>" +
-			    date +
-			"</td>" +
-		"</tr>"+
-		"<tr>" +
-			"<td>" +
-				noteDescription +
-			"</td>" +
-		"</tr>";*/
 	
 	$("#progressNoteTable tbody").append(row);
 }
