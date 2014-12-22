@@ -38,6 +38,12 @@ public class CSVHeadEntity implements Serializable {
     @Column(name="UPDATE_DATE")
     private Date updateDate;
     
+    @Column(name="FILE_STATUS")
+    private Integer fileStatus;
+    
+    @Column(name="FILE_DESC")
+    private String fileDesc;
+    
     @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "csvId")
     private Set<CSVDetailEntity> csvDetailEntity = new HashSet<CSVDetailEntity>(0);
@@ -80,6 +86,22 @@ public class CSVHeadEntity implements Serializable {
 
 	public void setCsvDetailEntity(Set<CSVDetailEntity> csvDetailEntity) {
 		this.csvDetailEntity = csvDetailEntity;
+	}
+
+	public Integer getFileStatus() {
+		return fileStatus;
+	}
+
+	public void setFileStatus(Integer fileStatus) {
+		this.fileStatus = fileStatus;
+	}
+
+	public String getFileDesc() {
+		return fileDesc;
+	}
+
+	public void setFileDesc(String fileDesc) {
+		this.fileDesc = fileDesc;
 	}
 	
 }

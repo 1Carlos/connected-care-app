@@ -123,44 +123,41 @@
               </thead>
               <tbody>
 <!-- Records from the database -->
-             	  <tr>
-  						    <td width="10%">
-                    <!--TOOLBAR-->
-                    <div class="btn-toolbar right" role="toolbar" aria-label="">
-                      <button id="button-new-priority" type="button" class="btn btn-default" aria-label="Add">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
-                      </button>
-                      <button id="button-update-priority" type="button" class="btn btn-default" aria-label="Update">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
-                      </button>
-                      <button id="button-delete-priority" type="button" class="btn btn-default" aria-label="Delete">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
-                      </button>
-                    </div><!--END/TOOLBAR-->  
-        					</td>
-  						    <td width="50%">Men 75+ with Diabetes and Glaucoma</td>
-  						    <td width="15%">100</td>
-  		    				<td width="15%"><input type="checkbox" checked="true"></td>
-						    </tr>
-                <tr>
-                  <td>
-                    <!--TOOLBAR-->
-                    <div class="btn-toolbar right" role="toolbar" aria-label="">
-                      <button id="button-new-record" type="button" class="btn btn-default" aria-label="Add ICD Code">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
-                      </button>
-                      <button id="button-edit-record" type="button" class="btn btn-default" aria-label="Modify ICD Code">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
-                      </button>
-                      <button id="button-delete-record" type="button" class="btn btn-default" aria-label="Remove ICD Code">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
-                      </button>
-                    </div><!--END/TOOLBAR-->  
-                  </td>
-                  <td>Age 65+ with High Blood Pressure</td>
-                  <td>50</td>
-                  <td><input type="checkbox" ></td>
-                </tr>
+                <c:forEach var="listValue" items="${list}">
+				<tr>
+					<td width="10%">
+				    	<input type="hidden" name="prioritySetId" id="prioritySetId" value="<c:out value="${listValue.prioritySetId}"/>">
+
+	                    <!--COMMANDS-->
+	                    <div class="btn-toolbar right" role="toolbar" aria-label="">
+	                      <a href="${pageContext.request.contextPath}/priority/add" style="text-decoration:none;">
+	                      <button id="button-new-priority" type="button" class="btn btn-default" aria-label="Add">
+	                        <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
+	                      </button>
+	                      </a>
+	                      <a href="${pageContext.request.contextPath}/priority/edit/<c:out value="${listValue.prioritySetId}"/>" style="text-decoration:none;">
+	                      <button id="button-update-priority" type="button" class="btn btn-default" aria-label="Update">
+	                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
+	                      </button>
+	                      </a>
+	                      <a href="${pageContext.request.contextPath}/priority/remove/<c:out value="${listValue.prioritySetId}"/>" style="text-decoration:none;">
+	                      <button id="button-delete-priority" type="button" class="btn btn-default" aria-label="Delete">
+	                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
+	                      </button>
+	                      </a>
+	                    </div><!--END/COMMANDS-->  
+    				</td>
+				    <td width="50%"><c:out value="${listValue.description}"/></td>
+				    <td width="15%"><c:out value="${listValue.priorityValue}"/></td>
+    				<td width="15%"><input type="checkbox" 
+					    <c:choose>
+						    <c:when test="${listValue.enabledFlag}">
+		        				checked
+		    				</c:when>
+	    				</c:choose>    				
+    				></td>
+			    </tr>
+			    </c:forEach>
 <!-- Records from the database -->
                 </tbody>
               </table>

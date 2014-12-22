@@ -21,7 +21,7 @@ import com.fourthsource.cc.model.services.Icd10ProgramsManager;
 @Controller
 public class ProgramSetupController {
 	
-	private final static Logger logger = LoggerFactory.getLogger(UploadFileController.class);
+	private final static Logger logger = LoggerFactory.getLogger(ProgramSetupController.class);
 	private static final String VIEW  = "program_setup";
 	private static final String VIEWn = "program_new";
 	private static final String VIEWe = "program_edit";

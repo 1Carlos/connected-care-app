@@ -59,6 +59,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="import_data">Import Data </a></li>
+                <li><a href="launchpad">Launchpad </a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -120,12 +121,12 @@
               </thead>
               <tbody>
                 <tr>
-  						    <td><input type="text" value="Men 75+ with Diabetes and Glaucoma" size=70></td>
-  						    <td><input type="text" value="100" size=10></td>
+			      <td><input type="text" value="<c:out value="${priority.description}"/>" size=70></td>
+			      <td><input type="text" value="<c:out value="${priority.priorityValue}"/>" size=10></td>
                   <td></td>
                   <td></td>
                   <td></td>
-						    </tr>
+			    </tr>
               </tbody>
               </table>
 <!-- Priority Set Rules -->
@@ -144,6 +145,7 @@
               </thead>
               <tbody>
 <!-- RECORD #1-->
+			  <c:forEach var="listValue" items="${listRules}">
                 <tr>
                   <td>
                     <!--TOOLBAR-->
@@ -158,7 +160,7 @@
                   </td>
                   <td>
                     <select>
-                      <option value"0">Select a Rule Type...</option>
+                      <option value"0">Select a Rule Type...</option>                      
                       <option value"0">Diagnosis Code</option>
                       <option value"0" selected>Gender</option>
                       <option value"0">Age</option>
@@ -188,6 +190,7 @@
                     <input type="text" value="" size=10>
                   </td>
                 </tr>
+                </c:forEach>
 <!-- RECORD #2-->
                 <tr>
                   <td>

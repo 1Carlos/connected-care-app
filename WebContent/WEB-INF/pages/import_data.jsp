@@ -47,6 +47,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="import_data">Import Data </a></li>
+                <li><a href="launchpad">Launchpad </a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -87,6 +88,8 @@
         <div style="width:400px">
 		  <center>
 			<form id="file-upload-form">
+				<strong>File Description: </strong>
+				<input type="text" name="description" class="" size="40"/></br>
 				<input type="file" name="file" class="filestyle" />
 			</form>
 		    <br/>
