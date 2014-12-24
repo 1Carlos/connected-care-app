@@ -7,11 +7,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name = "fileSummary_view")
+@NamedQueries({@NamedQuery(name="FileSummaryEntity.getStatisticByIdFile",query="select f from FileSummaryEntity f")})
 public class FileSummaryEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -28,10 +31,10 @@ public class FileSummaryEntity implements Serializable {
 	private Integer patientCount;
 
     @Column(name="Rx")
-    private Date rx;
+    private Integer rx;
     
     @Column(name="Appt")
-    private Date appt;
+    private Integer appt;
 
 	public Integer getCsvId() {
 		return csvId;
@@ -57,19 +60,19 @@ public class FileSummaryEntity implements Serializable {
 		this.patientCount = patientCount;
 	}
 
-	public Date getRx() {
+	public Integer getRx() {
 		return rx;
 	}
 
-	public void setRx(Date rx) {
+	public void setRx(Integer rx) {
 		this.rx = rx;
 	}
 
-	public Date getAppt() {
+	public Integer getAppt() {
 		return appt;
 	}
 
-	public void setAppt(Date appt) {
+	public void setAppt(Integer appt) {
 		this.appt = appt;
 	}
 }

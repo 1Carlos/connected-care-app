@@ -37,6 +37,8 @@ public class LaunchpadController {
 		Map<String, Object> model = new HashMap<String, Object>();
 	    List<CSVHeadEntity> list = csvHeadManager.getAllCSVHead();
 	    model.put("list", list);
+		List<FileSummaryEntity> sumlist = csvHeadManager.getStatisticByIdFile();
+		model.put("listSummary", sumlist);
 		return new ModelAndView(VIEW, model); 
 	}
 	
@@ -44,15 +46,10 @@ public class LaunchpadController {
 	public ModelAndView normalizationByIdFile(Integer csvId) {
 		logger.debug("Loading \"normalizationById\" page");
 		Map<String, Object> model = new HashMap<String, Object>();
-		
 		csvDetailManager.callNormalizationByIdFile(csvId);
-		List<FileSummaryEntity> sumlist = csvHeadManager.getStatisticByIdFile(csvId);
-		
-		model.put("listSummary", sumlist);
-		//model.put("rowsProcessed", list.size());
-		//model.put("rowsNotProcessed", rowsLoaded - list.size());
-		
-		return new ModelAndView(VIEW,model); 
+		//List<FileSummaryEntity> sumlist = csvHeadManager.getStatisticByIdFile(csvId);
+		//model.put("listSummary", sumlist);
+		return new ModelAndView("redirect:launchpad",model); 
 	}	
 
 	

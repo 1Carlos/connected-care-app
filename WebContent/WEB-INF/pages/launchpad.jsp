@@ -123,9 +123,9 @@
             <c:forEach var="listValue" items="${list}">
 	            <tr>
 	            <td>
-	            	<c:out value="${listValue.fileDesc}"/>
-	            </td>
-	            <td>
+	            	<strong><c:out value="${listValue.fileDesc}"/></strong> </br>
+	            	[<c:out value="${listValue.csvName}"/>] </br>
+
 				    <c:choose>
 					    <c:when test="${listValue.fileStatus == null}">
 	        				<a href="javascript:goToNormalization(<c:out value="${listValue.csvId}"/>)">Load to Connected Care</a> | 
@@ -137,25 +137,36 @@
 	        		        <a href="javascript:previewFile(<c:out value="${listValue.csvId}"/>)">Preview</a> 
 	    				</c:otherwise>
 	   				</c:choose>            	
+
 	            </td>
 	            <td>
 	            	<!-- Statistics File Summary -->
+	            	<table border=1>
+	            	<thead>
+	            		<th>Source Name</th>
+	            		<th>Patients</th>
+	            		<th>Prescriptions</th>
+	            		<th>Appoinments</th>
+	            	</thead>
+	            	<body>
 	            	<c:forEach var="statis" items="${listSummary}">
-	            	1
-	            	<tr>
-	            	<td><c:out value="${statis.sourceName}"/></td>
-	            	<td><c:out value="${statis.patientCount}"/></td>
-	            	</tr>
-	            	<tr>
-	            	<td>Prescriptions</td>
-	            	<td><c:out value="${statis.rx}"/></td>
-	            	</tr>
-	            	<tr>
-	            	<td>Appointments</td>
-	            	<td><c:out value="${statis.appt}"/></td>
-	            	</tr>
+						<c:choose>
+						<c:when test="${listValue.csvId == statis.csvId}">
+			            	<tr>
+			            	<td><c:out value="${statis.sourceName}"/></td>
+			            	<td><c:out value="${statis.patientCount}"/></td>
+			            	<td><c:out value="${statis.rx}"/></td>
+			            	<td><c:out value="${statis.appt}"/></td>
+			            	</tr>
+			            </c:when>
+			            </c:choose>
 	            	</c:forEach>
+	            	</body>
+	            	</table>
 	            	<!-- End / Statistics File Summary -->
+	            </td>
+
+	            <td>
 	            </td>
 	            </tr>
             	

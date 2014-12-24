@@ -100,11 +100,6 @@ public class CSVDetailDAOImpl implements CSVDetailDAO  {
 			public void execute(Connection connection) throws SQLException {
 				CallableStatement statement = connection.prepareCall("{CALL sp_GetPatientInfo2(?)}");
 				statement.setInt(1, id);
-				/*statement.registerOutParameter(1, java.sql.Types.INTEGER);
-			    statement.registerOutParameter(2, java.sql.Types.INTEGER);
-			    statement.registerOutParameter(3, java.sql.Types.INTEGER);
-			    statement.registerOutParameter(4, java.sql.Types.INTEGER);
-			    statement.registerOutParameter(5, java.sql.Types.INTEGER);*/
 				statement.execute();
 				statement.close();
 			}

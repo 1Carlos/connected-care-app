@@ -83,7 +83,7 @@
     <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
       <div class="page-header">
-        <h1>Data Validation</h1>
+        <h1>Preview Data</h1>
         <p class="lead"></p>
       </div>
         <center>

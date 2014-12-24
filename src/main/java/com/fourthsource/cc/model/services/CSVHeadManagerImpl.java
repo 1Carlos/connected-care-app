@@ -2,6 +2,7 @@ package com.fourthsource.cc.model.services;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -52,8 +53,8 @@ public class CSVHeadManagerImpl implements CSVHeadManager {
 
 	@Override
 	@Transactional	
-	public List<FileSummaryEntity> getStatisticByIdFile(Integer id) {
-		return csvHeadDAO.getStatisticByIdFile(id);
+	public List<FileSummaryEntity> getStatisticByIdFile() {
+		return csvHeadDAO.getStatisticByIdFile();
 	}
 
 }

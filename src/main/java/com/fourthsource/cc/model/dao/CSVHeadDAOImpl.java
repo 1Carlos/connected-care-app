@@ -1,6 +1,8 @@
 package com.fourthsource.cc.model.dao;
 
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
@@ -9,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import com.fourthsource.cc.domain.CSVHeadEntity;
 import com.fourthsource.cc.domain.FileSummaryEntity;
-import com.fourthsource.cc.domain.Icd10ProgramsEntity;
 
 @Repository
 public class CSVHeadDAOImpl implements CSVHeadDAO  {
@@ -39,10 +40,11 @@ public class CSVHeadDAOImpl implements CSVHeadDAO  {
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<FileSummaryEntity> getStatisticByIdFile(Integer id) {
-		Query q = sessionFactory.getCurrentSession().createQuery("FROM FileSummaryEntity WHERE csvId = :id ORDER BY sourceName");
+	public List<FileSummaryEntity> getStatisticByIdFile() {
+		Query q = sessionFactory.getCurrentSession().getNamedQuery("FileSummaryEntity.getStatisticByIdFile");
+				//createQuery("FROM FileSummaryEntity");
 		//q.setParameter("id", id);
-		q.setParameter("id", id);
+		//q.setParameter("id", id);
 		return q.list();
 	}
 }
