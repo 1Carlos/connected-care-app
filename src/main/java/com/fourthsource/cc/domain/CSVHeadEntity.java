@@ -103,5 +103,13 @@ public class CSVHeadEntity implements Serializable {
 	public void setFileDesc(String fileDesc) {
 		this.fileDesc = fileDesc;
 	}
+
+	public Integer getCsvId() {
+		return csvId;
+	}
+
+	public void setCsvId(Integer csvId) {
+		this.csvId = csvId;
+	}
 	
 }

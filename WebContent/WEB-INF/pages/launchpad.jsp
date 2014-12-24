@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- saved from url=(0050)http://getbootstrap.com/examples/navbar-fixed-top/ -->
 <html lang="en">
@@ -9,21 +11,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
-	  <link href="./css/grid.css" rel="stylesheet">
+    <link rel="icon" href="resources/favicon.ico">
+    <link href="resources/styles/grid.css" rel="stylesheet">
     <link href="./css/jasny-bootstrap.min.css" rel="stylesheet">
 
     <title>Connected Care Solution by 4th Source Inc</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/styles/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="./css/navbar-fixed-top.css" rel="stylesheet">
+    <link href="resources/styles/navbar-fixed-top.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="./scripts/ie-emulation-modes-warning.js"></script>
+    <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -118,200 +120,46 @@
             </thead>
             <tbody>
             <!-- File #1 -->
-            <tr class="imported" id="imported">              
-              <td style="" width="">
-                <table class="table table-condensed table-hover">
-                  <body>
-                    <tr>
-                      <td colspan="4">[St MaryÂ´s Appoinments File] </td>
-                    </tr>
-                    <tr>
-                      <td colspan="4"> 
-                        <div class="btn-group" role="group" aria-label="...">
-                          <button type="button" class="btn btn-default disabled" style="background-color:lightgray">Loaded</button>
-                          <button type="button" class="btn btn-default" style="background-color:lightgray" onClick="parent.location.href='preview.html' ">Preview</button>
-                          <button id="hide" type="button" class="btn btn-default" style="background-color:lightgray" onClick="hideRow('imported');">Hide</button>
-                        </div>
-                      </td>
-                    </tr>
-                  </body>
-                </table>
-              </td>
-              
-              <td style="" width="">
-                
-                <table class="table table-bordered table-condensed table-striped">
-                  <body>
-                    <tr>
-                      <th>Source Name </th>
-                      <th>Patients </th>
-                      <th>Prescriptions </th>
-                      <th>Appoinments </th>
-                    </tr>
-                    <tr>
-                      <td>St. MaryÂ´s Hospital </td>
-                      <td>1500 </td>
-                      <td>0 </td>
-                      <td>950 </td>
-                    </tr>
-                    <tr>
-                      <td>Little Company of Mary </td>
-                      <td>750 </td>
-                      <td>0 </td>
-                      <td>200 </td>
-                    </tr>
-                  </body>
-                </table>              
-              </td>
-              
-              <td style="" width="">
-                <table class="table table-bordered table-condensed">
-                  <body>
-                    <tr>
-                      <th>Category </th>
-                      <th># </th>
-                    </tr>
-                    <tr>
-                      <td><strong>Total Patients </strong></td>
-                      <td>1150 </td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;New </td>
-                      <td>650 </td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;Existing </td>
-                      <td>500 </td>
-                    </tr>
-                    <tr>
-                      <td><strong>Prescriptions </strong></td>
-                      <td>1000 </td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;Scheduled </td>
-                      <td>650 </td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;Sold </td>
-                      <td>350 </td>
-                    </tr>
-                    <tr>
-                      <td><strong>Appoinments </strong></td>
-                      <td>400 </td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;Scheduled </td>
-                      <td>250 </td>
-                    </tr>
-                    <tr>
-                      <td>&nbsp;Kept </td>
-                      <td>150 </td>
-                    </tr>
-                  </body>
-                </table>              
-              </td>
-              
-            </tr> <!-- End/File #1 -->
-            <!-- File #2 -->
-            <tr id="row2">              
-              <td style="">
-                <table class="table">
-                  <body>
-                    <tr>
-                      <td colspan="4">[St MaryÂ´s Rx File] </td>
-                    </tr>
-                    <tr>
-                      <td colspan="4"> 
-                        <div class="btn-group" role="group" aria-label="..." >
-                          <button type="button" class="btn btn-default" style="background-color:lightgray" id="btnRow2" onClick="loadFile('btnRow2');">Load to Connected Care</button>
-                          <button type="button" class="btn btn-default" style="background-color:lightgray" onClick="goPreview();">Preview</button>
-                          <button type="button" class="btn btn-default" style="background-color:lightgray" onClick="hideRow('row2')">Remove</button>
-                        </div>
-                      </td>
-                    </tr>
-                  </body>
-                </table>
-              </td>
-              
-              <td style="">
-                <table class="table table-bordered table-condensed table-striped">
-                  <body>
-                    <tr>
-                      <th>Source Name </th>
-                      <th>Patients </th>
-                      <th>Prescriptions </th>
-                      <th>Appoinments </th>
-                    </tr>
-                    <tr>
-                      <td>St. MaryÂ´s Hospital </td>
-                      <td>300 </td>
-                      <td>450 </td>
-                      <td>0 </td>
-                    </tr>
-                    <tr>
-                      <td>Little Company of Mary </td>
-                      <td>250 </td>
-                      <td>350 </td>
-                      <td>0 </td>
-                    </tr>
-                  </body>
-                </table>              
-              </td>
-              
-              <td style="">
-                <table class="table table-bordered table-condensed table-striped">
-                  <body>
-                  </body>
-                </table>              
-              </td>
-              
-            </tr><!-- End/File #2 -->
-            <!-- File #3 -->
-            <tr id="row3">              
-              <td style="">
-                <table class="table">
-                  <body>
-                    <tr>
-                      <td colspan="4">[WalgreenÂ´s Prescriptions] </td>
-                    </tr>
-                      <td colspan="4"> 
-                        <div class="btn-group" role="group" aria-label="...">
-                          <button id="btnRow3" type="button" class="btn btn-default" style="background-color:lightgray" onClick="loadFile('btnRow3');">Load to Connected Care</button>
-                          <button type="button" class="btn btn-default" style="background-color:lightgray" onClick="goPreview();">Preview</button>
-                          <button type="button" class="btn btn-default" style="background-color:lightgray" onClick="hideRow('row3')">Remove</button>
-                        </div>
-                      </td>
-                  </body>
-                </table>
-              </td>
-              
-              <td style="">
-                <table class="table table-bordered table-condensed table-striped">
-                  <body>
-                    <tr>
-                      <th>Source Name </th>
-                      <th>Patients </th>
-                      <th>Prescriptions </th>
-                      <th>Appoinments </th>
-                    </tr>
-                    <tr>
-                      <td>St. MaryÂ´s Hospital </td>
-                      <td>700 </td>
-                      <td>1250 </td>
-                      <td>0 </td>
-                    </tr>
-                  </body>
-                </table>              
-              </td>
-              
-              <td style="">
-                <table class="table table-bordered table-condensed table-striped">
-                  <body>
-                  </body>
-                </table>              
-              </td>
-              
-            </tr><!-- End/File #3 -->
+            <c:forEach var="listValue" items="${list}">
+	            <tr>
+	            <td>
+	            	<c:out value="${listValue.fileDesc}"/>
+	            </td>
+	            <td>
+				    <c:choose>
+					    <c:when test="${listValue.fileStatus == null}">
+	        				<a href="javascript:goToNormalization(<c:out value="${listValue.csvId}"/>)">Load to Connected Care</a> | 
+	        		        <a href="javascript:previewFile(<c:out value="${listValue.csvId}"/>)">Preview</a> | 
+	        		        <a href="javascript:removeFile(<c:out value="${listValue.csvId}"/>)">Remove</a>
+	    				</c:when>
+	    				<c:otherwise>
+	        				<strong>Loaded</strong> |
+	        		        <a href="javascript:previewFile(<c:out value="${listValue.csvId}"/>)">Preview</a> 
+	    				</c:otherwise>
+	   				</c:choose>            	
+	            </td>
+	            <td>
+	            	<!-- Statistics File Summary -->
+	            	<c:forEach var="statis" items="${listSummary}">
+	            	1
+	            	<tr>
+	            	<td><c:out value="${statis.sourceName}"/></td>
+	            	<td><c:out value="${statis.patientCount}"/></td>
+	            	</tr>
+	            	<tr>
+	            	<td>Prescriptions</td>
+	            	<td><c:out value="${statis.rx}"/></td>
+	            	</tr>
+	            	<tr>
+	            	<td>Appointments</td>
+	            	<td><c:out value="${statis.appt}"/></td>
+	            	</tr>
+	            	</c:forEach>
+	            	<!-- End / Statistics File Summary -->
+	            </td>
+	            </tr>
+            	
+            </c:forEach>            
               
             </tbody>
           </table>    				
@@ -328,15 +176,49 @@
         });
     });
     </script> 
+    <script> 
+		function goToNormalization(id) {
+			var url = "normalizationById";
+			var form = $("<form action='" + url + "' method='post'>" +
+						   "<input type='hidden' name='csvId' value='" + id + "' />" +
+			  			 "</form>");
+			
+			$("body").append(form);
+			form.submit();
+		}    
+	</script> 
+    <script>
+		function previewFile(id) {
+			var url = "previewFile";
+			var form = $("<form action='" + url + "' method='post'>" +
+						   "<input type='hidden' name='csvId' value='" + id + "' />" +
+			  			 "</form>");
+			
+			$("body").append(form);
+			form.submit();
+		}    
+	</script> 
+    <script> 
+		function removeFile(id) {
+			var url = "removeFileById";
+			var form = $("<form action='" + url + "' method='post'>" +
+						   "<input type='hidden' name='csvId' value='" + id + "' />" +
+			  			 "</form>");
+			
+			$("body").append(form);
+			form.submit();
+		}    
+	</script> 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./scripts/jquery.min.js"></script>
-    <script src="./scripts/bootstrap.min.js"></script>
+    <script src="resources/scripts/jquery.min.js"></script>
+    <script src="resources/scripts/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="./scripts/ie10-viewport-bug-workaround.js"></script>
-    <script src="./scripts/jasny-bootstrap.min.js"></script>
+    <script src="resources/scripts/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript" src="resources/scripts/bootstrap-filestyle.min.js"></script>
+    <script src="resources/scripts/priority_setup.js"></script>
   
 
 </body>

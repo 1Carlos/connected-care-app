@@ -88,8 +88,7 @@
         <div style="width:400px">
 		  <center>
 			<form id="file-upload-form">
-				<strong>File Description: </strong>
-				<input type="text" name="description" class="" size="40"/></br>
+				<input type="text" name="description" class="form-control" id="description" placeholder="File´s description" size="40"/></br>
 				<input type="file" name="file" class="filestyle" />
 			</form>
 		    <br/>
