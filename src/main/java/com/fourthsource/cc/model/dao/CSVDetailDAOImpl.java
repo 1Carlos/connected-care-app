@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fourthsource.cc.domain.CSVDetailEntity;
 import com.fourthsource.cc.domain.CSVHeadEntity;
+import com.fourthsource.cc.domain.FileSummaryEntity;
 
 @Repository
 public class CSVDetailDAOImpl implements CSVDetailDAO  {
@@ -89,6 +90,29 @@ public class CSVDetailDAOImpl implements CSVDetailDAO  {
 			}
 		});
 		//Query q = sessionFactory.getCurrentSession().createSQLQuery("CALL sp_Reconciliation()");
+	}
+
+	
+	@Override
+	public void callSPGetPatientInfo2(final Integer id) {
+		sessionFactory.getCurrentSession().doWork(new Work() {
+			@Override
+			public void execute(Connection connection) throws SQLException {
+				CallableStatement statement = connection.prepareCall("{CALL sp_GetPatientInfo2(?)}");
+				statement.setInt(1, id);
+				statement.execute();
+				statement.close();
+			}
+		});
+	}
+	
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<FileSummaryEntity> getStatisticByIdFile(Integer id) {
+		Query q = sessionFactory.getCurrentSession().createQuery("FROM FileSummaryEntity WHERE csvId = :id ORDER BY sourceName");
+		q.setParameter("id", id);
+		return q.list();
 	}
 	
 }

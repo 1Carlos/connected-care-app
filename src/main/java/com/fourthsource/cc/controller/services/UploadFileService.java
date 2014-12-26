@@ -41,7 +41,7 @@ public class UploadFileService {
 	private ReadFileThread readFileThread;
 	
 	@RequestMapping(value="/uploadFileService", method=RequestMethod.POST)
-    public @ResponseBody ResponseFileUpload handleFileUploaded(@RequestParam("file") MultipartFile file) {
+    public @ResponseBody ResponseFileUpload handleFileUploaded(@RequestParam("file") MultipartFile file, @RequestParam("description") String description) {
 		logger.debug("Service handleFileUploaded()");
 		ResponseFileUpload response = new ResponseFileUpload();
 		String path = fileUploadProperties.getPath();
@@ -55,7 +55,8 @@ public class UploadFileService {
                 stream.write(bytes);
                 stream.close();
                 
-                Integer id = csvHeadManager.saveCSVFileName(fileName);
+                Integer id = csvHeadManager.saveCSVFileName(fileName,description);
+                //id = csvHeadManager.
                 
                 readFileThread.setIdFile(id);
                 

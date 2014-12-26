@@ -1,6 +1,7 @@
 package com.fourthsource.cc.domain;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,10 +9,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.codehaus.jackson.annotate.JsonBackReference;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.mapping.Collection;
 
 @Entity
 @Table(name = "icd10_programs")
@@ -25,7 +29,7 @@ public class Icd10ProgramsEntity implements Serializable {
     private Integer icd10ProgramsId;	
 	
     @JsonBackReference
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER) //cascade = CascadeType.ALL)//
 	@JoinColumn(name = "ICD_CODE_ID", nullable = false)
 	private Icd10Entity icdCodeId;    
     

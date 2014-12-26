@@ -107,6 +107,7 @@
     <bean id="icd10Manager" class="com.fourthsource.cc.model.services.Icd10ManagerImpl"></bean>
     <bean id="icd10ProgramsDAO" class="com.fourthsource.cc.model.dao.Icd10ProgramsDAOImpl"></bean>
     <bean id="icd10ProgramsManager" class="com.fourthsource.cc.model.services.Icd10ProgramsManagerImpl"></bean>
+    <bean id="prioritySetManager" class="com.fourthsource.cc.model.services.PrioritySetManagerImpl"></bean>
     
     <tx:annotation-driven transaction-manager="transactionManager"/>
     

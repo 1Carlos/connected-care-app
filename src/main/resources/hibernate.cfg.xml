@@ -16,5 +16,8 @@
         <mapping class="com.fourthsource.cc.domain.Icd10ProgramsEntity" />
         <mapping class="com.fourthsource.cc.domain.OrdersEntity" />
         <mapping class="com.fourthsource.cc.domain.NoteEntity" />
+        <mapping class="com.fourthsource.cc.domain.PrioritySetEntity" />
+        <mapping class="com.fourthsource.cc.domain.PrioritySetRuleEntity" />
+        <mapping class="com.fourthsource.cc.domain.FileSummaryEntity" />
     </session-factory>
 </hibernate-configuration>

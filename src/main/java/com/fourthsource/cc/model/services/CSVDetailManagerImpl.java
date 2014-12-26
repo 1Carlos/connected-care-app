@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fourthsource.cc.domain.CSVDetailEntity;
+import com.fourthsource.cc.domain.FileSummaryEntity;
 import com.fourthsource.cc.model.dao.CSVDetailDAO;
 
 @Service
@@ -55,4 +56,17 @@ public class CSVDetailManagerImpl implements CSVDetailManager {
 		csvDetailDAO.callSPReconciliation();
 	}
 	
+	@Override
+	@Transactional
+	public void callNormalizationByIdFile(Integer id) {
+		csvDetailDAO.callSPGetPatientInfo2(id);
+	}
+
+	@Override
+	@Transactional
+	public List<FileSummaryEntity> getStatisticByIdFile(Integer id) {
+		return csvDetailDAO.getStatisticByIdFile(id);
+	}
+	
+
 }

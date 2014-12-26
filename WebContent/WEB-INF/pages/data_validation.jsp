@@ -49,6 +49,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="import_data">Import Data </a></li>
+                <li><a href="launchpad">Launchpad </a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -82,7 +83,7 @@
     <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
       <div class="page-header">
-        <h1>Data Validation</h1>
+        <h1>Preview Data</h1>
         <p class="lead"></p>
       </div>
         <center>
@@ -91,19 +92,26 @@
             <br/>
             <br/>
             <p>
+            	<!--
             	<a id="confirm-data-validation" class="btn btn-primary btn-lg" role="button">Confirm to Import</a>
             	<a id="cancel-data-validation" class="btn btn-danger btn-lg" role="button">Cancel</a>
+            	 -->
+				<a class="btn btn-primary btn-lg" role="button" onClick="javascript:window.location='launchpad' ">Go to Launchpad</a>
             </p>
             <br/>
             <div class="alert alert-success">File was loaded.</div>
-            <div class="alert alert-warning" role="alert"><c:out value="${rowsLoaded}"/> of <c:out value="${rowsInFile}"/> records were loaded.</div>
+			<!-- 
+            <div class="alert alert-success" role="alert"><c:out value="${rowsLoaded}"/> of <c:out value="${rowsInFile}"/> records were loaded.</div>
+            -->
             <c:if test="${rowsNotLoaded > 0}">
    				<div class="alert alert-danger" role="alert"><c:out value="${rowsNotLoaded}"/> record(s) cannot be loaded...</div>
 			</c:if>
             <br/>
             <br/>
+            <!-- 
             <input type="hidden" id="idFile" value="<c:out value="${idFile}"/>" />
             <input type="hidden" id="rowsLoaded" value="<c:out value="${rowsLoaded}"/>" />
+             -->
            	<table id="table-style" data-height="299" class="table table-hover" style="margin-top: -41px;" data-row-style="rowStyle">
               <thead>
                 <tr>

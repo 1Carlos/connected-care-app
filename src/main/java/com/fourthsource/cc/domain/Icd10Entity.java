@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -42,9 +44,13 @@ public class Icd10Entity implements Serializable {
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "icdCodeId")
     private Set<Icd10ProgramsEntity> icd10ProgramsEntity = new HashSet<Icd10ProgramsEntity>(0);*/
 
+    /*@JsonManagedReference
+    @ManyToOne(fetch = FetchType.LAZY)//, mappedBy = "icdCodeId")
+    private Icd10ProgramsEntity icd10ProgramsEntity;*/
     @JsonManagedReference
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "icdCodeId")
-    private Icd10ProgramsEntity icd10ProgramsEntity;    
+    private Icd10ProgramsEntity icd10ProgramsEntity;   
+    
     
     @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "diagnosisId")
@@ -96,6 +102,14 @@ public class Icd10Entity implements Serializable {
 
 	public void setPatientDiagnosisEntity(Set<PatientDiagnosisEntity> patientDiagnosisEntity) {
 		this.patientDiagnosisEntity = patientDiagnosisEntity;
+	}
+
+	public Icd10ProgramsEntity getIcd10ProgramsEntity() {
+		return icd10ProgramsEntity;
+	}
+
+	public void setIcd10ProgramsEntity(Icd10ProgramsEntity icd10ProgramsEntity) {
+		this.icd10ProgramsEntity = icd10ProgramsEntity;
 	}
 	
 }
