@@ -48,6 +48,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="import_data">Import Data </a></li>
+                <li><a href="priority_setup">Configure Prioritization </a></li>
               </ul>
             </li>
             <li class="dropdown">

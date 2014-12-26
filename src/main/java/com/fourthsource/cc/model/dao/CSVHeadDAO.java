@@ -13,5 +13,6 @@ public interface CSVHeadDAO {
     public Integer saveCSVHead(CSVHeadEntity entity);
     public List<CSVHeadEntity> getAllCSVHead();
 	public List<FileSummaryEntity> getStatisticByIdFile();
+	public void deleteByCSVHeadId(Integer id);
     
 }

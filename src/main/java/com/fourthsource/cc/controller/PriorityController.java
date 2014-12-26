@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fourthsource.cc.domain.CSVHeadEntity;
 import com.fourthsource.cc.domain.PrioritySetEntity;
 import com.fourthsource.cc.domain.PrioritySetRuleEntity;
 import com.fourthsource.cc.model.services.PrioritySetManager;
@@ -42,22 +43,28 @@ public class PriorityController {
 		return new ModelAndView(VIEW_SETUP, model); 
 	}
 	
-	/*@RequestMapping(value="/priority_rules_setup", method=RequestMethod.GET)
-	public ModelAndView newRule() {
-		logger.debug("Loading \"priority_rules_setup\" page");
+	/*
+	@RequestMapping(value="/removeFileById", method=RequestMethod.POST)
+	public ModelAndView removeFileById(Integer csvId) {
+		logger.debug("Loading \"removeFileById\" page");
 		Map<String, Object> model = new HashMap<String, Object>();
-		//List<PrioritySetRuleEntity> list = prioritySetRuleManager.getPrioritySetRuleById(1);
-		//model.put("list", list);
-		return new ModelAndView(VIEW_RULES); 
-	}*/
+		csvDetailManager.deleteByCSVHeadId(csvId);
+		csvHeadManager.deleteByCSVHeadId(csvId);
+		List<CSVHeadEntity> list = csvHeadManager.getAllCSVHead();
+	    model.put("list", list);
+		return new ModelAndView("redirect:launchpad", model); 
+	}	
+	*/
 	
-	@RequestMapping("/priority/edit/{id}")
-    public ModelAndView editPriority(@PathVariable("id") int id){
+	@RequestMapping(value="/priority_rules_setup", method=RequestMethod.POST)
+    public ModelAndView editPriority(Integer prioritySetId){
 		logger.debug("Loading \"priority_rules_setup\" page");
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("priority", this.prioritySetManager.getPrioritySetById(id));
-		model.put("listRules", this.prioritySetRuleManager.getPrioritySetRuleById(id));
-        return new ModelAndView(VIEW_RULES,model);
+		//PrioritySetEntity priority = prioritySetManager.getPrioritySetById(prioritySetId);
+		//List<PrioritySetRuleEntity> ruleList = prioritySetRuleManager.getAllPriorityRulesById(prioritySetId);
+		//model.put("priority" , priority);
+		//model.put("listRules", ruleList);
+        return new ModelAndView("priority_rules_setup",model);
     }
 	
 }

@@ -71,9 +71,10 @@ public class LaunchpadController {
 		logger.debug("Loading \"removeFileById\" page");
 		Map<String, Object> model = new HashMap<String, Object>();
 		csvDetailManager.deleteByCSVHeadId(csvId);
+		csvHeadManager.deleteByCSVHeadId(csvId);
 		List<CSVHeadEntity> list = csvHeadManager.getAllCSVHead();
 	    model.put("list", list);
-		return new ModelAndView(VIEW, model); 
+		return new ModelAndView("redirect:launchpad", model); 
 	}	
 	
 	

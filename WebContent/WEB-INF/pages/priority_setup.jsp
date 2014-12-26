@@ -59,6 +59,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="import_data">Import Data </a></li>
+                <li><a href="launchpad">Launchpad </a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -130,17 +131,17 @@
 
 	                    <!--COMMANDS-->
 	                    <div class="btn-toolbar right" role="toolbar" aria-label="">
-	                      <a href="${pageContext.request.contextPath}/priority/add" style="text-decoration:none;">
+	                      <a href="#" style="text-decoration:none;">
 	                      <button id="button-new-priority" type="button" class="btn btn-default" aria-label="Add">
 	                        <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
 	                      </button>
 	                      </a>
-	                      <a href="${pageContext.request.contextPath}/priority/edit/<c:out value="${listValue.prioritySetId}"/>" style="text-decoration:none;">
+	                      <a href="javascript:editPriority( <c:out value="${listValue.prioritySetId}"/> )" style="text-decoration:none;">
 	                      <button id="button-update-priority" type="button" class="btn btn-default" aria-label="Update">
 	                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span>
 	                      </button>
 	                      </a>
-	                      <a href="${pageContext.request.contextPath}/priority/remove/<c:out value="${listValue.prioritySetId}"/>" style="text-decoration:none;">
+	                      <a href="#" style="text-decoration:none;">
 	                      <button id="button-delete-priority" type="button" class="btn btn-default" aria-label="Delete">
 	                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
 	                      </button>
@@ -163,6 +164,17 @@
               </table>
      </div>
 <!-- TABLE -->
+    <script> 
+		function editPriority(id) {
+			var url = "priority_rules_setup";
+			var form = $("<form action='" + url + "' method='POST'>" +
+						   "<input type='hidden' name='prioritySetId' value='" + id + "' />" +
+			  			 "</form>");
+			
+			$("body").append(form);
+			form.submit();
+		}    
+	</script> 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

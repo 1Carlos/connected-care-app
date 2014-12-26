@@ -56,6 +56,11 @@ public class CSVHeadManagerImpl implements CSVHeadManager {
 	public List<FileSummaryEntity> getStatisticByIdFile() {
 		return csvHeadDAO.getStatisticByIdFile();
 	}
-
+	
+	@Override
+	@Transactional
+	public void deleteByCSVHeadId(Integer id) {
+		csvHeadDAO.deleteByCSVHeadId(id);
+	}
 }
 

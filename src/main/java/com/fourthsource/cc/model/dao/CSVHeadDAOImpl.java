@@ -4,13 +4,18 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.fourthsource.cc.domain.CSVDetailEntity;
 import com.fourthsource.cc.domain.CSVHeadEntity;
 import com.fourthsource.cc.domain.FileSummaryEntity;
+import com.fourthsource.cc.domain.Icd10ProgramsEntity;
 
 @Repository
 public class CSVHeadDAOImpl implements CSVHeadDAO  {
@@ -47,4 +52,14 @@ public class CSVHeadDAOImpl implements CSVHeadDAO  {
 		//q.setParameter("id", id);
 		return q.list();
 	}
+
+	@Override
+	public void deleteByCSVHeadId(Integer id) {
+		CSVHeadEntity entity;
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(CSVHeadEntity.class);
+		criteria.add(Restrictions.eq("csvId", id));
+		entity = (CSVHeadEntity) criteria.uniqueResult();
+		sessionFactory.getCurrentSession().delete(entity);
+	}
+
 }

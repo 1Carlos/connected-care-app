@@ -13,6 +13,6 @@ public interface CSVHeadManager {
 	public Integer saveCSVFileName(String fileName, String description);
 	public List<CSVHeadEntity> getAllCSVHead();
 	public List<FileSummaryEntity> getStatisticByIdFile();
-	
+    public void deleteByCSVHeadId(Integer id);
     
 }

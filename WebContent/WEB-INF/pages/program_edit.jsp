@@ -59,6 +59,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="import_data">Import Data </a></li>
+                <li><a href="launchpad">Launchpad </a></li>
               </ul>
             </li>
             <li class="dropdown">

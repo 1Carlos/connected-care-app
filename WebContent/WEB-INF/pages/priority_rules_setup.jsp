@@ -160,27 +160,137 @@
                   </td>
                   <td>
                     <select>
-                      <option value"0">Select a Rule Type...</option>                      
-                      <option value"0">Diagnosis Code</option>
-                      <option value"0" selected>Gender</option>
-                      <option value"0">Age</option>
-                      <option value"0">Order Type</option>
-                      <option value"0">Order Detail</option>
-                      <option value"0">Order Age in Days</option>
-                      <option value"0">Case Age in Days</option>
+                      <option value="0">Select a Rule Type...</option>                      
+                      <c:choose>
+	                      <c:when test="${listValue.ruleType == 'ICD10_CODE'}">
+	                      	<option value="ICD10_CODE" selected>Diagnosis Code</option>
+	                      </c:when>
+	                      <c:otherwise>
+	                      	<option value="ICD10_CODE">Diagnosis Code</option>
+	                      </c:otherwise>
+                      </c:choose>
+                      <c:choose>
+	                      <c:when test="${listValue.ruleType == 'Gender'}">
+	                      	<option value="Gender" selected>Gender</option>
+	                      </c:when>
+	                      <c:otherwise>
+	                      	<option value="Gender">Gender</option>
+	                      </c:otherwise>
+                      </c:choose>
+                      <c:choose>
+                      	<c:when test="${listValue.ruleType == 'Age'}">
+	                      <option value="Age" selected>Age</option>
+                      	</c:when>
+                      	<c:otherwise>
+	                      <option value="Age">Age</option>
+                      	</c:otherwise>
+                      </c:choose>
+                      <c:choose>
+                      	<c:when test="${listValue.ruleType == 'Order Type'}">
+	                      <option value="Order Type" selected>Order Type</option>
+                      	</c:when>
+                      	<c:otherwise>
+	                      <option value="Order Type">Order Type</option>
+                      	</c:otherwise>
+                      </c:choose>
+                      <c:choose>
+                      	<c:when test="${listValue.ruleType == 'Order Detail'}">
+	                      <option value="Order Detail" selected>Order Detail</option>
+                      	</c:when>
+                      	<c:otherwise>
+	                      <option value="Order Detail">Order Detail</option>
+                      	</c:otherwise>
+                      </c:choose>
+                      <c:choose>
+                      	<c:when test="${listValue.ruleType == 'Order Age'}">
+	                      <option value="Order Age" selected>Order Age in Days</option>
+                      	</c:when>
+                      	<c:otherwise>
+	                      <option value="Order Age">Order Age in Days</option>
+                      	</c:otherwise>
+                      </c:choose>
+                      <c:choose>
+                      	<c:when test="${listValue.ruleType == 'Case Age'}">
+	                      <option value="Case Age" selected>Case Age in Days</option>
+                      	</c:when>
+                      	<c:otherwise>
+	                      <option value="Case Age">Case Age in Days</option>
+                      	</c:otherwise>
+                      </c:choose>
                     </select>
                   </td>
                   <td>
                     <select>
-                      <option value"0">Select a Operator...</option>
-                      <option value"0" selected>Equals (=)</option>
-                      <option value"0">is greather than (>)</option>
-                      <option value"0">is greather than or equal to (>=)</option>
-                      <option value"0">is less than (<)</option>
-                      <option value"0">is less than or equal to (<=)</option>
-                      <option value"0">is between</option>
-                      <option value"0">is in the list</option>
-                      <option value"0">start with</option>
+                      <option value="0">Select a Operator...</option>
+                      <c:choose>
+	                      <c:when test="${listValue.operator == '='}">
+                      		<option value="=" selected>Equals (=)</option>
+	                      </c:when>
+	                      <c:otherwise>
+                      		<option value="=">Equals (=)</option>
+	                      </c:otherwise>
+                      </c:choose>
+                      <c:choose>
+	                      <c:when test="${listValue.operator == '>'}">
+                      		<option value=">" selected>is greather than (>)</option>
+	                      </c:when>
+	                      <c:otherwise>
+                      		<option value=">">is greather than (>)</option>
+	                      </c:otherwise>
+                      </c:choose>
+                      <c:choose>
+	                      <c:when test="${listValue.operator == '>='}">
+                      		<option value=">=" selected>is greather than or equal to (>=)</option>
+	                      </c:when>
+	                      <c:otherwise>
+                      		<option value=">=">is greather than or equal to (>=)</option>
+	                      </c:otherwise>
+                      </c:choose>
+
+                      <!-- <c:choose>
+	                      <c:when test="${listValue.operator == '<'}">
+	                      	<option value="<" selected>is less than (<) </option>
+	                      </c:when>
+	                      <c:otherwise>
+	                      	<option value="<">is less than (<) </option>
+	                      </c:otherwise> 
+                      </c:choose> -->   
+
+                      <c:choose>
+	                      <c:when test="${listValue.operator == '<='}">
+                      		<option value="<=" selected>is less than or equal to (<=)</option>
+	                      </c:when>
+	                      <c:otherwise>
+                      		<option value="<=">is less than or equal to (<=)</option>
+	                      </c:otherwise>
+                      </c:choose>                      
+                      <c:choose>
+	                      <c:when test="${listValue.operator == '<='}">
+                      		<option value="between" selected>is between </option>
+	                      </c:when>
+	                      <c:otherwise>
+                      		<option value="between">is between </option>
+	                      </c:otherwise>
+                      </c:choose>                          
+                      <c:choose>
+	                      <c:when test="${listValue.operator == 'in'}">
+                      		<option value="in" selected>is in the list</option>
+	                      </c:when>
+	                      <c:otherwise>
+                      		<option value="in">is in the list</option>
+	                      </c:otherwise>
+                      </c:choose>                          
+                      <c:choose>
+	                      <c:when test="${listValue.operator == 'like'}">
+                      		<option value="like" selected>start with</option>
+	                      </c:when>
+	                      <c:otherwise>
+                      		<option value="like">start with</option>
+	                      </c:otherwise>
+                      </c:choose>                      
+                      
+                      
+                      
                     </select>
                   </td>
                   <td>
@@ -190,187 +300,8 @@
                     <input type="text" value="" size=10>
                   </td>
                 </tr>
-                </c:forEach>
+              </c:forEach>
 <!-- RECORD #2-->
-                <tr>
-                  <td>
-                    <!--TOOLBAR-->
-                    <div class="btn-toolbar right" role="toolbar" aria-label="">
-                      <button id="button-new-record" type="button" class="btn btn-default" aria-label="Add ICD Code">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
-                      </button>
-                      <button id="button-delete-record" type="button" class="btn btn-default" aria-label="Remove ICD Code">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
-                      </button>
-                    </div><!--END/TOOLBAR-->  
-                  </td>
-                  <td>
-                    <select>
-                      <option value"0">Select a Rule Type...</option>
-                      <option value"0" selected>Diagnosis Code</option>
-                      <option value"0">Gender</option>
-                      <option value"0">Age</option>
-                      <option value"0">Order Type</option>
-                      <option value"0">Order Detail</option>
-                      <option value"0">Order Age in Days</option>
-                      <option value"0">Case Age in Days</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select>
-                      <option value"0">Select a Operator...</option>
-                      <option value"0" selected>Equals (=)</option>
-                      <option value"0">is greather than (>)</option>
-                      <option value"0">is greather than or equal to (>=)</option>
-                      <option value"0">is less than (<)</option>
-                      <option value"0">is less than or equal to (<=)</option>
-                      <option value"0">is between</option>
-                      <option value"0">is in the list</option>
-                      <option value"0">start with</option>
-                    </select>
-                  </td>
-                  <td>
-                    <input type="text" value="E11" size=10>
-                  </td>
-                  <td>
-                    <input type="text" value="" size=10>
-                  </td>
-                </tr>
-<!--RECORD #3-->
-                <tr>
-                  <td>
-                    <!--TOOLBAR-->
-                    <div class="btn-toolbar right" role="toolbar" aria-label="">
-                      <button id="button-new-record" type="button" class="btn btn-default" aria-label="Add ICD Code">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
-                      </button>
-                      <button id="button-delete-record" type="button" class="btn btn-default" aria-label="Remove ICD Code">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
-                      </button>
-                    </div><!--END/TOOLBAR-->  
-                  </td>
-                  <td>
-                    <select>
-                      <option value"0">Select a Rule Type...</option>
-                      <option value"0" selected>Diagnosis Code</option>
-                      <option value"0">Gender</option>
-                      <option value"0">Age</option>
-                      <option value"0">Order Type</option>
-                      <option value"0">Order Detail</option>
-                      <option value"0">Order Age in Days</option>
-                      <option value"0">Case Age in Days</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select>
-                      <option value"0">Select a Operator...</option>
-                      <option value"0" selected>Equals (=)</option>
-                      <option value"0">is greather than (>)</option>
-                      <option value"0">is greather than or equal to (>=)</option>
-                      <option value"0">is less than (<)</option>
-                      <option value"0">is less than or equal to (<=)</option>
-                      <option value"0">is between</option>
-                      <option value"0">is in the list</option>
-                      <option value"0">start with</option>
-                    </select>
-                  </td>
-                  <td>
-                    <input type="text" value="E77" size=10>
-                  </td>
-                  <td>
-                    <input type="text" value="" size=10>
-                  </td>
-                </tr>
-<!--RECORD #4-->
-                <tr>
-                  <td>
-                    <!--TOOLBAR-->
-                    <div class="btn-toolbar right" role="toolbar" aria-label="">
-                      <button id="button-new-record" type="button" class="btn btn-default" aria-label="Add ICD Code">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
-                      </button>
-                      <button id="button-delete-record" type="button" class="btn btn-default" aria-label="Remove ICD Code">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
-                      </button>
-                    </div><!--END/TOOLBAR-->  
-                  </td>
-                  <td>
-                    <select>
-                      <option value"0">Select a Rule Type...</option>
-                      <option value"0">Diagnosis Code</option>
-                      <option value"0">Gender</option>
-                      <option value"0" selected>Age</option>
-                      <option value"0">Order Type</option>
-                      <option value"0">Order Detail</option>
-                      <option value"0">Order Age in Days</option>
-                      <option value"0">Case Age in Days</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select>
-                      <option value"0">Select a Operator...</option>
-                      <option value"0">Equals (=)</option>
-                      <option value"0">is greather than (>)</option>
-                      <option value"0" selected>is greather than or equal to (>=)</option>
-                      <option value"0">is less than (<)</option>
-                      <option value"0">is less than or equal to (<=)</option>
-                      <option value"0">is between</option>
-                      <option value"0">is in the list</option>
-                      <option value"0">start with</option>
-                    </select>
-                  </td>
-                  <td>
-                    <input type="text" value="75" size=10>
-                  </td>
-                  <td>
-                    <input type="text" value="" size=10>
-                  </td>
-                </tr>
-<!--RECORD #5-->
-                <tr>
-                  <td>
-                    <!--TOOLBAR-->
-                    <div class="btn-toolbar right" role="toolbar" aria-label="">
-                      <button id="button-new-record" type="button" class="btn btn-default" aria-label="Add ICD Code">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"> </span>
-                      </button>
-                      <button id="button-delete-record" type="button" class="btn btn-default" aria-label="Remove ICD Code">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span>
-                      </button>
-                    </div><!--END/TOOLBAR-->  
-                  </td>
-                  <td>
-                    <select>
-                      <option value"0">Select a Rule Type...</option>
-                      <option value"0">Diagnosis Code</option>
-                      <option value"0">Gender</option>
-                      <option value"0">Age</option>
-                      <option value"0">Order Type</option>
-                      <option value"0">Order Detail</option>
-                      <option value"0">Order Age in Days</option>
-                      <option value"0">Case Age in Days</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select>
-                      <option value"0">Select a Operator...</option>
-                      <option value"0">Equals (=)</option>
-                      <option value"0">is greather than (>)</option>
-                      <option value"0">is greather than or equal to (>=)</option>
-                      <option value"0">is less than (<)</option>
-                      <option value"0">is less than or equal to (<=)</option>
-                      <option value"0">is between</option>
-                      <option value"0">is in the list</option>
-                      <option value"0">start with</option>
-                    </select>
-                  </td>
-                  <td>
-                    <input type="text" value="" size=10>
-                  </td>
-                  <td>
-                    <input type="text" value="" size=10>
-                  </td>
-                </tr>
 <!-- Records from the database -->
                 </tbody>
               </table>
