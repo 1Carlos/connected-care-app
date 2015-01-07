@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
   <head>
@@ -18,41 +20,39 @@
     <link href="resources/styles/navbar-fixed-top.css" rel="stylesheet">
 
     <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
-
+	
     <script type="text/javascript">
     window.onload = function () {
-    	var chart2 = new CanvasJS.Chart("chartContainer2",
-        {
-          title:{
-            text: "Readmissions by Month"    
-          },
-          axisY: {
-            title: "Quantity"
-          },
-          legend: {
-            verticalAlign: "bottom",
-            horizontalAlign: "center"
-          },
-          theme: "theme2",
-          backgroundColor:"white",
-          data: [
-
-          {        
-            type: "column",  
-            showInLegend: true, 
-            legendMarkerColor: "grey",
-            legendText: "Months",
-            dataPoints: [      
-            {y: 70, label: "Sep"},
-            {y: 90,  label: "Oct" },
-            {y: 100,  label: "Nov"},
-            {y: 50, label: "Dec"},
-            {y: 25,  label: "Jan" },
-            {y: 20,  label: "Feb"}
-            ]
-          }   
-          ]
-        });
+        var chart2 = new CanvasJS.Chart("chartContainer2",
+                {
+                  title:{
+                    text: "Cases by Month"    
+                  },
+                  axisY: {
+                    title: "Total"
+                  },
+                  legend: {
+                    verticalAlign: "bottom",
+                    horizontalAlign: "center"
+                  },
+                  theme: "theme2",
+                  backgroundColor:"white",
+                  data: [
+                         {        
+                           type: "column",  
+                           showInLegend: true, 
+                           legendMarkerColor: "black",
+                           legendText: "Cases per Month",
+                           dataPoints: [ 
+										<c:forEach var="value" items="${chartData}">
+											{
+											 y: <c:out value="${value.quantity}"/>,
+											 label: "<c:out value="${value.month}"/>"
+											}
+										</c:forEach>
+										]
+                         }]
+                });
 
         chart2.render();
 
@@ -192,9 +192,12 @@
         });
 
         chart5.render();
-      
+        
       }
   </script>
+
+
+  
   <script type="text/javascript" src="resources/scripts/canvasjs.min.js"></script>
   <script src="resources/scripts/Chart.min.js"></script>
   </head>
@@ -273,13 +276,50 @@
    				<div id="chartContainer5" style="height:300px;width:80%" ></div>
    			</div>
         </div>
+        <div align="center"  class="row">
+   			<div class="col-xs-6" style="background-color:white;border:0">
+        		[Highchart]<div id="highcontainer" style="width:100%;"></div>
+   			</div>
+   			<div align="center"  class="col-xs-6" style="background-color:white;border:0">
+   			</div>
+        </div>
   	  </div>
     </div>
+
+  <script>
+  		$(function () { 
+		    $('#highcontainer').highcharts({
+		        chart: {
+		            type: 'bar'
+		        },
+		        title: {
+		            text: 'Fruit Consumption'
+		        },
+		        xAxis: {
+		            categories: ['Apples', 'Bananas', 'Oranges']
+		        },
+		        yAxis: {
+		            title: {
+		                text: 'Fruit eaten'
+		            }
+		        },
+		        series: [{
+		            name: 'Jane',
+		            data: [1, 0, 4]
+		        }, {
+		            name: 'John',
+		            data: [5, 7, 3]
+		        }]
+		    });
+		});  
+  </script>
+
     <!-- Bootstrap core JavaScript
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="resources/scripts/jquery.min.js"></script>
     <script src="resources/scripts/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="resources/scripts/ie10-viewport-bug-workaround.js"></script>
+	<script src="http://code.highcharts.com/adapters/standalone-framework.js"></script>
   </body>
 </html>

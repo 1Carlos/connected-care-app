@@ -53,33 +53,11 @@ public class CasesViewManagerImpl implements CasesViewManager {
 		    Criterion restrictionPatientLastName = Restrictions.like("patientLastName", "%" + request.getPatientName() + "%");
 		    expressions.add(Restrictions.or(restrictionPatientFirstName, restrictionPatientLastName));
 		}
-
-		/*if(request.getIcdInformation() != null && !request.getIcdInformation().isEmpty()) {
-		    Criterion restrictionDiagnosisCode = Restrictions.eq("diagnosisCode", request.getIcdInformation());
-		    Criterion restrictionDiagnosisName = Restrictions.like("diagnosisName", "%" + request.getIcdInformation() + "%");
-		    expressions.add(Restrictions.or(restrictionDiagnosisCode, restrictionDiagnosisName));
-		}*/
-		
-		/*if(request.getFromOrderDate() != null && request.getToOrderDate() != null) {
-			expressions.add(Restrictions.between("orderActualDate", request.getFromOrderDate(), request.getToOrderDate()));
-		}
-		
-		if(request.getFromScheduleDate() != null && request.getToScheduleDate() != null) {
-			expressions.add(Restrictions.between("orderScheduleDate", request.getFromScheduleDate(), request.getToScheduleDate()));
-		}*/
 		
 		if(request.getFromFollowUpDate() != null && request.getToFollowUpDate() != null) {
 			expressions.add(Restrictions.between("followUpDate", request.getFromFollowUpDate(), request.getToFollowUpDate()));
 			
 		}
-		
-		/*if(request.getSourceType() != null && !request.getSourceType().equals("0")) {
-			expressions.add(Restrictions.eq("sourceType", request.getSourceType()).ignoreCase());
-		}
-		
-		if(request.getOrderType() != null && !request.getOrderType().equals("0")) {
-			expressions.add(Restrictions.eq("orderType", request.getOrderType()).ignoreCase());
-		}*/
 		
 		if(request.getCaseStatus().intValue() != 2) {
 			expressions.add(Restrictions.eq("caseStatus", request.getCaseStatus()) ); 

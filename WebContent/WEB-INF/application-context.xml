@@ -108,6 +108,11 @@
     <bean id="icd10ProgramsDAO" class="com.fourthsource.cc.model.dao.Icd10ProgramsDAOImpl"></bean>
     <bean id="icd10ProgramsManager" class="com.fourthsource.cc.model.services.Icd10ProgramsManagerImpl"></bean>
     <bean id="prioritySetManager" class="com.fourthsource.cc.model.services.PrioritySetManagerImpl"></bean>
+    <bean id="prioritySetDAO" class="com.fourthsource.cc.model.dao.PrioritySetDAOImpl"></bean>
+    <bean id="prioritySetRuleManager" class="com.fourthsource.cc.model.services.PrioritySetRuleManagerImpl"></bean>
+    <bean id="prioritySetRuleDAO" class="com.fourthsource.cc.model.dao.PrioritySetRuleDAOImpl"></bean>
+    <bean id="chartDAO" class="com.fourthsource.cc.model.dao.ChartDAOImpl"></bean>
+    <bean id="chartManager" class="com.fourthsource.cc.model.services.ChartManagerImpl"></bean>
     
     <tx:annotation-driven transaction-manager="transactionManager"/>
     

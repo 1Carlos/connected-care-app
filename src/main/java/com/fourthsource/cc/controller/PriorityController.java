@@ -60,10 +60,10 @@ public class PriorityController {
     public ModelAndView editPriority(Integer prioritySetId){
 		logger.debug("Loading \"priority_rules_setup\" page");
 		Map<String, Object> model = new HashMap<String, Object>();
-		//PrioritySetEntity priority = prioritySetManager.getPrioritySetById(prioritySetId);
-		//List<PrioritySetRuleEntity> ruleList = prioritySetRuleManager.getAllPriorityRulesById(prioritySetId);
-		//model.put("priority" , priority);
-		//model.put("listRules", ruleList);
+		PrioritySetEntity priority = prioritySetManager.getPrioritySetById(prioritySetId);
+		List<PrioritySetRuleEntity> ruleList = prioritySetRuleManager.getAllPriorityRulesById(prioritySetId);
+		model.put("priority" , priority);
+		model.put("listRules", ruleList);
         return new ModelAndView("priority_rules_setup",model);
     }
 	

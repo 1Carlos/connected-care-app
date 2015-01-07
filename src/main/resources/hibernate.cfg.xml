@@ -19,5 +19,7 @@
         <mapping class="com.fourthsource.cc.domain.PrioritySetEntity" />
         <mapping class="com.fourthsource.cc.domain.PrioritySetRuleEntity" />
         <mapping class="com.fourthsource.cc.domain.FileSummaryEntity" />
-    </session-factory>
+        <mapping class="com.fourthsource.cc.domain.ChartEntity" />
+        
+	</session-factory>
 </hibernate-configuration>
