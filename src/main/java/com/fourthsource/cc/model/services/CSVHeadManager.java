@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.fourthsource.cc.domain.CSVHeadEntity;
 import com.fourthsource.cc.domain.FileSummaryEntity;
+import com.fourthsource.cc.domain.ImportSummaryEntity;
 
 public interface CSVHeadManager {
 	
@@ -13,6 +14,6 @@ public interface CSVHeadManager {
 	public Integer saveCSVFileName(String fileName, String description);
 	public List<CSVHeadEntity> getAllCSVHead();
 	public List<FileSummaryEntity> getStatisticByIdFile();
-	
+	public List<ImportSummaryEntity> getImportStatByIdFile();
     
 }

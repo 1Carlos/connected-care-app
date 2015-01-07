@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fourthsource.cc.domain.CSVHeadEntity;
 import com.fourthsource.cc.domain.FileSummaryEntity;
+import com.fourthsource.cc.domain.ImportSummaryEntity;
 import com.fourthsource.cc.model.dao.CSVHeadDAO;
 
 @Service
@@ -55,6 +56,12 @@ public class CSVHeadManagerImpl implements CSVHeadManager {
 	@Transactional	
 	public List<FileSummaryEntity> getStatisticByIdFile() {
 		return csvHeadDAO.getStatisticByIdFile();
+	}
+	
+	@Override
+	@Transactional	
+	public List<ImportSummaryEntity> getImportStatByIdFile() {
+		return csvHeadDAO.getImportStatByIdFile();
 	}
 
 }

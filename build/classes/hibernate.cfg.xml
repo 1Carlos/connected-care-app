@@ -19,5 +19,6 @@
         <mapping class="com.fourthsource.cc.domain.PrioritySetEntity" />
         <mapping class="com.fourthsource.cc.domain.PrioritySetRuleEntity" />
         <mapping class="com.fourthsource.cc.domain.FileSummaryEntity" />
+        <mapping class="com.fourthsource.cc.domain.ImportSummaryEntity" />
     </session-factory>
 </hibernate-configuration>

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fourthsource.cc.domain.CSVDetailEntity;
 import com.fourthsource.cc.domain.FileSummaryEntity;
+import com.fourthsource.cc.domain.ImportSummaryEntity;
 import com.fourthsource.cc.model.dao.CSVDetailDAO;
 
 @Service
@@ -58,6 +59,12 @@ public class CSVDetailManagerImpl implements CSVDetailManager {
 	
 	@Override
 	@Transactional
+	public void callSPClearDB() {
+		csvDetailDAO.callSPClearDB();
+	}
+	
+	@Override
+	@Transactional
 	public void callNormalizationByIdFile(Integer id) {
 		csvDetailDAO.callSPGetPatientInfo2(id);
 	}
@@ -66,6 +73,12 @@ public class CSVDetailManagerImpl implements CSVDetailManager {
 	@Transactional
 	public List<FileSummaryEntity> getStatisticByIdFile(Integer id) {
 		return csvDetailDAO.getStatisticByIdFile(id);
+	}
+	
+	
+	@Transactional
+	public List<ImportSummaryEntity> getImportStatByIdFile(Integer id) {
+		return csvDetailDAO.getImportStatByIdFile(id);
 	}
 	
 

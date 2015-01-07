@@ -6,6 +6,7 @@ import java.util.Set;
 import com.fourthsource.cc.domain.CSVHeadEntity;
 import com.fourthsource.cc.domain.FileSummaryEntity;
 import com.fourthsource.cc.domain.Icd10ProgramsEntity;
+import com.fourthsource.cc.domain.ImportSummaryEntity;
 
 public interface CSVHeadDAO {
 	
@@ -13,5 +14,6 @@ public interface CSVHeadDAO {
     public Integer saveCSVHead(CSVHeadEntity entity);
     public List<CSVHeadEntity> getAllCSVHead();
 	public List<FileSummaryEntity> getStatisticByIdFile();
+	public List<ImportSummaryEntity> getImportStatByIdFile();
     
 }

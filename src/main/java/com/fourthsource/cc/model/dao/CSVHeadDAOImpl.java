@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.fourthsource.cc.domain.CSVHeadEntity;
 import com.fourthsource.cc.domain.FileSummaryEntity;
+import com.fourthsource.cc.domain.ImportSummaryEntity;
 
 @Repository
 public class CSVHeadDAOImpl implements CSVHeadDAO  {
@@ -47,4 +48,13 @@ public class CSVHeadDAOImpl implements CSVHeadDAO  {
 		//q.setParameter("id", id);
 		return q.list();
 	}
+
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<ImportSummaryEntity> getImportStatByIdFile() {
+	Query q = sessionFactory.getCurrentSession().getNamedQuery("ImportSummaryEntity.getImportStatByIdFile");
+	return q.list();
+    }
+
 }

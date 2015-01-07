@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.fourthsource.cc.domain.CSVDetailEntity;
 import com.fourthsource.cc.domain.FileSummaryEntity;
+import com.fourthsource.cc.domain.ImportSummaryEntity;
 
 public interface CSVDetailManager {
 	
@@ -16,5 +17,7 @@ public interface CSVDetailManager {
 	public void callReconciliationProcess();
     public void callNormalizationByIdFile(Integer id);
 	public List<FileSummaryEntity> getStatisticByIdFile(Integer id);
+	public List<ImportSummaryEntity> getImportStatByIdFile(Integer id);
+	public void callSPClearDB();
     
 }

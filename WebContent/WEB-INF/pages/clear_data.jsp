@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
   <head>
@@ -12,7 +10,6 @@
     <meta name="author" content="">
     <link rel="icon" href="resources/favicon.ico">
 	<link href="resources/styles/grid.css" rel="stylesheet">
-    <link href="resources/styles/jasny-bootstrap.min.css" rel="stylesheet">
 
     <title>Connected Care Solution by 4th Source Inc</title>
 
@@ -21,13 +18,12 @@
 
     <!-- Custom styles for this template -->
     <link href="resources/styles/navbar-fixed-top.css" rel="stylesheet">
-    
-    <link href="resources/styles/jquery.dataTables.css" rel="stylesheet">
-    <script src="resources/scripts/jquery.min.js"></script>
+
+	<script src="resources/scripts/jquery.min.js"></script>
+	<script src="resources/scripts/run-clearDB.js"></script>
     <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
-    <script src="resources/scripts/view-open-cases-datatables.js"></script>
-    <script src="resources/scripts/jquery.dataTables.min.js"></script>
   </head>
+
   <body>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -74,14 +70,12 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="http://www.4thsource.com" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
-                <img alt="4thSource Logo" src="resources/images/logo_4thsource.jpg">
-              </a>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
             <li><a href="help"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
+            <li>
+            	<a href="http://www.4thsource.com" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                	<img alt="4thSource Logo" src="resources/images/logo_4thsource.jpg">
+                </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -89,89 +83,23 @@
     <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
       <div class="page-header">
-        <h1>View Open Cases</h1>
-        <p class="lead">List of all open patients cases.</p>
-        <div class="row"></br></div>
-        <div class="row">
-	        <table data-height="299" id="open-cases-table" class="table table-hover" style="margin-top: -41px;">
-	          <thead>
-		          <tr>
-		            <th style="">
-		              <div class="th-inner ">Case</div>
-		              <div class="fht-cell"></div>
-		            </th>
-		            <th style="">
-		              <div class="th-inner ">Patient Last Name</div>
-		              <div class="fht-cell"></div>
-		            </th>
-		            <th style="">
-		              <div class="th-inner ">Patient First Name</div>
-		              <div class="fht-cell"></div>
-		            </th>
-		            <th style="">
-		              <div class="th-inner ">Patient DOB</div>
-		              <div class="fht-cell"></div>
-		            </th>
-		            <th style="">
-		              <div class="th-inner ">Gender</div>
-		              <div class="fht-cell"></div>
-		            </th>
-		            <th style="">
-		              <div class="th-inner ">Case Worker</div>
-		              <div class="fht-cell"></div>
-		            </th>
-		            <th style="">
-		              <div class="th-inner ">Follow Up Date</div>
-		              <div class="fht-cell"></div>
-		            </th>
-		            <th style="">
-		              <div class="th-inner ">Order Type</div>
-		              <div class="fht-cell"></div>
-		            </th>
-		            <th style="">
-		              <div class="th-inner ">Case Status</div>
-		              <div class="fht-cell"></div>
-		            </th>
-		          </tr>
-	          </thead>
-	          <tbody data-link="row" class="rowlink">
-	          	<c:forEach var="listValue" items="${list}">
-		          <tr>
-		            <td>
-		              <a href="javascript:goToCaseDetail(<c:out value="${listValue.caseId}"/>);">
-		                  <c:out value="${listValue.caseId}"/>
-		              </a>
-		            </td>
-		            <td style=""><c:out value="${listValue.patientLastName}"/></td>
-		            <td style=""><c:out value="${listValue.patientFirstName}"/></td>
-		            <td style=""><fmt:formatDate pattern="yyyy-MM-dd" value="${listValue.patientDOB}" /></td>
-		            <td style=""><c:out value="${listValue.patientGender}"/></td>
-		            <td style="">
-		            <c:out value="${listValue.caseWorkerLastName}"/> - <c:out value="${listValue.caseWorkerFirstName}"/>
-		            </td>
-		            <td style=""><fmt:formatDate pattern="yyyy-MM-dd" value="${listValue.followUpDate}" /></td>
-		            <td style=""><c:out value="${listValue.orderType}"/></td>
-		            <td style="">
-					    <c:choose>
-						    <c:when test="${listValue.caseStatus == 0}">
-		        				Open
-		    				</c:when>
-		    				<c:otherwise>
-		        				Closed
-		    				</c:otherwise>
-	    				</c:choose>
-		            </td>
-		          </tr>
-		        </c:forEach>
-	          </tbody>
-	        </table>
+        <h1>Clear Data Base</h1>
+        <p class="lead">In this step we will clear all data.</p>
+        <div class="jumbotron">
+    	  <center>
+    	    <br/>
+    	    <p><a id="start-clearDB" class="btn btn-primary btn-lg" role="button">Clear Data</a></p>
+    	  </center>
         </div>
 	  </div>
-    </div> 
+	  <div id="events-result-success" class="alert alert-success">Successful! Please go to the option <a href="import_data">Import Data</a></div>
+	  <div id="events-result-error" class="alert alert-danger">An error has ocurred calling the clear data process, please try again</div>
+    </div>
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="resources/scripts/jquery.min.js"></script>
     <script src="resources/scripts/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="resources/scripts/ie10-viewport-bug-workaround.js"></script>
-    <script src="resources/scripts/jasny-bootstrap.min.js"></script>
+	<script type="text/javascript" src="resources/scripts/bootstrap-filestyle.min.js"></script>  
   </body>
 </html>
