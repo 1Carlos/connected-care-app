@@ -19,8 +19,11 @@
     <!-- Custom styles for this template -->
     <link href="resources/styles/navbar-fixed-top.css" rel="stylesheet">
 
-    <script src="resources/scripts/ie-emulation-modes-warning.js"></script>	
+	<script src="resources/scripts/jquery.min.js"></script>
+	<script src="resources/scripts/run-clearDB.js"></script>
+    <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
   </head>
+
   <body>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -60,6 +63,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Case Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
+                <!-- <li><a href="dashboard_setup">Dashboard </a></li>  -->
                 <li><a href="view_open_cases">View Open Cases </a></li>
                 <li><a href="search_cases">Search Cases </a></li>
               </ul>
@@ -68,9 +72,9 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="help"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
             <li>
-              <a href="http://www.4thsource.com" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
-                <img alt="4thSource Logo" src="resources/images/logo_4thsource.jpg">
-              </a>
+            	<a href="http://www.4thsource.com" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                	<img alt="4thSource Logo" src="resources/images/logo_4thsource.jpg">
+                </a>
             </li>
           </ul>
         </div>
@@ -78,27 +82,18 @@
     </nav>
     <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="page-header">
-        <h4>FAQ</h4>
-        <p>Frecuency Asked Questions.</p>
+      <!-- <div class="page-header"> -->
+        <h4>Clear Data Base</h4>
+        <p>In this step we will clear all data.</p>
         <div class="jumbotron">
-          <a href="#">Import External File</a><br/>
-          <a href="#">Program Reconciliation</a><br/>
-          <a href="#">Case Managment</a><br/>
+    	  <center>
+    	    <br/>
+    	    <p><a id="start-clearDB" class="btn btn-primary btn-lg" role="button">Clear Data</a></p>
+    	  </center>
         </div>
-        <div class="">
-          <h4>Import External File</h4>
-          <br/>
-          What type of file can I import?
-          <br/>
-          What happen when the importing process is truncated?
-          <br/>
-          <h4>Program Reconciliation</h4>
-          <br/>
-          <h4>Case Managment</h4>
-          <br/>
-        </div>
-	  </div>
+	  <!-- </div> -->
+	  <div id="events-result-success" class="alert alert-success">Successful! Please go to the option <a href="import_data">Import Data</a></div>
+	  <div id="events-result-error" class="alert alert-danger">An error has ocurred calling the clear data process, please try again</div>
     </div>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="resources/scripts/jquery.min.js"></script>

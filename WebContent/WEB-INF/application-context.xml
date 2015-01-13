@@ -113,6 +113,12 @@
     <bean id="prioritySetRuleDAO" class="com.fourthsource.cc.model.dao.PrioritySetRuleDAOImpl"></bean>
     <bean id="chartDAO" class="com.fourthsource.cc.model.dao.ChartDAOImpl"></bean>
     <bean id="chartManager" class="com.fourthsource.cc.model.services.ChartManagerImpl"></bean>
+    <bean id="chartAdmisDAO" class="com.fourthsource.cc.model.dao.ChartAdmisDAOImpl"></bean>
+    <bean id="chartAdmisManager" class="com.fourthsource.cc.model.services.ChartAdmisManagerImpl"></bean>
+    <bean id="chartGapsByMonthDAO" class="com.fourthsource.cc.model.dao.ChartGapsByMonthDAOImpl"></bean>
+    <bean id="chartGapsByMonthManager" class="com.fourthsource.cc.model.services.ChartGapsByMonthManagerImpl"></bean>
+    <bean id="chartGapVsReadDAO" class="com.fourthsource.cc.model.dao.ChartGapVsReadDAOImpl"></bean>
+    <bean id="chartGapVsReadManager" class="com.fourthsource.cc.model.services.ChartGapVsReadManagerImpl"></bean>
     
     <tx:annotation-driven transaction-manager="transactionManager"/>
     

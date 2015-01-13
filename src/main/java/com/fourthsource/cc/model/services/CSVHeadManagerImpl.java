@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fourthsource.cc.domain.CSVHeadEntity;
 import com.fourthsource.cc.domain.FileSummaryEntity;
+import com.fourthsource.cc.domain.ImportSummaryEntity;
 import com.fourthsource.cc.model.dao.CSVHeadDAO;
 
 @Service
@@ -50,17 +51,30 @@ public class CSVHeadManagerImpl implements CSVHeadManager {
 	public List<CSVHeadEntity> getAllCSVHead() {
 		return csvHeadDAO.getAllCSVHead();
 	}
-
-	@Override
-	@Transactional	
-	public List<FileSummaryEntity> getStatisticByIdFile() {
-		return csvHeadDAO.getStatisticByIdFile();
-	}
 	
 	@Override
 	@Transactional
 	public void deleteByCSVHeadId(Integer id) {
 		csvHeadDAO.deleteByCSVHeadId(id);
 	}
+
+	@Override
+	@Transactional	
+	public List<FileSummaryEntity> getStatisticByIdFile() {
+		return csvHeadDAO.getStatisticByIdFile();
+	}
+
+	@Override
+	@Transactional	
+	public List<ImportSummaryEntity> getImportStatByIdFile() {
+		return csvHeadDAO.getImportStatByIdFile();
+	}
+
+	@Override
+	@Transactional
+	public void callDeleteStagingFile(Integer id) {
+		csvHeadDAO.callDeleteStagingFile(id);
+	}
+
 }
 

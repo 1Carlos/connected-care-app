@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
   <head>
@@ -22,45 +24,43 @@
     <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
     <script type="text/javascript">
     window.onload = function () {
-    	var chart2 = new CanvasJS.Chart("chartContainer2",
-        {
-          title:{
-            text: "Readmissions by Month"    
-          },
-          axisY: {
-            title: "Quantity"
-          },
-          legend: {
-            verticalAlign: "bottom",
-            horizontalAlign: "center"
-          },
-          theme: "theme2",
-          backgroundColor:"white",
-          data: [
-
-          {        
-            type: "column",  
-            showInLegend: true, 
-            legendMarkerColor: "grey",
-            legendText: "Months",
-            dataPoints: [      
-            {y: 70, label: "Sep"},
-            {y: 90,  label: "Oct" },
-            {y: 100,  label: "Nov"},
-            {y: 50, label: "Dec"},
-            {y: 25,  label: "Jan" },
-            {y: 20,  label: "Feb"}
-            ]
-          }   
-          ]
-        });
+        var chart2 = new CanvasJS.Chart("chartContainer2",
+                {
+                  title:{
+                    text: "Cases by Month"    
+                  },
+                  axisY: {
+                    title: "Total"
+                  },
+                  legend: {
+                    verticalAlign: "bottom",
+                    horizontalAlign: "center"
+                  },
+                  theme: "theme2",
+                  backgroundColor:"white",
+                  data: [
+                         {        
+                           type: "column",  
+                           showInLegend: true, 
+                           legendMarkerColor: "blue",
+                           legendText: "Cases by Month",
+                           dataPoints: [ 
+										<c:forEach var="value" items="${chartData}">
+											{
+											 y: <c:out value="${value.quantity}"/>,
+											 label: "<c:out value="${value.month}"/>"
+											}
+										</c:forEach>
+										]
+                         }]
+                });
 
         chart2.render();
 
     	var chart3 = new CanvasJS.Chart("chartContainer3",
         {
           title:{
-            text: "Gaps in Care By Month"    
+            text: "Admissions by Month"    
           },
           axisY: {
             title: "Unit"
@@ -76,29 +76,33 @@
             type: "column",  
             showInLegend: true, 
             legendMarkerColor: "blue",
-            legendText: "Appt Adherence",
-            dataPoints: [      
-            {y: 30, label: "Sep"},
-            {y: 50, label: "Oct"},
-            {y: 50, label: "Nov"},
-            {y: 20, label: "Dec"},
-            {y: 15, label: "Jan"},
-            {y: 15, label: "Feb"}
-            ] //Appt Adherence
+            legendText: "Admission",
+            dataPoints: [ 
+						<c:forEach var="value" items="${chartAdmisData}">
+							<c:if test="${value.admType == 'Admission'}"> 
+							{
+							 y: <c:out value="${value.quantity}"/>,
+							 label: "<c:out value="${value.month}"/>"
+							},
+							</c:if>
+						</c:forEach>
+						]
           },   
           {        
             type: "column",  
             showInLegend: true, 
             legendMarkerColor: "red",
-            legendText: "Rx Adherence",
+            legendText: "Readmission",
             dataPoints: [      
-            {y: 80,  label: "Sep" },
-            {y: 80,  label: "Oct" },
-            {y:100,  label: "Nov" },
-            {y: 60,  label: "Dec" },
-            {y: 20,  label: "Jan" },
-            {y: 15,  label: "Feb" }
-            ] //Rx Adherence
+ 						<c:forEach var="value" items="${chartAdmisData}">
+							<c:if test="${value.admType == 'Readmission'}"> 
+							{
+						 		y: <c:out value="${value.quantity}"/>,
+						 		label: "<c:out value="${value.month}"/>"
+							},
+							</c:if>
+						</c:forEach>
+            		]
           }]
         });
 
@@ -107,7 +111,7 @@
     	var chart4 = new CanvasJS.Chart("chartContainer4",
         {
           title:{
-            text: "Gaps in Care v. Readmissions"    
+            text: "Gaps in Care By Month"    
           },
           axisY: {
             title: "Units"
@@ -123,15 +127,17 @@
             type: "column",  
             showInLegend: true, 
             legendMarkerColor: "blue",
-            legendText: "Gaps in Care",
+            legendText: "Appointments",
             dataPoints: [      
-            {y: 400, label: "Sep"},
-            {y: 500, label: "Oct"},
-            {y: 650, label: "Nov"},
-            {y: 300, label: "Dec"},
-            {y: 150, label: "Jan"},
-            {y: 100, label: "Feb"}
-            ] //Appt Adherence
+ 						<c:forEach var="value" items="${chartGapsByMonthData}">
+							<c:if test="${value.gapType == 'Appt'}"> 
+							{
+						 		y: <c:out value="${value.quantity}"/>,
+						 		label: "<c:out value="${value.month}"/>"
+							},
+							</c:if>
+						</c:forEach>
+            			]
           },   
           {        
             type: "column",  
@@ -139,13 +145,15 @@
             legendMarkerColor: "red",
             legendText: "Readmissions",
             dataPoints: [      
-            {y: 100,  label: "Sep" },
-            {y: 200,  label: "Oct" },
-            {y: 300,  label: "Nov" },
-            {y: 100,  label: "Dec" },
-            {y: 60,  label: "Jan" },
-            {y: 40,  label: "Feb" }
-            ] //Rx Adherence
+  						<c:forEach var="value" items="${chartGapsByMonthData}">
+							<c:if test="${value.gapType == 'Rx'}"> 
+							{
+					 			y: <c:out value="${value.quantity}"/>,
+					 			label: "<c:out value="${value.month}"/>"
+							},
+							</c:if>
+						</c:forEach>
+            			]
           }]
         });
 
@@ -219,6 +227,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
+                <li><a href="clear_data">Clear Data </a></li>
                 <li><a href="import_data">Import Data </a></li>
                 <li><a href="launchpad">Launchpad </a></li>
               </ul>
@@ -259,6 +268,7 @@
         <div class="row">
 		  <div align="center" class="col-xs-6" style="background-color:white;border:0">Chart #1
             <select class="form-control" style="width:80%;">
+              <option>Cases by Month</option>
               <option>Readmissions by Month</option>
               <option>Gaps in Care By Month</option>
               <option>Gaps in Care v. Readmissions</option>
@@ -268,6 +278,7 @@
 	      </div>
 		  <div align="center" class="col-xs-6" style="background-color:white;border:0">Chart #2
             <select class="form-control" style="width:80%;">
+              <option>Admissions By Month</option>
               <option>Gaps in Care By Month</option>
               <option>Readmissions by Month</option>
               <option>Gaps in Care v. Readmissions</option>
@@ -279,9 +290,9 @@
         <div class="row">
     	  <div align="center" class="col-xs-6" style="background-color:white;border:0">Chart #3
             <select class="form-control" style="width:80%;">
+              <option>Gaps in Care By Month</option>
               <option>Gaps in Care v. Readmissions</option>
               <option>Readmissions by Month</option>
-              <option>Gaps in Care By Month</option>
               <option>Rx x Months</option>
             </select>
     	    <div id="chartContainer4" style="height: 300px; width: 80%;"></div>

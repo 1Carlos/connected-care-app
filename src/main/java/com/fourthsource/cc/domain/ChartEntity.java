@@ -24,12 +24,9 @@ public class ChartEntity implements Serializable {
 	@Column(name="Month")
 	//@GeneratedValue
 	private String month;
-
+	
 	@Column(name="Total")
 	private Integer quantity;
-	
-	//@Column(name="Month")
-	//private Date month;
 	
 	@Column(name="Year")
 	private Integer year;

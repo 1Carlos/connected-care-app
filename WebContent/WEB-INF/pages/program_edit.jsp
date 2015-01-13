@@ -58,6 +58,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
+                <li><a href="clear_data">Clear Data </a></li>
                 <li><a href="import_data">Import Data </a></li>
                 <li><a href="launchpad">Launchpad </a></li>
               </ul>
@@ -73,7 +74,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Case Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="dashboard_setup">Dashboard </a></li>
+                <!--  <li><a href="dashboard_setup">Dashboard </a></li>-->
                 <li><a href="view_open_cases">View Open Cases </a></li>
                 <li><a href="search_cases">Search Cases </a></li>
               </ul>
@@ -96,12 +97,12 @@
     <div class="container">
 
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="page-header">
-        <h1>Program Setup</h1>
-        <p class="lead">In this page you will set all ICD-10 codes that need for follow-up in all patient's cases.</p>
+      <!--<div class="page-header"> -->
+        <h4>Program Setup</h4>
+        <p>In this page you will set all ICD-10 codes that need for follow-up in all patient's cases.</p>
         <div class="row">
 			<!-- <div class="col-lg">Here add, update and delete the ICD-10 codes for the main program.
-			</div>  -->
+			</div> -->
         </div>
 		<!-- TABLE -->
 		<div align="right">
@@ -115,7 +116,7 @@
 		    </button>
 		  </div><!--END/TOOLBAR-->  
 		</div><!--END/RIGHT -->
-	  </div><!-- END/Page-Header -->
+	  <!-- </div> --><!-- END/Page-Header -->
 
 	<div class="fixed-table-container" style="height: 244px; padding-bottom: 37px;">
 	  </br>

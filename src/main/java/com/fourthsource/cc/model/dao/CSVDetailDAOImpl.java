@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import com.fourthsource.cc.domain.CSVDetailEntity;
 import com.fourthsource.cc.domain.CSVHeadEntity;
 import com.fourthsource.cc.domain.FileSummaryEntity;
+import com.fourthsource.cc.domain.ImportSummaryEntity;
 
 @Repository
 public class CSVDetailDAOImpl implements CSVDetailDAO  {
@@ -70,7 +71,8 @@ public class CSVDetailDAOImpl implements CSVDetailDAO  {
 
 	@Override
 	public void callSPClearDB() {
-		Query q = sessionFactory.getCurrentSession().createSQLQuery("CALL sp_ClearDB()");
+		//Query q = sessionFactory.getCurrentSession().createSQLQuery("CALL sp_ClearDB()");
+        Query q = sessionFactory.getCurrentSession().createSQLQuery("CALL sp_Clear_All_DB()");
 		q.executeUpdate();
 	}
 	
@@ -98,7 +100,8 @@ public class CSVDetailDAOImpl implements CSVDetailDAO  {
 		sessionFactory.getCurrentSession().doWork(new Work() {
 			@Override
 			public void execute(Connection connection) throws SQLException {
-				CallableStatement statement = connection.prepareCall("{CALL sp_GetPatientInfo2(?)}");
+				//CallableStatement statement = connection.prepareCall("{CALL sp_GetPatientInfo2(?)}");
+                CallableStatement statement = connection.prepareCall("{CALL sp_GetPatientInfo3(?)}");
 				statement.setInt(1, id);
 				statement.execute();
 				statement.close();
@@ -114,5 +117,14 @@ public class CSVDetailDAOImpl implements CSVDetailDAO  {
 		q.setParameter("id", id);
 		return q.list();
 	}
+
+	@Override
+    @SuppressWarnings("unchecked")
+    public List<ImportSummaryEntity> getImportStatByIdFile(Integer id) {
+        Query q = sessionFactory.getCurrentSession().createQuery("FROM ImportSummaryEntity WHERE csvId = :id");
+        q.setParameter("id", id);
+        return q.list();
+    }
+    
 	
 }

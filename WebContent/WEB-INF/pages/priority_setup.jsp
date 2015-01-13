@@ -58,6 +58,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
+                <li><a href="clear_data">Clear Data </a></li>
                 <li><a href="import_data">Import Data </a></li>
                 <li><a href="launchpad">Launchpad </a></li>
               </ul>
@@ -73,7 +74,6 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Case Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="dashboard_setup">Dashboard </a></li>
                 <li><a href="view_open_cases">View Open Cases </a></li>
                 <li><a href="search_cases">Search Cases </a></li>
               </ul>
@@ -95,10 +95,10 @@
     <div class="container">
 
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="page-header">
-        <h1>Priority Setup</h1>
-        <p class="lead">Prioritize patients and cases based on customized risk profiles.</p>
-	    </div><!-- END/Page-Header -->
+      <!--<div class="page-header">-->
+        <h4>Priority Setup</h4>
+        <p>Prioritize patients and cases based on customized risk profiles.</p>
+	    <!--</div>--><!-- END/Page-Header -->
     </br></br>
       <div class="row" style="">
             <table class="table table-hover table-condensed" style="margin-top:-41px;">

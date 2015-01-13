@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fourthsource.cc.domain.CSVHeadEntity;
 import com.fourthsource.cc.domain.CSVDetailEntity;
 import com.fourthsource.cc.domain.FileSummaryEntity;
+import com.fourthsource.cc.domain.ImportSummaryEntity;
 import com.fourthsource.cc.model.services.CSVDetailManager;
 import com.fourthsource.cc.model.services.CSVHeadManager;
 
@@ -35,11 +36,20 @@ public class LaunchpadController {
 	public ModelAndView dashboardSetup() {
 		logger.debug("Loading \"launchpad\" page");
 		Map<String, Object> model = new HashMap<String, Object>();
-	    List<CSVHeadEntity> list = csvHeadManager.getAllCSVHead();
+		
+		//List of Files Loaded//
+		List<CSVHeadEntity> list = csvHeadManager.getAllCSVHead();
 	    model.put("list", list);
-		List<FileSummaryEntity> sumlist = csvHeadManager.getStatisticByIdFile();
+	    
+	    //Statics for each file//
+	    List<FileSummaryEntity> sumlist = csvHeadManager.getStatisticByIdFile();
 		model.put("listSummary", sumlist);
-		return new ModelAndView(VIEW, model); 
+		
+		//Statics for each file loaded to Connected Care//
+		List<ImportSummaryEntity> sumimplist = csvHeadManager.getImportStatByIdFile();
+        model.put("listImpSummary", sumimplist);
+		
+        return new ModelAndView(VIEW, model); 
 	}
 	
 	@RequestMapping(value="/normalizationById", method=RequestMethod.POST)
@@ -70,11 +80,14 @@ public class LaunchpadController {
 	public ModelAndView removeFileById(Integer csvId) {
 		logger.debug("Loading \"removeFileById\" page");
 		Map<String, Object> model = new HashMap<String, Object>();
-		csvDetailManager.deleteByCSVHeadId(csvId);
-		csvHeadManager.deleteByCSVHeadId(csvId);
+		
+		//Database Procedure - Use DELETE for both tables csvHead and csvDetail by csvIdFile//
+		csvHeadManager.callDeleteStagingFile(csvId);
+		
 		List<CSVHeadEntity> list = csvHeadManager.getAllCSVHead();
 	    model.put("list", list);
-		return new ModelAndView("redirect:launchpad", model); 
+		
+	    return new ModelAndView("redirect:launchpad", model); 
 	}	
 	
 	

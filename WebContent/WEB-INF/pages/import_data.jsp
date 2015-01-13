@@ -46,6 +46,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
+                <li><a href="clear_data">Clear Data </a></li>
                 <li><a href="import_data">Import Data </a></li>
                 <li><a href="launchpad">Launchpad </a></li>
               </ul>
@@ -61,7 +62,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Case Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="dashboard_setup">Dashboard </a></li>
+                <!-- <li><a href="dashboard_setup">Dashboard </a></li>  -->
                 <li><a href="view_open_cases">View Open Cases </a></li>
                 <li><a href="search_cases">Search Cases </a></li>
               </ul>
@@ -80,10 +81,10 @@
     </nav>
     <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="page-header">
-        <h1>Import Data</h1>
-        <p class="lead">Please choose a file that you need import to the system.</p>
-	  </div>
+      <!-- <div class="page-header"> -->
+        <h4>Import Data</h4>
+        <p>Please choose a file that you need import to the system.</p>
+	  <!-- </div> -->
       <center>
         <div style="width:400px">
 		  <center>

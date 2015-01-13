@@ -22,9 +22,11 @@
     <!-- Custom styles for this template -->
     <link href="resources/styles/navbar-fixed-top.css" rel="stylesheet">
 
+    <link href="resources/styles/jquery.dataTables.css" rel="stylesheet">
     <script src="resources/scripts/jquery.min.js"></script>
-    <script src="resources/scripts/search-cases.js"></script>
     <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
+    <script src="resources/scripts/view-open-cases-datatables.js"></script>
+    <script src="resources/scripts/jquery.dataTables.min.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -49,6 +51,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
+                <li><a href="clear_data">Clear Data </a></li>
                 <li><a href="import_data">Import Data </a></li>
                 <li><a href="launchpad">Launchpad </a></li>
               </ul>
@@ -64,7 +67,6 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Case Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="dashboard_setup">Dashboard </a></li>
                 <li><a href="view_open_cases">View Open Cases </a></li>
                 <li><a href="search_cases">Search Cases </a></li>
               </ul>
@@ -85,12 +87,12 @@
     </nav>
     <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="page-header">
-        <h1>View Open Cases</h1>
-        <p class="lead">List of all open patients cases.</p>
+      <!-- <div class="page-header"> -->
+        <h4>View Open Cases</h4>
+        <p>List of all open patients cases.</p>
         <div class="row"></br></div>
         <div class="row">
-	        <table data-height="299" class="table table-hover" style="margin-top: -41px;">
+            <table data-height="299" id="open-cases-table" class="table table-hover" style="margin-top: -41px;">
 	          <thead>
 		          <tr>
 		            <th style="">
@@ -163,7 +165,7 @@
 	          </tbody>
 	        </table>
         </div>
-	  </div>
+	  <!-- </div> -->
     </div> 
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="resources/scripts/bootstrap.min.js"></script>

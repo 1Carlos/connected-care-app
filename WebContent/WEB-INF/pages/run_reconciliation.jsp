@@ -47,6 +47,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
+                <li><a href="clear_data">Clear Data </a></li>
                 <li><a href="import_data">Import Data </a></li>
                 <li><a href="priority_setup">Configure Prioritization </a></li>
               </ul>
@@ -62,7 +63,6 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Case Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="dashboard_setup">Dashboard </a></li>
                 <li><a href="view_open_cases">View Open Cases </a></li>
                 <li><a href="search_cases">Search Cases </a></li>
               </ul>
@@ -81,16 +81,16 @@
     </nav>
     <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="page-header">
-        <h1>Run Reconciliation</h1>
-        <p class="lead">In this step we will process all records imported.</p>
+      <!-- <div class="page-header"> -->
+        <h4>Run Reconciliation</h4>
+        <p>In this step we will process all records imported.</p>
         <div class="jumbotron">
     	  <center>
     	    <br/>
     	    <p><a id="start-reconciliation" class="btn btn-primary btn-lg" role="button">Start Reconciliation</a></p>
     	  </center>
         </div>
-	  </div>
+	  <!-- </div> -->
 	  <div id="events-result-success" class="alert alert-success">Successful! Please go to the option <a href="view_open_cases">View Open Cases</a></div>
 	  <div id="events-result-error" class="alert alert-danger">An error has ocurred calling the reconciliation process, please try again</div>
     </div>

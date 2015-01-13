@@ -14,21 +14,23 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "fileSummary_view")
-@NamedQueries({@NamedQuery(name="FileSummaryEntity.getStatisticByIdFile",query="select f from FileSummaryEntity f")})
+//@NamedQueries({@NamedQuery(name="FileSummaryEntity.getStatisticByIdFile",query="select f from FileSummaryEntity f")})
 public class FileSummaryEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name="CSV_ID")
-	@GeneratedValue
-	private Integer csvId;
-	
-	@Column(name="SOURCE_NAME")
-	private String sourceName;
-	
-	@Column(name="PATIENT_COUNT")
-	private Integer patientCount;
+    @Id
+    @Column(name="ID")
+    private Integer Id;
+    
+    @Column(name="CSV_ID")
+    private Integer csvId;
+        
+    @Column(name="SOURCE_NAME")
+    private String sourceName;
+    
+    @Column(name="PATIENT_COUNT")
+    private Integer patientCount;
 
     @Column(name="Rx")
     private Integer rx;
@@ -36,43 +38,52 @@ public class FileSummaryEntity implements Serializable {
     @Column(name="Appt")
     private Integer appt;
 
-	public Integer getCsvId() {
-		return csvId;
-	}
+    public Integer getCsvId() {
+        return csvId;
+    }
 
-	public void setCsvId(Integer csvId) {
-		this.csvId = csvId;
-	}
+    public void setCsvId(Integer csvId) {
+        this.csvId = csvId;
+    }
 
-	public String getSourceName() {
-		return sourceName;
-	}
+    public String getSourceName() {
+        return sourceName;
+    }
 
-	public void setSourceName(String sourceName) {
-		this.sourceName = sourceName;
-	}
+    public void setSourceName(String sourceName) {
+        this.sourceName = sourceName;
+    }
 
-	public Integer getPatientCount() {
-		return patientCount;
-	}
+    public Integer getPatientCount() {
+        return patientCount;
+    }
 
-	public void setPatientCount(Integer patientCount) {
-		this.patientCount = patientCount;
-	}
+    public void setPatientCount(Integer patientCount) {
+        this.patientCount = patientCount;
+    }
 
-	public Integer getRx() {
-		return rx;
-	}
+    public Integer getRx() {
+        return rx;
+    }
 
-	public void setRx(Integer rx) {
-		this.rx = rx;
-	}
+    public void setRx(Integer rx) {
+        this.rx = rx;
+    }
 
-	public Integer getAppt() {
-		return appt;
-	}
+    public Integer getAppt() {
+        return appt;
+    }
 
-	public void setAppt(Integer appt) {
-		this.appt = appt;
-	}
+    public void setAppt(Integer appt) {
+        this.appt = appt;
+    }
+
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
+    }
+
 }

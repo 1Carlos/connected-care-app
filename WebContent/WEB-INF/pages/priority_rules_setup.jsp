@@ -59,6 +59,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
+                <li><a href="clear_data">Clear Data </a></li>
                 <li><a href="import_data">Import Data </a></li>
                 <li><a href="launchpad">Launchpad </a></li>
               </ul>
@@ -74,7 +75,6 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Case Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="dashboard_setup">Dashboard </a></li>
                 <li><a href="view_open_cases">View Open Cases </a></li>
                 <li><a href="search_cases">Search Cases </a></li>
               </ul>
@@ -96,16 +96,16 @@
     <div class="container">
 
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="page-header">
-        <h1>Configure Priority Set</h1>
-        <p class="lead">Define the rules that drive the priority set</p>
+      <!-- <div class="page-header"> -->
+        <h4>Configure Priority Set</h4>
+        <p>Define the rules that drive the priority set</p>
         <div class="row">
         </div>
 		<!-- TABLE -->
 		<div align="right">
 
 		</div><!--END/RIGHT -->
-	  </div><!-- END/Page-Header -->
+	  <!-- </div>--><!-- END/Page-Header -->
 
 	<div class="fixed-table-container" style="height: 244px; padding-bottom: 37px;">
 	  </br>

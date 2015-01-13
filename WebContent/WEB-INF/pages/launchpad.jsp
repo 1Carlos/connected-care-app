@@ -72,6 +72,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
+                <li><a href="clear_data">Clear Data </a></li>
                 <li><a href="import_data">Import Data </a></li>
                 <li><a href="launchpad">Launchpad </a></li>
               </ul>
@@ -87,7 +88,6 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Case Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="dashboard_setup">Dashboard </a></li>
                 <li><a href="view_open_cases">View Open Cases </a></li>
                 <li><a href="search_cases">Search Cases </a></li>
               </ul>
@@ -106,8 +106,8 @@
       </div>
     </nav>
     <div class="container">
-      <div class="page-header">
-        <h2>Load External Data - Launchpad</h2>
+      <!-- <div class="page-header"> -->
+        <h4>Load External Data - Launchpad</h4>
         <hr/>
         </br>
         <div class="row">
@@ -123,50 +123,66 @@
             <c:forEach var="listValue" items="${list}">
 	            <tr>
 	            <td>
-	            	<strong><c:out value="${listValue.fileDesc}"/></strong> </br>
-	            	[<c:out value="${listValue.csvName}"/>] </br>
-
-				    <c:choose>
-					    <c:when test="${listValue.fileStatus == null}">
-	        				<a href="javascript:goToNormalization(<c:out value="${listValue.csvId}"/>)">Load to Connected Care</a> | 
-	        		        <a href="javascript:previewFile(<c:out value="${listValue.csvId}"/>)">Preview</a> | 
-	        		        <a href="javascript:removeFile(<c:out value="${listValue.csvId}"/>)">Remove</a>
-	    				</c:when>
-	    				<c:otherwise>
-	        				<strong>Loaded</strong> |
-	        		        <a href="javascript:previewFile(<c:out value="${listValue.csvId}"/>)">Preview</a> 
-	    				</c:otherwise>
-	   				</c:choose>            	
-
+					<strong><c:out value="${listValue.fileDesc}"/></strong> 
+					[<c:out value="${listValue.csvName}"/>] 
+					<c:choose>
+					  <c:when test="${listValue.fileStatus == null}">
+					    <p>
+					      <a class="btn btn-success" href="javascript:goToNormalization(<c:out value="${listValue.csvId}"/>)">Load to Connected Care</a>
+					      <a class="btn btn-info"    href="javascript:previewFile(<c:out value="${listValue.csvId}"/>)">Preview</a>
+					      <a class="btn btn-danger"  href="javascript:removeFile(<c:out value="${listValue.csvId}"/>)">Remove</a>
+					    </p>
+					  </c:when>
+					  <c:otherwise>
+					    <p>
+					      <a class="btn btn-warning disabled" >Loaded</a>
+					      <a class="btn btn-info" href="javascript:previewFile(<c:out value="${listValue.csvId}"/>)">Preview</a>
+					    </p>
+					  </c:otherwise>
+					</c:choose>
 	            </td>
 	            <td>
 	            	<!-- Statistics File Summary -->
-	            	<table border=1>
+	            	<table class="table table-hover" style="width:100%;">
 	            	<thead>
 	            		<th>Source Name</th>
 	            		<th>Patients</th>
 	            		<th>Prescriptions</th>
 	            		<th>Appoinments</th>
 	            	</thead>
-	            	<body>
-	            	<c:forEach var="statis" items="${listSummary}">
-						<c:choose>
-						<c:when test="${listValue.csvId == statis.csvId}">
-			            	<tr>
-			            	<td><c:out value="${statis.sourceName}"/></td>
-			            	<td><c:out value="${statis.patientCount}"/></td>
-			            	<td><c:out value="${statis.rx}"/></td>
-			            	<td><c:out value="${statis.appt}"/></td>
-			            	</tr>
-			            </c:when>
-			            </c:choose>
-	            	</c:forEach>
-	            	</body>
+	            	<tbody>
+		            	<c:forEach var="statis" items="${listSummary}">
+							<c:choose>
+							<c:when test="${listValue.csvId == statis.csvId}">
+				            	<tr>
+			            	        <td width="220"><c:out value="${statis.sourceName}"/></td>
+			            	        <td width="40" align="right"><c:out value="${statis.patientCount}"/></td>
+			            	        <td width="40" align="right"><c:out value="${statis.rx}"/></td>
+			            	        <td width="40" align="right"><c:out value="${statis.appt}"/></td>
+				            	</tr>
+				            </c:when>
+				            </c:choose>
+		            	</c:forEach>
+	            	</tbody>
 	            	</table>
 	            	<!-- End / Statistics File Summary -->
 	            </td>
 
 	            <td>
+        		  <!-- Statistics Import Summary -->
+   			      <table id="table-impsummary" class="table table-hover" style="width:100%;">
+                  	<c:forEach var="statim" items="${listImpSummary}">
+	    	          <c:choose>
+		    	        <c:when test="${listValue.csvId == statim.csvId}">
+	            	      <tr>
+	            	        <td width="200" align="left"><c:out value="${statim.descrip}"/></td>
+	            	        <td width="40" align="right"><c:out value="${statim.quantity}"/></td>			
+	            	      </tr>
+	                    </c:when>
+	                  </c:choose>
+                    </c:forEach>
+                  </table>
+                    <!-- End / Statistics Import Summary -->
 	            </td>
 	            </tr>
             	
@@ -175,7 +191,7 @@
             </tbody>
           </table>    				
         </div>
-      </div>
+      <!--</div> --> <!-- /page-header -->
     </div> <!-- /container -->
     
     <script>

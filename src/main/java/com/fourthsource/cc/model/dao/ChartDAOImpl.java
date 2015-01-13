@@ -18,16 +18,32 @@ public class ChartDAOImpl implements ChartDAO  {
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<ChartEntity> getAllData() {
-		Query q = sessionFactory.getCurrentSession().createQuery("FROM ChartEntity");
-		/*String sql = "SELECT COUNT(0) AS `Total`, "+
-					        "MONTHNAME(STR_TO_DATE(MONTH(`t`.`FOLLOW_UP_DATE`), '%m')) AS `Month`, "+
-					        "YEAR(`t`.`FOLLOW_UP_DATE`) AS `Year` "+
+		Query q = null;		
+		//try {
+		q = sessionFactory.getCurrentSession().createQuery("FROM ChartEntity");
+		/*String sql = "SELECT 1080 AS n1, "+
+			        "       ´January´ AS s1, "+
+			        "        2015 AS n2 "+
+			        "FROM  dual ";*/
+		/*String sql = "SELECT COUNT(0) AS n1, "+
+					        "MONTHNAME(STR_TO_DATE(MONTH(`t`.`FOLLOW_UP_DATE`), '%m')) AS s1, "+
+					        "YEAR(`t`.`FOLLOW_UP_DATE`) AS s3 "+
 					 "FROM  `Cases` `t` "+
-					 "GROUP BY `Month`,`Year` "+
-					 "ORDER BY `Month`,`Year` ";*/
-		//Query q = sessionFactory.getCurrentSession().createSQLQuery(sql);
+					 "GROUP BY s1,s3 ";*/
+					 //"ORDER BY s1,s3 ";
+		//q = sessionFactory.getCurrentSession().createSQLQuery(sql);
 		//Query q = sessionFactory.getCurrentSession().createQuery("FROM Icd10ProgramsEntity pe JOIN FETCH pe.icdCodeId "); //used with Carlos
 		//q.setParameter("id", id);
+		//}
+		//catch (Exception e){
+			//e.printStackTrace();
+		//}
+		/*finally {
+		    if (sessionFactory.getCurrentSession().s
+		    		.session != null) {
+		      session.close();
+		    }
+		  }*/
 		return q.list();
 	}
 	

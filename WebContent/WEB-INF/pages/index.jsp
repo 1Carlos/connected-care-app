@@ -23,14 +23,14 @@
 	
     <script type="text/javascript">
     window.onload = function () {
-        var chart2 = new CanvasJS.Chart("chartContainer2",
+        var chart1 = new CanvasJS.Chart("chartContainer1",
                 {
                   title:{
                     text: "Cases by Month"    
                   },
-                  axisY: {
-                    title: "Total"
-                  },
+                  //axisX: {
+                    //title: "Month"
+                  //},
                   legend: {
                     verticalAlign: "bottom",
                     horizontalAlign: "center"
@@ -40,9 +40,9 @@
                   data: [
                          {        
                            type: "column",  
-                           showInLegend: true, 
-                           legendMarkerColor: "black",
-                           legendText: "Cases per Month",
+                           showInLegend: false, 
+                           legendMarkerColor: "blue",
+                           //legendText: "Cases by Month",
                            dataPoints: [ 
 										<c:forEach var="value" items="${chartData}">
 											{
@@ -54,6 +54,54 @@
                          }]
                 });
 
+        chart1.render();
+
+    	var chart2 = new CanvasJS.Chart("chartContainer2",
+        {
+          title:{
+            text: "Admissions by Month"    
+          },
+          legend: {
+            verticalAlign: "bottom",
+            horizontalAlign: "center"
+          },
+          theme: "theme2",
+          backgroundColor:"white",
+          data: [
+          {        
+            type: "column",  
+            showInLegend: true, 
+            legendMarkerColor: "blue",
+            legendText: "Admission",
+            dataPoints: [ 
+						<c:forEach var="value" items="${chartAdmisData}">
+							<c:if test="${value.admType == 'Admissions'}"> 
+							{
+							 y: <c:out value="${value.quantity}"/>,
+							 label: "<c:out value="${value.month}"/>"
+							},
+							</c:if>
+						</c:forEach>
+						]
+          },   
+          {        
+            type: "column",  
+            showInLegend: true, 
+            legendMarkerColor: "red",
+            legendText: "Readmission",
+            dataPoints: [      
+ 						<c:forEach var="value" items="${chartAdmisData}">
+							<c:if test="${value.admType == 'Readmissions'}"> 
+							{
+						 		y: <c:out value="${value.quantity}"/>,
+						 		label: "<c:out value="${value.month}"/>"
+							},
+							</c:if>
+						</c:forEach>
+            		]
+          }]
+        });
+
         chart2.render();
 
     	var chart3 = new CanvasJS.Chart("chartContainer3",
@@ -61,9 +109,6 @@
           title:{
             text: "Gaps in Care By Month"    
           },
-          axisY: {
-            title: "Unit"
-          },
           legend: {
             verticalAlign: "bottom",
             horizontalAlign: "center"
@@ -75,62 +120,17 @@
             type: "column",  
             showInLegend: true, 
             legendMarkerColor: "blue",
-            legendText: "Appt Adherence",
+            legendText: "Appointments",
             dataPoints: [      
-            {y: 30, label: "Sep"},
-            {y: 50, label: "Oct"},
-            {y: 50, label: "Nov"},
-            {y: 20, label: "Dec"},
-            {y: 15, label: "Jan"},
-            {y: 15, label: "Feb"}
-            ] //Appt Adherence
-          },   
-          {        
-            type: "column",  
-            showInLegend: true, 
-            legendMarkerColor: "red",
-            legendText: "Rx Adherence",
-            dataPoints: [      
-            {y: 80,  label: "Sep" },
-            {y: 80,  label: "Oct" },
-            {y:100,  label: "Nov" },
-            {y: 60,  label: "Dec" },
-            {y: 20,  label: "Jan" },
-            {y: 15,  label: "Feb" }
-            ] //Rx Adherence
-          }]
-        });
-
-        chart3.render();
-
-    	var chart4 = new CanvasJS.Chart("chartContainer4",
-        {
-          title:{
-            text: "Gaps in Care v. Readmissions"    
-          },
-          axisY: {
-            title: "Units"
-          },
-          legend: {
-            verticalAlign: "bottom",
-            horizontalAlign: "center"
-          },
-          theme: "theme2",
-          backgroundColor:"white",
-          data: [
-          {        
-            type: "column",  
-            showInLegend: true, 
-            legendMarkerColor: "blue",
-            legendText: "Gaps in Care",
-            dataPoints: [      
-            {y: 400, label: "Sep"},
-            {y: 500, label: "Oct"},
-            {y: 650, label: "Nov"},
-            {y: 300, label: "Dec"},
-            {y: 150, label: "Jan"},
-            {y: 100, label: "Feb"}
-            ] //Appt Adherence
+ 						<c:forEach var="value" items="${chartGapsByMonthData}">
+							<c:if test="${value.gapType == 'Appt'}"> 
+							{
+						 		y: <c:out value="${value.quantity}"/>,
+						 		label: "<c:out value="${value.month}"/>"
+							},
+							</c:if>
+						</c:forEach>
+            			]
           },   
           {        
             type: "column",  
@@ -138,25 +138,24 @@
             legendMarkerColor: "red",
             legendText: "Readmissions",
             dataPoints: [      
-            {y: 100,  label: "Sep" },
-            {y: 200,  label: "Oct" },
-            {y: 300,  label: "Nov" },
-            {y: 100,  label: "Dec" },
-            {y: 60,  label: "Jan" },
-            {y: 40,  label: "Feb" }
-            ] //Rx Adherence
+  						<c:forEach var="value" items="${chartGapsByMonthData}">
+							<c:if test="${value.gapType == 'Rx'}"> 
+							{
+					 			y: <c:out value="${value.quantity}"/>,
+					 			label: "<c:out value="${value.month}"/>"
+							},
+							</c:if>
+						</c:forEach>
+            			]
           }]
         });
 
-        chart4.render();
+        chart3.render();
     	
-    	var chart5 = new CanvasJS.Chart("chartContainer5",
+    	var chart4 = new CanvasJS.Chart("chartContainer4",
         {
           title:{
-            text: "Rx vs Gaps in Care per Month"    
-          },
-          axisY: {
-            title: "Unit"
+            text: "Gaps in Care vs Readmissions"    
           },
           legend: {
             verticalAlign: "bottom",
@@ -169,33 +168,36 @@
             type: "column",  
             showInLegend: true, 
             legendMarkerColor: "blue",
-            legendText: "Rx Adherence",
+            legendText: "Gaps in Care",
             dataPoints: [      
-            {y: 40000,  label: "Sep" },
-            {y: 40000,  label: "Oct" },
-            {y: 50000,  label: "Nov" },
-            {y: 30000,  label: "Dec" }
-            ] //Appt Adherence
+   						<c:forEach var="value" items="${chartGapVsReadData}">
+							{
+						 		y: <c:out value="${value.totalGap}"/>,
+						 		label: "<c:out value="${value.month}"/>"
+							},
+						</c:forEach>
+            ]
           },   
           {        
             type: "column",  
             showInLegend: true, 
             legendMarkerColor: "red",
-            legendText: "Gaps in Care",
+            legendText: "Rx Adherence",
             dataPoints: [      
-            {y: 80000,  label: "Sep" },
-            {y: 80000,  label: "Oct" },
-            {y:100000,  label: "Nov" },
-            {y: 60000,  label: "Dec" }
-            ] //Rx Adherence
+   						<c:forEach var="value" items="${chartGapVsReadData}">
+							{
+						 		y: <c:out value="${value.totalRead}"/>,
+						 		label: "<c:out value="${value.month}"/>"
+							},
+						</c:forEach>
+            ] 
           }]
         });
 
-        chart5.render();
+        chart4.render();
         
       }
   </script>
-
 
   
   <script type="text/javascript" src="resources/scripts/canvasjs.min.js"></script>
@@ -222,6 +224,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
+                <li><a href="clear_data">Clear Data </a></li>
                 <li><a href="import_data">Import Data </a></li>
                 <li><a href="launchpad">Launchpad </a></li>
               </ul>
@@ -237,7 +240,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Case Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="dashboard_setup">Dashboard </a></li>
+                <!-- <li><a href="dashboard_setup">Dashboard </a></li>  -->
                 <li><a href="view_open_cases">View Open Cases </a></li>
                 <li><a href="search_cases">Search Cases </a></li>
               </ul>
@@ -255,64 +258,41 @@
         </div>
       </div>
     </nav>
+
     <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="page-header">
-        <h1>Welcome to Connected Care</h1>
-        <p class="lead">In this page you will see quickly all information represented in these charts.</p>
+      <!-- <div class="page-header"> -->
+        <h4>Home</h4>
+        <p>In this page you will see quickly all information represented in these charts.</p>
         <div class="row">
-		   <div align="center" class="col-xs-6" style="background-color:white;border:0">
+		   <div align="center" class="col-xs-6" style="background-color:white;border:0;padding-top: 0px;
+  padding-bottom: 0px;">
+			  <div id="chartContainer1" style="height: 300px; width: 80%;"></div>
+		   </div>
+		   <div align="center" class="col-xs-6" style="background-color:white;border:0;padding-top: 0px;
+  padding-bottom: 0px;">
 			  <div id="chartContainer2" style="height: 300px; width: 80%;"></div>
 		   </div>
-		   <div align="center" class="col-xs-6" style="background-color:white;border:0">
-			  <div id="chartContainer3" style="height: 300px; width: 80%;"></div>
-		   </div>
+        </div>
+        <div align="center"  class="row">
+   			<div class="col-xs-6" style="background-color:white;border:0;padding-top: 0px;
+  padding-bottom: 0px;">
+   				<div id="chartContainer3" style="height: 300px; width: 80%;"></div>
+   			</div>
+   			<div align="center"  class="col-xs-6" style="background-color:white;border:0;padding-top: 0px;
+  padding-bottom: 0px;">
+   				<div id="chartContainer4" style="height:300px;width:80%" ></div>
+   			</div>
         </div>
         <div align="center"  class="row">
    			<div class="col-xs-6" style="background-color:white;border:0">
-   				<div id="chartContainer4" style="height: 300px; width: 80%;"></div>
-   			</div>
-   			<div align="center"  class="col-xs-6" style="background-color:white;border:0">
-   				<div id="chartContainer5" style="height:300px;width:80%" ></div>
-   			</div>
-        </div>
-        <div align="center"  class="row">
-   			<div class="col-xs-6" style="background-color:white;border:0">
-        		[Highchart]<div id="highcontainer" style="width:100%;"></div>
+        		<!-- <div id="highcontainer" style="width:100%;"></div>  -->
    			</div>
    			<div align="center"  class="col-xs-6" style="background-color:white;border:0">
    			</div>
         </div>
-  	  </div>
+  	  <!-- </div> -->
     </div>
-
-  <script>
-  		$(function () { 
-		    $('#highcontainer').highcharts({
-		        chart: {
-		            type: 'bar'
-		        },
-		        title: {
-		            text: 'Fruit Consumption'
-		        },
-		        xAxis: {
-		            categories: ['Apples', 'Bananas', 'Oranges']
-		        },
-		        yAxis: {
-		            title: {
-		                text: 'Fruit eaten'
-		            }
-		        },
-		        series: [{
-		            name: 'Jane',
-		            data: [1, 0, 4]
-		        }, {
-		            name: 'John',
-		            data: [5, 7, 3]
-		        }]
-		    });
-		});  
-  </script>
 
     <!-- Bootstrap core JavaScript
     <!-- Placed at the end of the document so the pages load faster -->
@@ -320,6 +300,5 @@
     <script src="resources/scripts/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="resources/scripts/ie10-viewport-bug-workaround.js"></script>
-	<script src="http://code.highcharts.com/adapters/standalone-framework.js"></script>
   </body>
 </html>

@@ -48,6 +48,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
+                <li><a href="clear_data">Clear Data </a></li>
                 <li><a href="import_data">Import Data </a></li>
                 <li><a href="launchpad">Launchpad </a></li>
               </ul>
@@ -63,7 +64,6 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Case Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="dashboard_setup">Dashboard </a></li>
                 <li><a href="view_open_cases">View Open Cases </a></li>
                 <li><a href="search_cases">Search Cases </a></li>
               </ul>
@@ -82,10 +82,10 @@
     </nav>
     <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="page-header">
-        <h1>Preview Data</h1>
-        <p class="lead"></p>
-      </div>
+      <!-- <div class="page-header">  -->
+        <h4>Preview Data</h4>
+        <p></p>
+      <!-- </div>  -->
         <center>
           <div class="" style="col-md-6">
             <center>
@@ -96,10 +96,10 @@
             	<a id="confirm-data-validation" class="btn btn-primary btn-lg" role="button">Confirm to Import</a>
             	<a id="cancel-data-validation" class="btn btn-danger btn-lg" role="button">Cancel</a>
             	 -->
-				<a class="btn btn-primary btn-lg" role="button" onClick="javascript:window.location='launchpad' ">Go to Launchpad</a>
+				<a class="btn btn-primary btn-lg" role="button" onClick="javascript:window.location='launchpad' ">Back to Launchpad</a>
             </p>
             <br/>
-            <div class="alert alert-success">File was loaded.</div>
+            <!-- <div class="alert alert-success">File was loaded.</div> -->
 			<!-- 
             <div class="alert alert-success" role="alert"><c:out value="${rowsLoaded}"/> of <c:out value="${rowsInFile}"/> records were loaded.</div>
             -->

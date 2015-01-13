@@ -51,6 +51,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Data Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
+                <li><a href="clear_data">Clear Data </a></li>
                 <li><a href="import_data">Import Data </a></li>
                 <li><a href="launchpad">Launchpad </a></li>
               </ul>
@@ -66,7 +67,6 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Case Management <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="dashboard_setup">Dashboard </a></li>
                 <li><a href="view_open_cases">View Open Cases </a></li>
                 <li><a href="search_cases">Search Cases </a></li>
               </ul>
@@ -90,11 +90,11 @@
     </nav>
     <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="page-header">
-        <h1>Search Cases</h1>
+      <!-- <div class="page-header"> -->
+        <h4>Search Cases</h4>
+        <p>List of all cases.</p>
         <div class="row" style="margin-bottom:0px;">
           <div class="col-md-6" style="background-color:white; border:0;">
-            <p class="lead">List of all cases.</p>
           </div>
         </div>
         <!-- Search fields -->
@@ -210,7 +210,7 @@
             </tbody>
           </table>
         </div>
-	  </div>
+	  <!-- </div> -->
     </div>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="resources/scripts/ie10-viewport-bug-workaround.js"></script>

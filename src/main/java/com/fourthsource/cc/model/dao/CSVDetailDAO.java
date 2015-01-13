@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.fourthsource.cc.domain.CSVDetailEntity;
 import com.fourthsource.cc.domain.FileSummaryEntity;
+import com.fourthsource.cc.domain.ImportSummaryEntity;
 
 public interface CSVDetailDAO {
 	
@@ -17,5 +18,6 @@ public interface CSVDetailDAO {
 	public void callSPReconciliation();
 	public void callSPGetPatientInfo2(Integer id);
 	public List<FileSummaryEntity> getStatisticByIdFile(Integer id);
+    public List<ImportSummaryEntity> getImportStatByIdFile(Integer id);
     
 }

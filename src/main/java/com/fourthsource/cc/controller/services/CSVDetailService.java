@@ -67,5 +67,21 @@ public class CSVDetailService  {
 		
 		return response;
     }
+
+	@RequestMapping(value="/callClearDBProcess", method=RequestMethod.POST)
+    public @ResponseBody Message callClearDBProcess() {
+        logger.debug("Service callReconciliationProcess()");
+        Message response = null;
+        
+        try {
+            csvDetailManager.callSPClearDB();
+            response = commonProperties.getSuccessMessage();
+        } catch(HibernateException e) {
+            response = commonProperties.getTransactionException();
+            logger.error(e.getMessage(), e);
+        }
+        
+        return response;
+    }
 	
 }
