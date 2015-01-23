@@ -92,8 +92,8 @@
         <p>List of all open patients cases.</p>
         <div class="row"></br></div>
         <div class="row">
-            <table data-height="299" id="open-cases-table" class="table table-hover" style="margin-top: -41px;">
-	          <thead>
+            <table data-height="299" id="open-cases-table" class="table table-striped" style="margin-top: -41px;">
+	          <thead align="left">
 		          <tr>
 		            <th style="">
 		              <div class="th-inner ">Case</div>
@@ -131,6 +131,10 @@
 		              <div class="th-inner ">Case Status</div>
 		              <div class="fht-cell"></div>
 		            </th>
+		            <th style="">
+		              <div class="th-inner ">Priority</div>
+		              <div class="fht-cell"></div>
+		            </th>
 		          </tr>
 	          </thead>
 	          <tbody data-link="row" class="rowlink">
@@ -160,6 +164,7 @@
 		    				</c:otherwise>
 	    				</c:choose>
 		            </td>
+		            <td style=""><c:out value="${listValue.priority}"/></td>
 		          </tr>
 		        </c:forEach>
 	          </tbody>

@@ -43,6 +43,9 @@ public class CaseEntity implements Serializable {
 	@Column(name="CASE_STATUS")
 	private Integer caseStatus;
 	
+	@Column(name="PRIORITY_VALUE")
+	private Integer priority;
+	
     @JsonManagedReference
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "caseId")
     private Set<PatientDiagnosisEntity> patientDiagnosisEntity = new HashSet<PatientDiagnosisEntity>(0);
@@ -105,6 +108,20 @@ public class CaseEntity implements Serializable {
 
 	public void setOrdersEntity(Set<OrdersEntity> ordersEntity) {
 		this.ordersEntity = ordersEntity;
+	}
+
+	/**
+	 * @return the priority
+	 */
+	public Integer getPriority() {
+		return priority;
+	}
+
+	/**
+	 * @param priority the priority to set
+	 */
+	public void setPriority(Integer priority) {
+		this.priority = priority;
 	}
 
 }

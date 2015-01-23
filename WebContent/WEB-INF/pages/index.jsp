@@ -87,7 +87,7 @@
           {        
             type: "column",  
             showInLegend: true, 
-            legendMarkerColor: "red",
+            legendMarkerColor: "brown",
             legendText: "Readmission",
             dataPoints: [      
  						<c:forEach var="value" items="${chartAdmisData}">
@@ -120,7 +120,7 @@
             type: "column",  
             showInLegend: true, 
             legendMarkerColor: "blue",
-            legendText: "Appointments",
+            legendText: "Appt Adherence",
             dataPoints: [      
  						<c:forEach var="value" items="${chartGapsByMonthData}">
 							<c:if test="${value.gapType == 'Appt'}"> 
@@ -135,8 +135,8 @@
           {        
             type: "column",  
             showInLegend: true, 
-            legendMarkerColor: "red",
-            legendText: "Readmissions",
+            legendMarkerColor: "brown",
+            legendText: "Rx Adherence",
             dataPoints: [      
   						<c:forEach var="value" items="${chartGapsByMonthData}">
 							<c:if test="${value.gapType == 'Rx'}"> 
@@ -181,8 +181,8 @@
           {        
             type: "column",  
             showInLegend: true, 
-            legendMarkerColor: "red",
-            legendText: "Rx Adherence",
+            legendMarkerColor: "brown",
+            legendText: "Readmissions",
             dataPoints: [      
    						<c:forEach var="value" items="${chartGapVsReadData}">
 							{

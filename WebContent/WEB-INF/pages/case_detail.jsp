@@ -145,7 +145,7 @@
                   <td style="width:65%"><fmt:formatDate pattern="yyyy-MM-dd" value="${object.followUpDate}" /></td>
                 </tr>
                 <tr style="height:15.0pt">
-                  <td style="width:35%"><strong>Case Status:</strong></td>    
+                  <td style="width:35%"><strong>Case Status:</strong></td>   
                   <td style="width:65%">
                     <c:choose>
 					  <c:when test="${object.caseStatus == 0}">
@@ -157,6 +157,27 @@
     				</c:choose>
                   </td>
                 </tr>
+                
+                <tr style="height:15.0pt">
+                  <td style="width:35%"><strong>Priority:</strong></td>
+                  <td style="width:65%">
+                    <c:choose>
+					  <c:when test="${object.priority >= 0 && object.priority <= 99}">
+	        			Low
+	    			  </c:when>
+	    			  <c:when test="${object.priority >= 100 && object.priority <= 999}">
+	        			Medium
+	    			  </c:when>
+	    			  <c:when test="${object.priority >= 1000 && object.priority <= 9999}">
+	        			High
+	    			  </c:when>
+	    			  <c:otherwise>
+	        			Urgent
+	    			  </c:otherwise>
+    				</c:choose>
+                  </td>
+                </tr> 
+                
               </tbody>
             </table>
         </div>

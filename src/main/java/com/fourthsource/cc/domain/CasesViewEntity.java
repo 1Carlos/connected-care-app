@@ -69,6 +69,9 @@ public class CasesViewEntity implements Serializable {
     @Column(name="FOLLOW_UP_DATE")
     private Date followUpDate;
     
+    @Column(name="PRIORITY")
+    private String priority;
+    
     public Integer getId() {
 		return id;
 	}
@@ -208,9 +211,6 @@ public class CasesViewEntity implements Serializable {
     	this.caseWorkerFirstName = caseWorkerFirstName;
     }
     
-    /*@Column(name="FOLLOW_UP_DATE")
-    private String followUpDate;*/
-
     public Date getFollowUpDate(){
     	return followUpDate;
     }
@@ -218,4 +218,13 @@ public class CasesViewEntity implements Serializable {
     public void setFollowUpDate(Date followUpDate){
     	this.followUpDate = followUpDate;
     }
+
+    public String getpriority() {
+		return priority;
+	}
+	
+    public void setPriority(String priority) {
+		this.priority = priority;
+	}
+	
 }

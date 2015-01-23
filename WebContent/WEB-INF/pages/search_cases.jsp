@@ -12,21 +12,19 @@
 	<link href="resources/styles/grid.css" rel="stylesheet">
     <link href="resources/styles/jasny-bootstrap.min.css" rel="stylesheet">
     <link href="resources/styles/jquery.dataTables.css" rel="stylesheet">
-
     <title>Connected Care Solution by 4th Source Inc</title>
-
     <!-- Bootstrap core CSS -->
     <link href="resources/styles/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="resources/styles/navbar-fixed-top.css" rel="stylesheet">
     <link rel="stylesheet" href="resources/styles/jquery-ui.css" />
-
     <script src="resources/scripts/jquery.min.js"></script>
     <script src="resources/scripts/jquery-ui.js"></script>
     <script src="resources/scripts/bootstrap.min.js"></script>
+    <script src="resources/scripts/jquery.dataTables.min.js"></script>
     <script src="resources/scripts/search-cases.js"></script>
     <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
+    
   </head>
   <body>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -147,7 +145,7 @@
         </div>
         <br/>
         <div class="row">
-          <table id="table-cases" data-height="300" class="table table-striped table-hover display" style="margin-top:-40px;">
+          <table id="search-cases-table" data-height="300" class="table table-striped table-hover display" style="margin-top:-40px;">
             <thead>
 	            <tr>
 		            <th style="">
@@ -204,6 +202,10 @@
 		              <div class="th-inner ">Case Status</div>
 		              <div class="fht-cell"></div>
 		            </th>
+		            <th style="">
+		             <div class="th-inner ">Priority</div>
+		             <div class="fht-cell"></div>
+		           </th>
 		    	</tr>
             </thead>
             <tbody data-link="row" class="rowlink">
@@ -215,7 +217,6 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="resources/scripts/ie10-viewport-bug-workaround.js"></script>
     <script src="resources/scripts/jasny-bootstrap.min.js"></script>
-    <script src="resources/scripts/jquery.dataTables.min.js"></script>
     
   </body>
 </html>

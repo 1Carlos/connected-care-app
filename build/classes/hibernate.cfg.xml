@@ -19,5 +19,10 @@
         <mapping class="com.fourthsource.cc.domain.PrioritySetEntity" />
         <mapping class="com.fourthsource.cc.domain.PrioritySetRuleEntity" />
         <mapping class="com.fourthsource.cc.domain.FileSummaryEntity" />
-    </session-factory>
+        <mapping class="com.fourthsource.cc.domain.ImportSummaryEntity" />
+        <mapping class="com.fourthsource.cc.domain.ChartEntity" />
+        <mapping class="com.fourthsource.cc.domain.ChartAdmisEntity" />
+        <mapping class="com.fourthsource.cc.domain.ChartGapsByMonthEntity" />
+        <mapping class="com.fourthsource.cc.domain.ChartGapVsReadEntity" />        
+	</session-factory>
 </hibernate-configuration>

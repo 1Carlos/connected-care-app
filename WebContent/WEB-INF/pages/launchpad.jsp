@@ -148,7 +148,7 @@
 	            		<th>Source Name</th>
 	            		<th>Patients</th>
 	            		<th>Prescriptions</th>
-	            		<th>Appoinments</th>
+	            		<th>Appointments</th>
 	            	</thead>
 	            	<tbody>
 		            	<c:forEach var="statis" items="${listSummary}">

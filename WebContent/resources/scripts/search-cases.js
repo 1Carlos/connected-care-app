@@ -1,18 +1,18 @@
 $(document).ready(function() {
-	$("#table-cases").hide();
+	
+	/*$("#search-cases-table").hide();*/
 	
 	$(".datepicker").datepicker({
 		dateFormat: "dd/mm/yy"
 	});
-
-    $('#datatable').DataTable();
-	
+		var v_cycle = 0;
 	$("#search-button").click(function() {
 		var patientName = $("#patientName").val();
 		var caseId = $("#caseId").val();
 		var fromFollowUpDate = $("#fromFollowUpDate").datepicker("getDate");
 		var toFollowUpDate = $("#toFollowUpDate").datepicker("getDate");
 		var caseStatus = $("#caseStatus").val();
+		var priority = $("#priority").val();
 		var caseWorker = $("#caseWorker").val();
 		
 		/*
@@ -31,7 +31,9 @@ $(document).ready(function() {
 		DTO.fromFollowUpDate = fromFollowUpDate;
 		DTO.toFollowUpDate = toFollowUpDate;
 		DTO.caseStatus = caseStatus;
+		DTO.priority = priority;
 		DTO.caseWorker = caseWorker;
+
 		
 		/*DTO.icdInformation = icdInformation;
 		DTO.fromOrderDate = fromOrderDate;
@@ -41,7 +43,7 @@ $(document).ready(function() {
 		DTO.sourceType = sourceType;
 		DTO.orderType = orderType;*/
 		
-		$("#table-cases").show();
+		$("#search-cases-table").show();
 		
 		var loading = 
 			"<tr>" +
@@ -50,7 +52,7 @@ $(document).ready(function() {
 				"</th>" +
 			"</tr>";
 		
-		$("#table-cases tbody").html(loading);
+		$("#search-cases-table tbody").html(loading);
 		
 		$.ajax({
 			type: "POST",
@@ -74,7 +76,13 @@ $(document).ready(function() {
 		        	"</tr>"
 			}
 			
-			$("#table-cases tbody").html(table);
+		  	   $("#search-cases-table tbody").html(table);
+		  	 if (v_cycle == 0) { 
+			   $('#search-cases-table').DataTable({
+			      "pageLength":10
+			    });
+			   v_cycle = 1;}
+			
 		}).error(function(jqXHR, textStatus, errorThrown) {
 			var error = 
 				"<tr>" +
@@ -83,7 +91,7 @@ $(document).ready(function() {
 	        		"</th>" +
 	        	"</tr>"
 			
-			$("#table-cases tbody").html(error);
+			$("#search-cases-table tbody").html(error);
 		});
 	});
 });
@@ -103,9 +111,9 @@ function getHTMLRow(object) {
 	var caseWorkerLastName = object.caseWorkerLastName == null ? "" : object.caseWorkerLastName;
 	var caseWorkerFirstName = object.caseWorkerFirstName == null ? "" : object.caseWorkerFirstName;
 	var caseStatus = object.caseStatus == null ? "" : object.caseStatus;
+	var priority = object.priority == null ? "" : object.priority;
 	var orderType = object.orderType == null ? "" : object.orderType;
 	var followUpDate = object.followUpDate == null ? "" : $.datepicker.formatDate("yy-mm-dd", new Date(object.followUpDate));
-	
 	var row =
 		"<tr>" +
 			"<td>" +
@@ -125,6 +133,7 @@ function getHTMLRow(object) {
 			"<td>" + followUpDate + "</td>" +
 			"<td>" + orderType + "</td>" +
 			"<td>" + (caseStatus == 0 ? "OPEN" : "CLOSED") + "</td>" +
+			"<td>" + priority + "</td>" +
     	"</tr>";
   
   	return row;
