@@ -92,7 +92,7 @@
         <p>List of all open patients cases.</p>
         <div class="row"></br></div>
         <div class="row">
-            <table data-height="299" id="open-cases-table" class="table table-striped" style="margin-top: -41px;">
+            <table data-height="299" id="open-cases-table" class="table table-striped table-hover display" style="margin-top: -41px;">
 	          <thead align="left">
 		          <tr>
 		            <th style="">

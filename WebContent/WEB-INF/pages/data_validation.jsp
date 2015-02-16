@@ -136,7 +136,7 @@
                     <div class="fht-cell"></div>
                   </th>
                   <th style="">
-                    <div class="th-inner ">Case Worker Name</div>
+                    <div class="th-inner ">Scheduled Date</div>
                     <div class="fht-cell"></div>
                   </th>
                   <th style="">
@@ -144,11 +144,16 @@
                     <div class="fht-cell"></div>
                   </th>
                   <th style="">
-                    <div class="th-inner ">Source Type / Name </div>
+               <!--     <div class="th-inner ">Source Type / Name </div> -->
+                    <div class="th-inner ">Source Name </div>
                     <div class="fht-cell"></div>
                   </th>
                   <th style="">
                     <div class="th-inner ">Order Type</div>
+                    <div class="fht-cell"></div>
+                  </th>
+                  <th style="">
+                    <div class="th-inner ">Order Details</div>
                     <div class="fht-cell"></div>
                   </th>
                 </tr>
@@ -168,10 +173,13 @@
 	    				</c:otherwise>
     				</c:choose>
     				<td><c:out value="${listValue.diagnosisCode1}"/></td>
-				    <td><c:out value="${listValue.caseWorkerLastName}, ${listValue.caseWorkerFirstName}"/></td>
+				<!--     <td><c:out value="${listValue.caseWorkerLastName}, ${listValue.caseWorkerFirstName}"/></td> -->
+				    <td><fmt:formatDate pattern="yyyy-MM-dd" value="${listValue.orderScheduleDate}" /></td>
 				    <td><fmt:formatDate pattern="yyyy-MM-dd" value="${listValue.orderActualDate}" /></td>
-				    <td><c:out value="${listValue.sourceType} / ${listValue.sourceName}"/></td>
+				<!--    <td><c:out value="${listValue.sourceType} / ${listValue.sourceName}"/></td> -->
+				    <td><c:out value="${listValue.sourceName}"/></td>
 				    <td><c:out value="${listValue.orderType}"/></td>
+				    <td><c:out value="${listValue.orderDetails}"/></td>
 				  </tr>
 			    </c:forEach>
               </tbody>

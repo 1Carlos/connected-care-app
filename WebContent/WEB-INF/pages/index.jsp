@@ -259,29 +259,29 @@
       </div>
     </nav>
 
-    <div class="container">
+   <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
       <!-- <div class="page-header"> -->
         <h4>Home</h4>
         <p>In this page you will see quickly all information represented in these charts.</p>
         <div class="row">
-		   <div align="center" class="col-xs-6" style="background-color:white;border:0;padding-top: 0px;
+		   <div align="center" class="col-xs-6" style="width:560px;background-color:white;border:border:1px solid #99cbed;border-radius:10px;margin-right:0px;padding-top:0px;
   padding-bottom: 0px;">
-			  <div id="chartContainer1" style="height: 300px; width: 80%;"></div>
+			  <div id="chartContainer1" style="height:300px;width:90%;"></div>
 		   </div>
-		   <div align="center" class="col-xs-6" style="background-color:white;border:0;padding-top: 0px;
+		   <div align="center" class="col-xs-6" style="width:560px;background-color:white;border:border:1px solid #99cbed;border-radius:10px;margin-left:20px;padding-top:0px;
   padding-bottom: 0px;">
-			  <div id="chartContainer2" style="height: 300px; width: 80%;"></div>
+			  <div id="chartContainer2" style="height:300px;width:90%;"></div>
 		   </div>
         </div>
-        <div align="center"  class="row">
-   			<div class="col-xs-6" style="background-color:white;border:0;padding-top: 0px;
+        <div align="center" class="row">
+   			<div class="col-xs-6" style="width:560px;background-color:white;border:border:1px solid #99cbed;border-radius:10px;margin-right:0px;padding-top:0px;
   padding-bottom: 0px;">
-   				<div id="chartContainer3" style="height: 300px; width: 80%;"></div>
+   				<div id="chartContainer3" style="height: 300px; width: 90%;"></div>
    			</div>
-   			<div align="center"  class="col-xs-6" style="background-color:white;border:0;padding-top: 0px;
+   			<div align="center" class="col-xs-6" style="width:560px;background-color:white;border:border:1px solid #99cbed;border-radius:10px;margin-left:20px;padding-top:0px;
   padding-bottom: 0px;">
-   				<div id="chartContainer4" style="height:300px;width:80%" ></div>
+   				<div id="chartContainer4" style="height:300px;width:90%" ></div>
    			</div>
         </div>
         <div align="center"  class="row">

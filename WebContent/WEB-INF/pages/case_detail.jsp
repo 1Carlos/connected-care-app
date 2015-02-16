@@ -26,6 +26,7 @@
     <script src="resources/scripts/jquery-ui.js"></script>
     <script src="resources/scripts/validator.js"></script>
     <script src="resources/scripts/case-detail.js"></script>
+    <script src="resources/scripts/search-cases.js"></script>
     <script src="resources/scripts/ie-emulation-modes-warning.js"></script>
   </head>
   <body>
@@ -84,37 +85,37 @@
         </div>
       </div>
     </nav>
+
     <div class="container">
       <div class="row">
-        <div class="col-md-4" style="background-color:white; border:0">
-            <h4>Case Information</h4>
-            <table class="table table-condensed" border="0">
-              <tbody>
-                <tr style="height:15.0pt">
-                  <td style="width:35%"><strong>Case ID:</strong></td>
-                  <td style="width:65%"><strong><c:out value="${object.id}"/></strong></td>
+<!-- Row 1 / Col 1 -->	
+        
+        <div class="col-md-4" style="width:275.0pt;height:250.0pt;background-color:white;border:1px solid #99cbed;border-radius:10px;margin-right:10px;margin-left:10px;margin-top:-10px;">
+          <p class="text-left" style=margin-top:-10px;></p><h4>Case Information</h4><p></p>
+          <table class="table table-condensed table-striped" border="0">
+            <tbody>
+              <tr style="height:15.0pt">
+                <td style="width:35%"><strong>Case ID:</strong></td>
+                <td style="width:65%"><strong><c:out value="${object.id}"/></strong></td>
+              </tr>
+              <tr style="height:15.0pt">
+                <td style="width:35%"><strong>Patient Name:</strong></td>   
+                <td style="width:65%"><c:out value="${object.patientId.lastName}"/>, <c:out value="${object.patientId.firstName}"/></td>
+              </tr>
+              <tr style="height:15.0pt">
+                <td style="width:35%"><strong>Date of Birth:</strong></td>
+                <td style="width:65%"><fmt:formatDate pattern="yyyy-MM-dd" value="${object.patientId.dateOfBirth}" /></td>
+              </tr>
+              <tr style="height:15.0pt">
+                <td style="width:35%"><strong>Gender: </strong></td>
+                <td style="width:65%">
+                  <c:choose>
+				    <c:when test="${object.patientId.gender == 0}">F</c:when>
+	    			<c:otherwise>M</c:otherwise>
+    			  </c:choose>
+                </td>
                 </tr>
-                <tr style="height:15.0pt">
-                  <td style="width:35%"><strong>Patient Name:</strong></td>   
-                  <td style="width:65%"><c:out value="${object.patientId.lastName}"/>, <c:out value="${object.patientId.firstName}"/></td>
-                </tr>
-                <tr style="height:15.0pt">
-                  <td style="width:35%"><strong>Date of Birth:</strong></td>
-                  <td style="width:65%"><fmt:formatDate pattern="yyyy-MM-dd" value="${object.patientId.dateOfBirth}" /></td>
-                </tr>
-                <tr style="height:15.0pt">
-                  <td style="width:35%"><strong>Gender: </strong></td>
-                  <td style="width:65%">
-                    <c:choose>
-					  <c:when test="${object.patientId.gender == 0}">
-	        			F
-	    			  </c:when>
-	    			  <c:otherwise>
-	        			M
-	    			  </c:otherwise>
-    				</c:choose>
-                  </td>
-                </tr>
+           <!--
                 <tr style="height:15.0pt">
                   <td style="width:35%"><strong>Address:</strong></td>  
                   <td style="width:65%">
@@ -126,6 +127,7 @@
                     </c:forEach>
                   </td>
                 </tr>
+            -->	
                 <tr style="height:15.0pt">
                   <td style="width:35%"><strong>Phone:</strong></td>  
                   <td style="width:65%">
@@ -141,203 +143,183 @@
                   <td style="width:65%"><label id="caseWorkerName" for="caseWorkerName" class="control-label" style="font-style:normal;font-weight:normal;"><c:out value="${object.caseWorkerId.lastName}"/>, <c:out value="${object.caseWorkerId.firstName}"/></label></td>
                 </tr>
                 <tr style="height:15.0pt">
-                  <td style="width:35%"><strong>Follow-up Date:</strong></td>    
+                  <td style="width:35%"><strong>F/U Date:</strong></td>    
                   <td style="width:65%"><fmt:formatDate pattern="yyyy-MM-dd" value="${object.followUpDate}" /></td>
                 </tr>
                 <tr style="height:15.0pt">
-                  <td style="width:35%"><strong>Case Status:</strong></td>   
+                  <td style="width:35%"><strong>Case Status:</strong></td>    
                   <td style="width:65%">
                     <c:choose>
-					  <c:when test="${object.caseStatus == 0}">
-	        			Open
-	    			  </c:when>
-	    			  <c:otherwise>
-	        			Closed
-	    			  </c:otherwise>
+					  <c:when test="${object.caseStatus == 0}">Open</c:when>
+	    			  <c:otherwise>Closed</c:otherwise>
     				</c:choose>
                   </td>
                 </tr>
-                
                 <tr style="height:15.0pt">
                   <td style="width:35%"><strong>Priority:</strong></td>
                   <td style="width:65%">
                     <c:choose>
 					  <c:when test="${object.priority >= 0 && object.priority <= 99}">
-	        			Low
+	        			4 - Low
 	    			  </c:when>
 	    			  <c:when test="${object.priority >= 100 && object.priority <= 999}">
-	        			Medium
+	        			3 - Medium
 	    			  </c:when>
 	    			  <c:when test="${object.priority >= 1000 && object.priority <= 9999}">
-	        			High
+	        			2 - High
 	    			  </c:when>
 	    			  <c:otherwise>
-	        			Urgent
+	        			1 - Urgent
 	    			  </c:otherwise>
     				</c:choose>
                   </td>
-                </tr> 
+                </tr>                 
+              </tbody>
+            </table>
+        </div> <!-- END Row 1 / Col 1 -->	
+
+<!-- Row 1 / Col 2 -->	
+
+        <div class="col-md-4" style="width:275.0pt;height:250.0pt;background-color:white;border:1px solid #99cbed;border-radius:10px;margin-right:12px;margin-left:10px;margin-top:-10px;">
+            <p class="text-left" style=margin-top:-10px;></p><h4>Diagnosis Information</h4><p></p>
+            <p class="text-left" style=margin-top:-10px;></p><h4>&nbsp</h4><p></p>
+            <p class="text-left" style=margin-top:-10px;></p><h5><strong>ICD Code ICD Description</strong></h5><p></p>
+           
+            <div class="col-md-4" style="width:270.0pt;background-color:white;border:0;height:100px;weight:30px;overflow:auto;margin-top:-1px;margin-left:-15px;">
+            
+            <table id="diagnosisTable" class="table table-condensed table-striped" style="width:240.0pt;height:60.0pt;weight:30.0px;margin-top:-10px" border="0">
+              <tbody>
                 
-              </tbody>
-            </table>
-        </div>
-        <div class="col-md-4" style="background-color:white; border:0">
-            <h4>Diagnosis Information</h4>
-            <table class="table table-condensed" border="0">
-              <tbody>
-                <tr style="height:15.0pt">
-                  <td style="width:35%"><strong>ICD Code</strong></td>
-                  <td style="width:65%"><strong>ICD Description</strong></td>
-                </tr>
                 <c:forEach var="listDiagnosis" items="${object.patientDiagnosisEntity}">
-                  <tr style="height:15.0pt">
-                    <td style="width:35%"><c:out value="${listDiagnosis.diagnosisId.icdCode}"/></td>
-                    <td style="width:65%"><c:out value="${listDiagnosis.diagnosisId.codeDesc1}"/></td>
+                  <tr style="height:14px;margin-top:-15px">
+                    <td style="width:20%"><c:out value="${listDiagnosis.diagnosisId.icdCode}"/></td>
+                    <td style="width:80%"><c:out value="${listDiagnosis.diagnosisId.codeDesc1}"/></td>
                   </tr>
                 </c:forEach>
               </tbody>
             </table>
-        </div>
-      </div>
+            </div>
 
-	  <hr noshade align="left" width="66.66666667%">
+            <div class="col-md-4" style="width:248.0pt;height:100.0pt;background-color:white;border:0px solid #99cbed;margin-left:-15px;margin-top:-10px">
+              <p class="text-left" style="width:150.0pt;margin-top:-1px"></p><h4>Case Details</h4><p></p>                 
+                <table id="caseDetailsTableHead" class="table table-condensed" border="0" style="margin-top:-10px">  
+                  <thead>
+                    <tr style="height:15px;margin-top:-10px">
+	                  <td style="width:10%"><strong>Order</strong></td>
+	                  <td style="width:25%"><strong>Detail</strong></td>
+	                  <td style="width:30%"><strong>Date</strong></td>
+	                  <td style="width:35%"><strong>Status</strong></td>
+	                </tr>
+	               </thead>
+	             </table>
+	             <div class="col-md-4" style="width:270.0pt;background-color:white;border:0;height:90px;weight:80px;overflow:auto;margin-top:-30px;margin-left:-15px">
+	               <table id="caseDetailsTable" class="table table-condensed table-striped" border="0" style="margin-top:-10px;">
+                    <tbody>
+                      <c:forEach var="listOrders" items="${object.ordersEntity}" varStatus="loop">    	
+	                  <tr>
+	                    <td style="width:10%;height:15.0pt">
+	                      <c:if test="${listOrders.orderType == 1}">Rx</c:if>
+	                      <c:if test="${listOrders.orderType == 2}">Appt</c:if>
+				          <c:if test="${listOrders.orderType == 3}">Education</c:if>
+				          <c:if test="${listOrders.orderType == 4}">Measurement</c:if>
+	                    </td>
+	                    <td style="width:25%;height:15.0pt"><c:out value="${listOrders.orderDetails}"/></td>
+	                    <td style="width:30%;height:15.0pt"><fmt:formatDate pattern="yyyy-MM-dd" value="${listOrders.orderActualDate}" /></td>
+	                    <td style="width:35%;height:15.0pt"><c:out value="${listOrders.orderStatusDescription}"/></td>
+	                  </tr>
+	                </c:forEach>
+	              </tbody>
+	            </table>            
+	          </div>
+            </div>
+          </div>  <!-- END Row 1 / Col 2 -->	
 
-      <div class="row">
-        <div class="col-md-4" style="background-color:white;border:0;height:19px;">
-          <p class="text-left"><h4>Case Details</h4></p>
-        </div>
-        <div class="col-md-4" style="background-color:white;border:0;height:19px;">
-          <p class="text-left"><h4>Progress Notes</h4></p>
-        </div>
-      </div>
+<!-- Row 1 / Col 3 -->	
 
-      <div class="row">
-        <div class="col-md-4" style="background-color:white;border:0;height:239px;overflow:auto;margin-top:0px;">
-            <table class=" table-condensed table-striped" border="0" style="">
-              <tbody>
-                <tr style="height:15.0pt">
-                  <td style="width:20%;height:15.0pt"><strong>Order</strong></td>
-                  <td style="width:20%;height:15.0pt"><strong>Order Detail</strong></td>
-                  <td style="width:20%;height:15.0pt"><strong>Date</strong></td>
-                  <td style="width:20%;height:15.0pt"><strong>Status</strong></td>
-                </tr>
-                <c:forEach var="listOrders" items="${object.ordersEntity}">
-                  <tr style="height:15.0pt">
-                    <td style="width:20%;height:15.0pt">
-                      <c:if test="${listOrders.orderType == 1}">
-   				        Rx
-			          </c:if>
-                      <c:if test="${listOrders.orderType == 2}">
-   				        Appt
-			          </c:if>
-			          <c:if test="${listOrders.orderType == 3}">
-   				        Education
-			          </c:if>
-			          <c:if test="${listOrders.orderType == 4}">
-   				        Measurement
-			          </c:if>
-                    </td>
-                    <td style="width:20%;height:15.0pt"><c:out value="${listOrders.orderDetails}"/></td>
-                    <td style="width:20%;height:15.0pt"><fmt:formatDate pattern="yyyy-MM-dd" value="${listOrders.orderActualDate}" /></td>
-                    <td style="width:20%;height:15.0pt"><c:out value="${listOrders.orderStatusDescription}"/></td>
-                  </tr>
-                </c:forEach>
-              </tbody>
-            </table>            
-        </div>
-        <div class="col-md-4" style="background-color:white;border:0;height:239px;overflow:auto;margin-top:0px;">
+        <div class="col-md-4" style="width:275.0pt;height:250.0pt;background-color:white;border:1px solid #99cbed;border-radius:10px;margin-right:10px;margin-left:10px;margin-top:-10px;">
+          <p class="text-left" style=margin-top:-10px;></p><h4>Progress Notes</h4><p></p>
+            <div class="" style="background-color:white;border:0;height:210.0pt;weight:350px;overflow:auto;margin-top:0px;">
             <table id="progressNoteTable" class="table-condensed table-striped" border="0" style="">
               <tbody>
+                
                 <c:forEach var="listOrders" items="${object.ordersEntity}" varStatus="loop">
                     <c:if test="${loop.first}">
                       <c:set var="idOrder" value="${listOrders.id}"/>
                     </c:if>
+
                 	<c:forEach var="listNotes" items="${listOrders.noteEntity}">
 		                <tr style="">
-		                  <td style=""><strong><i><fmt:formatDate pattern="yyyy-MM-dd" value="${listNotes.creationDate}" /></i></strong></td>
-		                  <td style="" align="right"><strong><i>
-		                  <c:if test="${listNotes.creationDate != null}">
-			                  <c:out value="${listOrders.caseId.caseWorkerId.lastName}"/>,<c:out value="${listOrders.caseId.caseWorkerId.firstName}"/>
-		                  </c:if>
-		                  </i></strong></td>
-	                    </tr>		                  
-		                <tr style="">
-		                  <td class="" style="" colspan="2"><c:out value="${listNotes.noteDetails}"/></td>
-		                </tr>
+		                  <td style="width:50%;vertical-align:left;"><b><i><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${listNotes.creationDate}" /></i></b></td>
+						  <td style="width:50%;vertical-align:right;" align="right"><strong><i>
+							  <c:if test="${listNotes.creationDate != null}">
+				                  <c:out value="${listOrders.caseId.caseWorkerId.lastName}"/>,<c:out value="${listOrders.caseId.caseWorkerId.firstName}"/>
+			                  </c:if>
+						  	  </i></strong></td>
+						</tr>
+						<tr style="height:15.0pt">
+	                  		<td style="vertical-align:top;" colspan="2"><c:out value="${listNotes.noteDetails}"/></td>
+						</tr>
 	                </c:forEach>
                 </c:forEach>
-              </tbody>
-            </table>            
+	          </tbody>
+	        </table>   
         </div>
       </div>
-	  <hr noshade align="left" width="66.66666667%">
-      <div class="row" >
-        <div class="col-md-8" style="background-color:white; border:0">
-          <form id="addNoteForm" action="javascript:addProgressNote();" class="form-horizontal" data-toggle="validator" role="form">
-            <h4>Update Case / Add Notes</h4>
-            <input id="idCase" type="hidden" value="${object.id}"/>
-            <input id="idOrder" type="hidden" value="${idOrder}"/>
+
+<!-- Row 2 -->
+
+      <div class="row">
+<!-- Row 2 / Column 1 -->
+
+        <div class="col-md-4" style="width:275.0pt;height:160.0pt;background-color:white;border:1px solid #99cbed;border-radius:10px;margin-right:10px;margin-left:24px;margin-top:25px;">
+          <form id="addNoteForm" action="javascript:addProgressNote();" class="form-horizontal" data-toggle="validator" role="form" novalidate="true">
+            <p class="text-left" style=margin-top:-10px;></p><h4>Add Notes</h4><p></p>
+            <input id="idCase" type="hidden" value="${object.id}">
+            <input id="idOrder" type="hidden" value="${idOrder}">
             <table class="table table-condensed" border="0">
               <tbody>
                 <tr style="height:15.0pt">
-                  <td style="width:50%;height:15.0pt">
-                    <!-- <h4>Note</h4>  -->
-                  </td>
-                  <td>
-                  </td>
-                  <td>
+                  <td style="width:250.0pt;height:15pt">
+                    <textarea id="noteDescription" class="form-control" rows="4" cols="50" style="resize:none;" wrap="off" placeholder="Please add the note here..."; required=""></textarea>
                   </td>
                 </tr>
-                
+              </tbody>
+            </table>
+          </form>
+        </div>
+
+        <div class="col-md-4" style="width:275.0pt;height:160.0pt;background-color:white;border:1px solid #99cbed;border-radius:10px;margin-right:10px;margin-left:10px;margin-top:25px;">
+          <form id="addNoteForm" action="javascript:addProgressNote();" class="form-horizontal" data-toggle="validator" role="form" novalidate="true">
+            <p class="text-left" style=margin-top:-10px;></p><h4>&nbsp</h4><p></p>
+            <input id="idCase" type="hidden" value="${object.id}">
+            <input id="idOrder" type="hidden" value="${idOrder}">
+            <table class="table table-condensed" border="0">
+              <tbody>
                 <tr style="height:15.0pt">
-                  <td style="width:35%;height:15.0pt">
-                    <textarea id="noteDescription" class="form-control" rows="5" cols="50" style="resize:none;" wrap="off" placeholder="Please add the note here..." required></textarea>
-                  </td>
-                  <td height="60px" style="width:30%;height:15.0pt">
+                  <td height="60px" style="width:30%;height:20.0pt">
                     <label for="nextFollowUpDate" class="control-label" style="width:180px;"><strong>Next Follow Up:</strong></label>
+                  
                     <label for="checkBoxFollowUpRequired" class="control-label" style="width:180px;"><strong>Follow-up Not Required:</strong></label>
                   </td>
                   <td style="width:15%;height:15.0pt">
-                    <input id="nextFollowUpDate" type="text" size="12" class="form-control datepicker" style="display:inline; width:100px;" required/>
-                    <input id="checkBoxFollowUpRequired" type="checkbox" class="form-control" style="display:inline; width:20px;"/>
+                    <input id="nextFollowUpDate" type="text" size="12" class="form-control datepicker" style="display:inline; width:100px;" required="">
+                    <input id="checkBoxFollowUpRequired" type="checkbox" class="form-control" style="display:inline; width:20px;">
                   </td>
                 </tr>
-                
-                <!-- <tr style="height:15.0pt">
-                  <td style="height:15.0pt">
-                    <div class="form-group">
-                      <textarea id="noteDescription" rows="5" cols="35" class="form-control" style="width:90%;" placeholder="Please add note..." required></textarea>
-                    </div>
-                  </td>
-                  <td style="height:15.0pt">
-                    <div class="form-group">
-                      <td rowspan="2">
-                      <label for="nextFollowUpDate" class="control-label" style="width:180px;">Next Follow Up:</label>
-                      </td>
-                      <td>
-                      <input id="nextFollowUpDate" type="text" size="12" class="form-control datepicker" style="display:inline; width:100px;" required/>
-                      </td>
-                    </div>
-                    <div class="form-group">
-                      <tr>
-                      <td>
-                      <label for="checkBoxFollowUpRequired" class="control-label" style="width:180px;">Follow-up Not Required:</label>
-                      </td>
-                      <td>
-                      <input id="checkBoxFollowUpRequired" type="checkbox" class="form-control" style="display:inline; width:20px;"/>
-                      </td>
-                      </tr>
-                    </div>
-                  </td>
-                </tr>  -->
               </tbody>
             </table>
-			<hr noshade>
-            <button type="submit" class="btn btn-primary btn-md">Save Note</button>
+            <button type="submit" class="btn btn-primary btn-md disabled" style="pointer-events: all; cursor: pointer;">Save Note</button>
           </form>
         </div>
-      </div>
-    </div>
+<!-- Row 2 / Column 2 -->
+        
+
+        
+        
+      </div> <!-- End of Row 2-->
+     </div>
+    </div> <!-- End of Container -->
+                      
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="resources/scripts/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

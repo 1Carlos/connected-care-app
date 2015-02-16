@@ -67,7 +67,7 @@ public class CaseController {
 				if(ordersEntity.getOrderActualDate() != null) {
 					ordersEntity.setOrderStatusDescription("SOLD");
 				} else {
-					ordersEntity.setOrderStatusDescription("NOT SOLD");
+					ordersEntity.setOrderStatusDescription("NOT FILLED");
 				}
 			} else if(ordersEntity.getOrderType() == 2) {
 				if(ordersEntity.getOrderActualDate() != null) {

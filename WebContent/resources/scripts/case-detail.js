@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$(".datepicker").datepicker({
-		dateFormat: "dd/mm/yy"
+		dateFormat: "mm/dd/yy"
 	});
 })
 
@@ -26,12 +26,16 @@ function addProgressNote() {
 		url: "services/addProgressNote",
 		data: JSON.stringify(DTO)
 	}).done(function(data) {
+	goToCaseDetail(idCase);
 	});
 	
-	$("#addNoteForm")[0].reset();
-	var date = $.datepicker.formatDate("yy-mm-dd", new Date());
+		
+	/*	$("#addNoteForm")[0].reset();
 	
-	var row =
+	
+	var date = $.datepicker.formatDate("mm-dd-yy", new Date());
+	
+	 var row =
         "<tr style=\"\">" + 
 		"  <td style=\"width:30%;vertical-align:top;\"><b><i>" + date + "</i></b></td>"+
         "  <td style=\"width:70%;vertical-align:right;\" align=\"right\"><strong><i>" + caseWorkerName + "</i></strong></td>" + 
@@ -40,5 +44,8 @@ function addProgressNote() {
           "<td style=\"vertical-align:top;\" colspan=\"2\" >" + noteDescription + "</td>"
         "</tr>";
 	
-	$("#progressNoteTable tbody").append(row);
+	$("#progressNoteTable tbody").append(row); 
+	$("#nextFollowUpDate").val(""); */
+	
+
 }

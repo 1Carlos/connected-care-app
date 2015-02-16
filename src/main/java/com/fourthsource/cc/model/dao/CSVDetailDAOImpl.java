@@ -32,7 +32,7 @@ public class CSVDetailDAOImpl implements CSVDetailDAO  {
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<CSVDetailEntity> getAllProcessedByCSVHeadId(Integer id) {
-		Query q = sessionFactory.getCurrentSession().createQuery("FROM CSVDetailEntity WHERE csvId.id = :id AND processed = 1");
+		Query q = sessionFactory.getCurrentSession().createQuery("FROM CSVDetailEntity WHERE csvId.id = :id AND processed = 1 order by patient_last_name, patient_first_name, patient_date_of_birth ");
 		q.setParameter("id", id);
 		return q.list();
 	}

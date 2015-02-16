@@ -90,58 +90,45 @@
       <!-- Main component for a primary marketing message or call to action -->
       <!-- <div class="page-header"> -->
         <h4>Search Cases</h4>
-        <p>List of all cases.</p>
-        <div class="row" style="margin-bottom:0px;">
-          <div class="col-md-6" style="background-color:white; border:0;">
-          </div>
+        <div class="row" style="margin-bottom:0px;margin-top:-5px;">
         </div>
         <!-- Search fields -->
         <div class="row">
-          <table class="table-condensed" style="border:1px solid #DDDDDD; ">
+          <div class="col-md-4" style="width:450.0pt;height:130.0pt;background-color:white;border:1px solid #99cbed;border-radius:10px;margin-right:10px;margin-left:10px;margin-top:-1px;">
+     <!--       <p class="text-left" style=margin-top:-10px;></p><h4>List of all cases</h4><p></p>  -->
+            <table class="table-condensed" style="border:0px solid #DDDDDD; ">
             <tbody>
-              <tr>
-                <td><strong>Case Id: </strong></td>
-                <td><input id="caseId" type="text" class="form-control"></td>
-                <td><strong>Patient Name: </strong></td>
-                <td><input id="patientName" type="text" class="form-control"></td>
+              <tr style="height:15.0pt">  
+                <td style="width:80px"><strong>Case Id:</strong></td>
+                <td  style="width:80px"><input id="caseId" type="text" class="form-control"></td>
+                <td><strong>Patient Name:</strong></td>
+                <td colspan="1"><input id="patientName" style="width:180px" type="text" class="form-control"></td>
               </tr>
               <tr>
                 <td><strong>Case Worker: </strong></td>
-                <td><input id="caseWorker" type="text" class="form-control"></td>
-                <td><strong>Follow Up Date: </strong></td>
-                <td>
-                	From 
-                	<input type="text" size="12" id="fromFollowUpDate" class="form-control datepicker" style="width:100px; display:inline;" /> 
-                	To 
-                	<input type="text" size="12" id="toFollowUpDate" class="form-control datepicker" style="width:100px; display:inline;" />
-                </td>
-              </tr>
-              <tr>
+                <td style="width:180px" colspan="2"><input id="caseWorker" style="width:170px" type="text" class="form-control"></td>
                 <td><strong>Case Status: </strong></td>
                 <td>
-                  <select id="caseStatus" class="form-control">
+                  <select id="caseStatus"  class="form-control" style="width:85px;margin-left:-105px">
                     <option value="2">All</option>
                     <option value="0">Open</option>
                     <option value="1">Close</option>
                   </select>
                 </td>
-                <td></td>
-                <td></td>
               </tr>
-              <tr>
-                <td>
+               <tr>
+                <td><strong>F/U Date:</strong></td>
+                <td colspan="3" style="width:75px">
+                  From<input type="text"  size="12" id="fromFollowUpDate" class="form-control datepicker" style="width:100px; display:inline;" /> 
+                  To 	<input type="text"  size="12" id="toFollowUpDate" class="form-control datepicker" style="width:100px; display:inline;" />
                 </td>
                 <td>
-                  <br/>
-                  <p><a id="search-button" class="btn btn-primary btn-lg" href="javascript:void(0);" role="button">Search</a></p>
+                  <a id="search-button" class="btn btn-primary btn-lg" href="javascript:void(0);" role="button">Search</a>
                 </td>
-                <td>
-                </td>
-                <td>
-                </td>
-              </tr>
+              </tr>           
             </tbody>
           </table>
+           </div>
         </div>
         <br/>
         <div class="row">

@@ -47,7 +47,6 @@
           document.getElementById(objName).innerHTML = "Loading file...";
       }
     </script>
-  
   </head>
 
   <body>
@@ -124,7 +123,7 @@
 	            <tr>
 	            <td>
 					<strong><c:out value="${listValue.fileDesc}"/></strong> 
-					[<c:out value="${listValue.csvName}"/>] 
+				 <!--	[<c:out value="${listValue.csvName}"/>]  -->
 					<c:choose>
 					  <c:when test="${listValue.fileStatus == null}">
 					    <p>
@@ -167,7 +166,6 @@
 	            	</table>
 	            	<!-- End / Statistics File Summary -->
 	            </td>
-
 	            <td>
         		  <!-- Statistics Import Summary -->
    			      <table id="table-impsummary" class="table table-hover" style="width:100%;">
@@ -175,8 +173,15 @@
 	    	          <c:choose>
 		    	        <c:when test="${listValue.csvId == statim.csvId}">
 	            	      <tr>
-	            	        <td width="200" align="left"><c:out value="${statim.descrip}"/></td>
-	            	        <td width="40" align="right"><c:out value="${statim.quantity}"/></td>			
+	            	        <c:choose>
+	            	          <c:when test="${statim.descrip == 'Total Patients' || statim.descrip == 'Prescriptions' || statim.descrip == 'Appointments'}">
+	            	            <td width="100" align="left"><b><c:out value="${statim.descrip}"/></b> </td>
+	            	          </c:when>
+	    			          <c:otherwise>
+	    			           <td width="100" align="right"><c:out value="${statim.descrip}"/></td>
+	    			          </c:otherwise>
+	            	         </c:choose>
+	            	         <td width="40" align="right"><c:out value="${statim.quantity}"/></td>	
 	            	      </tr>
 	                    </c:when>
 	                  </c:choose>
