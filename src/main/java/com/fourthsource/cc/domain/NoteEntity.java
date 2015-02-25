@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.codehaus.jackson.annotate.JsonBackReference;
@@ -27,6 +28,7 @@ public class NoteEntity implements Serializable {
 	
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
+	@OrderBy(value = "date_format(creationDate, '%Y-%m-%d %T') desc")
 	@JoinColumn(name = "ORDER_ID", nullable = false)
 	private OrdersEntity orderId;
 

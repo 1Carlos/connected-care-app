@@ -1,2 +1,4 @@
 /appProperties.properties
 /com/
+/hibernate.cfg.xml
+/logback.xml

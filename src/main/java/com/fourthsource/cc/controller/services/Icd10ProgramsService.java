@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +20,7 @@ import com.fourthsource.cc.domain.requests.RequestIcd10Programs;
 import com.fourthsource.cc.model.services.Icd10Manager;
 import com.fourthsource.cc.model.services.Icd10ProgramsManager;
 
+@SuppressWarnings("unused")
 @Controller
 @RequestMapping(value="/services")
 public class Icd10ProgramsService  {
@@ -34,10 +36,12 @@ public class Icd10ProgramsService  {
 	
 	@Autowired
 	private Icd10Manager icd10Manager;
+	
+	//private Validator validateIcd10;
 
 	
 	@RequestMapping(value="/addIcd10Programs", method=RequestMethod.POST)
-    private @ResponseBody Message addIcd10Programs(@RequestBody RequestAddIcd10Programs request) {
+    public @ResponseBody Message addIcd10Programs(@RequestBody RequestAddIcd10Programs request) {
 		logger.debug("Service addIcd10Programs()");
 		Message response = null;
 		
@@ -51,6 +55,9 @@ public class Icd10ProgramsService  {
 			icd10ProgramsEntity.setApptAdherence(request.getApptAdherence());
 			icd10ProgramsEntity.setEducation(request.getEducation());
 			
+			//validateIcd10.validate(request, result);
+			// resultBinding
+			
 			icd10ProgramsManager.saveIcd10(icd10ProgramsEntity);
 			
 			response = commonProperties.getSuccessMessage();
@@ -61,11 +68,31 @@ public class Icd10ProgramsService  {
 
 		return response;
     }
+
 	
+	@RequestMapping(value="/existIcd10Programs", method=RequestMethod.POST)
+    public @ResponseBody Message existIcd10Programs(@RequestBody RequestAddIcd10Programs request) {
+		logger.debug("Service existIcd10Programs()");
+		Message response = new Message(); 
+		String existe = "";
+		
+		Icd10Entity icd10Entity = icd10Manager.getIcd10ByIcdCode(request.getIcdCode());
+		existe = icd10Entity.getIcdCodeId();
+		
+		if ( icd10ProgramsManager.existIcd10Programs( existe ) ){ 
+			response.setCode(400);
+			response.setMessage("The ICD Code does it exist");
+		}else{
+			response = commonProperties.getSuccessMessage();
+			response.setCode(200);
+			response.setMessage("The ICD Code doesn't exit");
+		}
+		return response;
+	 }
 	                        
-	@RequestMapping(value="/upDateIcd10Programs", method=RequestMethod.POST)
-    private @ResponseBody Message upDateIcd10Programs(@RequestBody RequestIcd10Programs request) { //RequestIcd10Programs request
-		logger.debug("Service upDateIcd10Programs()");
+	@RequestMapping(value="/updateIcd10Programs", method=RequestMethod.POST)
+    public @ResponseBody Message updateIcd10Programs(@RequestBody RequestIcd10Programs request) { //RequestIcd10Programs request
+		logger.debug("Service updateIcd10Programs()");
 		Message response = null;
 		
 		try {
@@ -76,7 +103,7 @@ public class Icd10ProgramsService  {
 			icd10ProgramsEntity.setApptAdherence(request.getApptAdherence());
 			icd10ProgramsEntity.setEducation(request.getEducation());
 			
-			icd10ProgramsManager.upDateIcd10(icd10ProgramsEntity);
+			icd10ProgramsManager.updateIcd10(icd10ProgramsEntity);
 			
 			response = commonProperties.getSuccessMessage();
 		} catch(HibernateException e) {
@@ -88,7 +115,7 @@ public class Icd10ProgramsService  {
     }
 
 	@RequestMapping(value="/deleteIcd10Programs", method=RequestMethod.POST)
-    private @ResponseBody Message deleteIcd10Programs(@RequestBody RequestIcd10Programs request) {
+    public @ResponseBody Message deleteIcd10Programs(@RequestBody RequestIcd10Programs request) {
 		logger.debug("Service deleteIcd10Programs()");
 		Message response = null;
 		

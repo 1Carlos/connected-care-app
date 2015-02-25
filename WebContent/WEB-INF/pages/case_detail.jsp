@@ -280,7 +280,7 @@
               <tbody>
                 <tr style="height:15.0pt">
                   <td style="width:250.0pt;height:15pt">
-                    <textarea id="noteDescription" class="form-control" rows="4" cols="50" style="resize:none;" wrap="off" placeholder="Please add the note here..."; required=""></textarea>
+                    <textarea id="noteDescription" class="form-control" rows="4" cols="50" style="resize:none;" wrap="soft" placeholder="Please add the note here..."; required=""></textarea>
                   </td>
                 </tr>
               </tbody>

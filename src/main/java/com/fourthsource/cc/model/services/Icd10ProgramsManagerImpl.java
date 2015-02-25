@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fourthsource.cc.domain.Icd10Entity;
 import com.fourthsource.cc.domain.Icd10ProgramsEntity;
 import com.fourthsource.cc.model.dao.Icd10ProgramsDAO;
 
+@SuppressWarnings("unused")
 @Service
 public class Icd10ProgramsManagerImpl implements Icd10ProgramsManager {
 	
@@ -29,6 +31,12 @@ public class Icd10ProgramsManagerImpl implements Icd10ProgramsManager {
 	public Icd10ProgramsEntity getIcd10ProgramsById(Integer id) {
 		return icd10ProgramsDAO.getIcd10ProgramsById(id);
 	}
+
+	@Override
+	@Transactional
+	public Boolean existIcd10Programs(String id){
+		return icd10ProgramsDAO.existIcd10Programs(id);
+	}
 	
 	@Override
 	@Transactional
@@ -38,13 +46,19 @@ public class Icd10ProgramsManagerImpl implements Icd10ProgramsManager {
 	
 	@Override
 	@Transactional
-	public void upDateIcd10(Icd10ProgramsEntity entity) {
-		icd10ProgramsDAO.upDateIcd10(entity);
+	public void updateIcd10(Icd10ProgramsEntity entity) {
+		icd10ProgramsDAO.updateIcd10(entity);
 	}	
 	
 	@Override
 	@Transactional
 	public void deleteIcd10(Icd10ProgramsEntity entity) {
 		icd10ProgramsDAO.deleteIcd10(entity);
+	}
+
+	@Override
+	public void upDateIcd10(Icd10ProgramsEntity entity) {
+		// TODO Auto-generated method stub
+		
 	}	
 }

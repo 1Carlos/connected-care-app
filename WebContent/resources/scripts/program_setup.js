@@ -62,7 +62,7 @@ $(document).ready(function() {
 				goRefresh();
 			});
 
-		}		
+		}
 
 	});
 	
@@ -87,22 +87,37 @@ $(document).ready(function() {
 			type: "POST",
 			dataType: "JSON",
 			contentType: "application/json",
-			url: "services/addIcd10Programs",
+			url: "services/existIcd10Programs",
 			data: JSON.stringify(DTO)
-		}).done(function(data) {
-			goRefresh();
+		})
+		.done(function(data){
+			console.log(data);
+			if(data.code == 200){
+				$.ajax({
+					type: "POST",
+					dataType: "JSON",
+					contentType: "application/json",
+					url: "services/addIcd10Programs",
+					data: JSON.stringify(DTO)
+				}).done(function(data){
+					goRefresh();
+				});
+			}else{
+				alert("The ICD Code [" + icdCode + "] does exist in the table. Please enter other ICD Code.");
+			}
 		});
-		
-		var url = "program_setup";
+
+		/*
+		var url  = "program_setup";
 		var form = $("<form action='" + url + "' method='POST'>" +
 		  			 "</form>");
-		
+
 		$("body").append(form);
 		form.submit();
-		
+
 		//window.location = "program_setup";
-		document.location.href ="program_setup"; 
-		
+		document.location.href ="program_setup";
+		*/ 
 	});
 
 	/* Update ICd10 Code in Programs Setup */
@@ -138,14 +153,11 @@ $(document).ready(function() {
 		}).done(function(data) {
 			goRefresh();
 		});
-
 		//window.location = "program_setup";
 		document.location.href ="program_setup"; 
-		
 	});
 	
 });
-
 
 function goRefresh(){
 	window.location = "program_setup";
